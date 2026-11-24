@@ -7,8 +7,8 @@ source_commit_date,2026-11-23T19:47:32+00:00
 crosscheck_source,https://raw.githubusercontent.com/SteamDatabase/GameTracking-Deadlock/master/game/citadel/
 crosscheck_build,6865
 crosscheck_values_compared,5705
-crosscheck_disagreements,3
-generated_at,2026-11-24T08:48:31+00:00
+crosscheck_disagreements,0
+generated_at,2026-11-24T09:16:59+00:00
 rows_heroes,44
 rows_abilities,176
 rows_alternate_form_abilities,3

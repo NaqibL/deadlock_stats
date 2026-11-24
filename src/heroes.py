@@ -4,7 +4,7 @@ from __future__ import annotations
 from .text import clean, tidy
 
 COLUMNS = [
-    "key", "name", "hero_type", "role", "weapon_tags",
+    "key", "name", "hero_type", "hero_tags", "role", "gun_tag", "weapon_tags",
     "base_health", "health_per_boon", "health_regen",
     "bullet_damage", "bullet_damage_per_boon", "pellets_per_shot", "damage_per_shot",
     "fire_rate", "weapon_dps_level_1", "clip_size", "reload_time", "bullet_velocity",
@@ -65,7 +65,15 @@ def _get(mapping, key):
     return tidy(value) if isinstance(value, (int, float)) and not isinstance(value, bool) else None
 
 
-def hero_row(key: str, hero: dict, loc: dict) -> dict:
+def _loc_token(loc: dict, token) -> str:
+    return clean(loc.get(str(token or "").lstrip("#"), ""), loc)
+
+
+def hero_row(key: str, hero: dict, loc: dict, raw_hero: dict | None = None) -> dict:
+    """``raw_hero`` is the hero's entry in the raw game files; it supplies the
+    hero tags and gun tag, which the primary source does not carry."""
+    raw_hero = raw_hero if isinstance(raw_hero, dict) else {}
+    hero_tags = [t for t in (_loc_token(loc, tag) for tag in raw_hero.get("m_vecHeroTags") or []) if t]
     weapon = hero.get("Weapon") or {}
     scaling = hero.get("LevelScaling") or {}
     bullet_damage = _get(weapon, "BulletDamage")
@@ -76,6 +84,8 @@ def hero_row(key: str, hero: dict, loc: dict) -> dict:
         "key": key,
         "name": hero.get("Name"),
         "hero_type": hero.get("Type"),
+        "hero_tags": "; ".join(hero_tags) or None,
+        "gun_tag": _loc_token(loc, raw_hero.get("m_strGunTag")) or None,
         "role": clean(loc.get(hero.get("Role") or "", ""), loc) or None,
         "weapon_tags": "; ".join(tags) or None,
         "base_health": _get(hero, "MaxHealth"),
@@ -110,9 +120,10 @@ def hero_row(key: str, hero: dict, loc: dict) -> dict:
     return row
 
 
-def build_heroes(primary: dict):
+def build_heroes(primary: dict, raw: dict | None = None):
     """Return ``(rows, excluded)`` for the heroes table, sorted by name."""
     playable, excluded = split_heroes(primary["heroes"])
-    rows = [hero_row(key, hero, primary["loc"]) for key, hero in playable.items()]
+    raw_heroes = (raw or {}).get("heroes") or {}
+    rows = [hero_row(key, hero, primary["loc"], raw_heroes.get(key)) for key, hero in playable.items()]
     rows.sort(key=lambda r: (r["name"] or "").lower())
     return rows, excluded

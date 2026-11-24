@@ -13,6 +13,13 @@ Effects are split into three buckets, using the tooltip sections in
                 durations, healing reduction). This part is an approximation.
 * conditional - everything else in a ``Passive`` / ``Active`` section:
                 conditional, proc and on-use effects on the buyer.
+
+Some real stats are on no tooltip section in the primary source (Refresher's
+resists, for example). The raw game files settle those: a property the game
+"provides" as a stat (``m_eProvidedPropertyType``) with a non-zero base value
+is innate when it carries no usage flag, and conditional or enemy-applied when
+flagged so. Values with no such raw property (enhanced-variant numbers, tuning
+constants) stay in ``unlisted_properties``.
 """
 from __future__ import annotations
 
@@ -46,7 +53,8 @@ COLUMNS = [
     "key", "name", "category", "tier", "cost", "activation", "activation_type", "cooldown", "is_imbue",
     "builds_from", "upgrades_into",
     *STAT_COLUMNS,
-    "other_innate_stats", "conditional_effects", "enemy_effects", "unlisted_properties", "effect_text",
+    "other_innate_stats", "stats_not_on_tooltip", "conditional_effects", "enemy_effects",
+    "unlisted_properties", "effect_text",
 ]
 
 ENEMY_TYPES = {"bullet_armor_down", "tech_armor_down", "slow"}
@@ -134,7 +142,27 @@ def _section_tag(section: dict) -> str:
     return f"[{kind}, {fmt(cooldown)}s cooldown]" if cooldown else f"[{kind}]"
 
 
-def item_row(key: str, item: dict, card: dict, loc: dict, names: dict, upgrades_into: dict) -> dict:
+def unlisted_bucket(prop_key: str, raw_item: dict | None) -> str | None:
+    """Bucket for a property that is on no tooltip section, decided by the raw game files.
+
+    Returns ``None`` when the raw files do not show it to be a stat the item provides.
+    """
+    entry = ((raw_item or {}).get("m_mapAbilityProperties") or {}).get(prop_key)
+    if not isinstance(entry, dict) or not entry.get("m_eProvidedPropertyType"):
+        return None
+    value, _ = number(entry.get("m_strValue"))
+    if not value:
+        return None
+    flag = entry.get("m_eStatsUsageFlags") or ""
+    kind = {"Type": entry.get("m_strCSSClass"), "Key": prop_key, "UsageFlags": flag}
+    as_effect = bucket("Passive", kind)
+    if as_effect == "enemy" or flag:
+        return as_effect  # a slow or resist reduction is an enemy effect even when unflagged
+    return "innate"
+
+
+def item_row(key: str, item: dict, card: dict, loc: dict, names: dict, upgrades_into: dict,
+             raw_item: dict | None = None) -> dict:
     row = {column: None for column in COLUMNS}
     values = {k: number(v)[0] for k, v in item.items()}
     components = item.get("Components") or []
@@ -191,19 +219,38 @@ def item_row(key: str, item: dict, card: dict, loc: dict, names: dict, upgrades_
     if top_description and not any(top_description in text for text in texts):
         texts.insert(0, top_description)
 
-    unlisted = []
+    unlisted, hidden_innate, hidden_conditional, hidden_enemy = [], [], [], []
     for prop_key, prop in (card.get("Other") or {}).items():
         if prop_key in _BORING or prop_key in shown:
             continue
         value, unit = number(prop.get("Value"))
-        if value is not None:
+        if value is None:
+            continue
+        where = unlisted_bucket(prop_key, raw_item)
+        if where == "innate":
+            column = _STAT_BY_KEY.get(prop_key)
+            if column and row[column] is None:
+                row[column] = value
+            else:
+                other_innate.append(prop_text(prop, loc))
+            hidden_innate.append(prop_text(prop, loc))
+        elif where == "enemy":
+            hidden_enemy.append(prop_text(prop, loc))
+        elif where == "conditional":
+            hidden_conditional.append(prop_text(prop, loc))
+        else:
             unlisted.append(f"{prop_key}={fmt(value)}{unit or ''}")
+    if hidden_conditional:
+        conditional.append("[Not on tooltip] " + "; ".join(hidden_conditional))
+    if hidden_enemy:
+        enemy.append("[Not on tooltip] " + "; ".join(hidden_enemy))
 
     row["cooldown"] = active_cooldown if active_cooldown is not None else passive_cooldown
     if row["cooldown"] is None:
         fallback = values.get("AbilityCooldown")
         row["cooldown"] = fallback if fallback and fallback > 0 else None
     row["other_innate_stats"] = "; ".join(other_innate) or None
+    row["stats_not_on_tooltip"] = "; ".join(hidden_innate) or None
     row["conditional_effects"] = " | ".join(conditional) or None
     row["enemy_effects"] = " | ".join(enemy) or None
     row["unlisted_properties"] = "; ".join(unlisted) or None
@@ -211,16 +258,20 @@ def item_row(key: str, item: dict, card: dict, loc: dict, names: dict, upgrades_
     return row
 
 
-def build_items(primary: dict):
+def build_items(primary: dict, raw: dict | None = None):
     """Return ``(rows, excluded)`` for the items table, sorted by category, tier, name."""
     items, cards, loc = primary["items"], primary["item_cards"], primary["loc"]
+    raw_abilities = (raw or {}).get("abilities") or {}
     shop, excluded = split_items(items)
     names = {key: item.get("Name") or key for key, item in items.items()}
     upgrades_into = {}
     for key, item in shop.items():
         for component in item.get("Components") or []:
             upgrades_into.setdefault(component, []).append(key)
-    rows = [item_row(key, item, cards.get(key) or {}, loc, names, upgrades_into) for key, item in shop.items()]
+    rows = [
+        item_row(key, item, cards.get(key) or {}, loc, names, upgrades_into, raw_abilities.get(key))
+        for key, item in shop.items()
+    ]
     order = {"Weapon": 0, "Vitality": 1, "Spirit": 2}
     rows.sort(key=lambda r: (order.get(r["category"], 9), r["tier"], (r["name"] or "").lower()))
     return rows, excluded

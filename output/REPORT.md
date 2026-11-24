@@ -2,7 +2,7 @@
 
 - Game build: **6865** (2026-11-23)
 - Source: https://github.com/deadlock-wiki/deadlock-data at `cac2045974c9` (2026-11-23T19:47:32+00:00)
-- Generated: 2026-11-24T08:48:31+00:00
+- Generated: 2026-11-24T09:16:59+00:00
 - Rows: 44 heroes, 176 hero abilities (+3 alternate-form abilities), 156 items (53 weapon, 54 vitality, 49 spirit)
 
 ## Validation
@@ -11,7 +11,7 @@
 
 ## Cross-check against the raw game files
 
-- Raw files at game build 6865; 5705 values compared, 3 disagreement(s).
+- Raw files at game build 6865; 5705 values compared, 0 disagreement(s).
 
 | Compared | Values |
 |---|---|
@@ -32,12 +32,6 @@
 | item enabled | 156 |
 | item properties | 1456 |
 | item properties (spirit scaling) | 30 |
-
-| Entity | Field | Sheet source | Raw game files |
-|---|---|---|---|
-| Mina / Rake | Damage spirit scaling | 1 | None |
-| Solomon / Setup Bishop | PulseDamage spirit scaling | 0.8 | None |
-| Victor / Aura of Suffering | Damage spirit scaling | 1.1 | None |
 
 ## Excluded heroes
 

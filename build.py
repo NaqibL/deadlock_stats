@@ -18,10 +18,10 @@ from src.abilities import split_value
 ROOT = Path(__file__).resolve().parent
 
 
-def build_tables(primary: dict):
-    hero_rows, hero_excluded = heroes.build_heroes(primary)
+def build_tables(primary: dict, raw: dict | None = None):
+    hero_rows, hero_excluded = heroes.build_heroes(primary, raw)
     ability_rows, ability_problems = abilities.build_abilities(primary)
-    item_rows, item_excluded = items.build_items(primary)
+    item_rows, item_excluded = items.build_items(primary, raw)
     return hero_rows, ability_rows, item_rows, hero_excluded, item_excluded, ability_problems
 
 
@@ -119,20 +119,24 @@ def main(argv=None) -> int:
     print(f"Source is at game build {version.get('ClientVersion')} ({source.build_date(version)}), "
           f"commit {primary['commit']['hash'][:12]}")
 
-    hero_rows, ability_rows, item_rows, hero_excluded, item_excluded, problems = build_tables(primary)
-    counts = validate.table_counts(hero_rows, ability_rows, item_rows)
-
-    check = None
+    # The raw game files are the cross-check, and also supply the few fields the
+    # primary source lacks (hero tags, gun tag, which off-tooltip item stats are real).
+    raw, check = None, None
     if args.no_crosscheck:
         check = crosscheck.CrossCheck(available=False, note="skipped with --no-crosscheck")
     else:
         try:
             if not args.offline:
-                print("Downloading raw game files for the cross-check")
+                print("Downloading raw game files")
                 source.fetch_raw(raw_dir)
-            check = crosscheck.cross_check(primary, source.load_raw(raw_dir), hero_rows, ability_rows, item_rows)
+            raw = source.load_raw(raw_dir)
         except (source.SourceError, ValueError) as exc:
             check = crosscheck.CrossCheck(available=False, note=str(exc))
+
+    hero_rows, ability_rows, item_rows, hero_excluded, item_excluded, problems = build_tables(primary, raw)
+    counts = validate.table_counts(hero_rows, ability_rows, item_rows)
+    if raw is not None:
+        check = crosscheck.cross_check(primary, raw, hero_rows, ability_rows, item_rows)
 
     old = changelog.load_snapshot(out_dir)
     with_cooldown = {

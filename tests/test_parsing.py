@@ -177,7 +177,7 @@ def test_conditional_and_enemy_effects_stay_out_of_innate_stats(primary):
     assert row["enemy_effects"] == "[Passive] Bullet Resist: -10%"
     assert "3m" in row["conditional_effects"] and "16s cooldown" in row["conditional_effects"]
     assert row["activation"] == "Active" and row["cooldown"] == 16
-    assert row["unlisted_properties"] == "LifeThreshold=65"
+    assert row["unlisted_properties"] == "LifeThreshold=65; TechResist=14; SlowPercent=30; EnhancedOnly=75"
     assert row["effect_text"] == "[Passive] Above 65% health, deal more damage."
 
 
@@ -195,3 +195,18 @@ def test_conditional_and_enemy_effects_stay_out_of_innate_stats(primary):
 ])
 def test_bucket_rules(section, prop, expected):
     assert items.bucket(section, prop) == expected
+
+
+def test_raw_files_settle_stats_that_are_on_no_tooltip_section(primary, raw):
+    row = next(r for r in items.build_items(primary, raw)[0] if r["name"] == "Hollow Point")
+    assert row["spirit_resist_pct"] == 14                      # provided by the game, no usage flag: innate
+    assert row["stats_not_on_tooltip"] == "Spirit Resist: 14%"
+    assert "[Not on tooltip] Move Speed Slow: 30%" in row["enemy_effects"]   # flagged conditional, slows enemies
+    assert row["unlisted_properties"] == "LifeThreshold=65; EnhancedOnly=75"  # not stats the game provides
+
+
+def test_raw_files_supply_hero_tags_and_gun_tag(primary, raw):
+    rows = {r["name"]: r for r in heroes.build_heroes(primary, raw)[0]}
+    assert rows["One"]["hero_tags"] == "Tank; Brawler" and rows["One"]["gun_tag"] == "Shotgun"
+    assert rows["LiveDev"]["hero_tags"] is None and rows["LiveDev"]["gun_tag"] is None
+    assert heroes.build_heroes(primary)[0][0]["gun_tag"] is None  # without the raw files: blank

@@ -18,7 +18,9 @@ LOC = {
     "Radius_label": "Radius", "Radius_postfix": "m", "SlowPercent_label": "Move Speed", "SlowPercent_postfix": "%",
     "BonusHealth_label": "Bonus Health", "BaseAttackDamagePercent_label": "Weapon Damage",
     "BaseAttackDamagePercent_postfix": "%", "BulletArmorReduction_label": "Bullet Resist",
-    "BulletArmorReduction_postfix": "%", "item_cond_desc": "Above {s:LifeThreshold}% health, deal more damage.",
+    "BulletArmorReduction_postfix": "%", "GunTag_Shotgun": "Shotgun", "Tag_A": "Tank", "Tag_B": "Brawler",
+    "TechResist_label": "Spirit Resist", "TechResist_postfix": "%",
+    "item_cond_desc": "Above {s:LifeThreshold}% health, deal more damage.",
 }
 
 
@@ -89,7 +91,8 @@ def primary():
         "upgrade_hollow": {"Name": "Hollow Point", "Cost": 3200, "Tier": 3, "Slot": "Weapon", "Activation": "Press",
                            "Components": None, "IsDisabled": False, "StreetBrawl": False, "IsImbue": False,
                            "BonusHealth": 125, "BaseAttackDamagePercent": 35, "BulletArmorReduction": -10,
-                           "LifeThreshold": 65, "ActiveBonusMoveSpeed": "3.0m"},
+                           "LifeThreshold": 65, "ActiveBonusMoveSpeed": "3.0m", "TechResist": 14,
+                           "SlowPercent": 30, "EnhancedOnly": 75},
         "armor_upgrade_t1": {"Name": None, "Cost": 800, "Tier": 1, "Slot": "Armor", "IsDisabled": False, "StreetBrawl": False},
         "upgrade_brawl": {"Name": "Brawl Only", "Cost": 800, "Tier": 1, "Slot": "Tech", "IsDisabled": False, "StreetBrawl": True},
         "upgrade_off": {"Name": "Disabled", "Cost": 800, "Tier": 1, "Slot": "Tech", "IsDisabled": True, "StreetBrawl": False},
@@ -106,6 +109,9 @@ def primary():
             "Info3": {"Type": "Active", "Cooldown": 16.0, "Main": [
                 {"Key": "ActiveBonusMoveSpeed", "Value": "3.0m", "Type": "move_speed", "UsageFlags": "ConditionallyApplied"}], "Alt": []},
             "Other": {"LifeThreshold": {"Key": "LifeThreshold", "Value": 65},
+                      "TechResist": {"Key": "TechResist", "Value": 14, "Type": "tech_armor_up"},
+                      "SlowPercent": {"Key": "SlowPercent", "Value": 30, "Type": "slow"},
+                      "EnhancedOnly": {"Key": "EnhancedOnly", "Value": 75},
                       "ChannelMoveSpeed": {"Key": "ChannelMoveSpeed", "Value": -1}},
         },
     }
@@ -150,8 +156,13 @@ def raw(primary):
             "m_iItemTier": f"EModTier_{item['Tier']}", "m_eItemSlotType": slots[item["Slot"]],
             "m_mapAbilityProperties": {k: {"m_strValue": str(v)} for k, v in item.items()
                                        if isinstance(v, (int, float, str)) and not isinstance(v, bool)
-                                       and k not in ("Name", "Cost", "Tier", "Slot", "Activation")},
+                                       and k not in ("Name", "Cost", "Tier", "Slot", "Activation", "EnhancedOnly")},
         }
+    hollow = abilities["upgrade_hollow"]["m_mapAbilityProperties"]
+    hollow["TechResist"].update(m_eProvidedPropertyType="MODIFIER_VALUE_TECH_RESIST", m_eStatsUsageFlags="")
+    hollow["SlowPercent"].update(m_eProvidedPropertyType="MODIFIER_VALUE_SLOW", m_strCSSClass="slow",
+                                 m_eStatsUsageFlags="ConditionallyApplied")
+    heroes["hero_one"].update(m_strGunTag="#GunTag_Shotgun", m_vecHeroTags=["#Tag_A", "#Tag_B"])
     return {"version": {"ClientVersion": "6865"}, "heroes": heroes, "abilities": abilities,
             "generic": {"m_nItemPricePerTier": [0, 800, 1600, 3200, 6400, 9999]}}
 

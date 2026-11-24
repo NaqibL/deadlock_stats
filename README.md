@@ -41,7 +41,7 @@ Numbers are stored as numbers without units. A blank cell means "not applicable"
 
 - **Primary:** [deadlock-wiki/deadlock-data](https://github.com/deadlock-wiki/deadlock-data),
   Deadbot's parse of the game files. Cloned into `.cache/deadlock-data`.
-- **Cross-check:** the raw game files in
+- **Cross-check and gap filler:** the raw game files in
   [SteamDatabase/GameTracking-Deadlock](https://github.com/SteamDatabase/GameTracking-Deadlock)
   (`heroes.vdata`, `abilities.vdata`, `generic_data.vdata`), parsed independently by `src/kv3.py`.
 
@@ -51,7 +51,9 @@ game files are used instead.
 
 ## Reading the tables
 
-**Heroes.** `sprint_speed` is the bonus added to `move_speed` while sprinting.
+**Heroes.** `hero_tags` and `gun_tag` come from the raw game files (the
+primary source does not carry them); `gun_tag` is blank where the game sets
+none. `role` is blank for heroes the game has no role line for. `sprint_speed` is the bonus added to `move_speed` while sprinting.
 `stamina_recovery_seconds` is the time to regain one stamina.
 `damage_per_shot` is `bullet_damage` x `pellets_per_shot`. Distances are metres.
 
@@ -75,8 +77,15 @@ The split comes from the tooltip sections in the source (`Innate` versus
 properties as enemy-applied, so that bucket is completed by property type
 (resist reduction, slow), status effect, and property name (damage dealt,
 debuff durations, healing reduction). It is an approximation; the rule is
-`bucket()` in `src/items.py`. `unlisted_properties` holds values that are in
-the files but on no tooltip section, so their meaning is not confirmed.
+`bucket()` in `src/items.py`.
+
+Some stats are on no tooltip section in the primary source. The raw game files
+decide those: if the game provides the property as a stat with a non-zero base
+value, it goes in the innate columns (and is named in `stats_not_on_tooltip`,
+so you can see which numbers the tooltip does not show) or, when flagged
+conditional, in the effect columns marked `[Not on tooltip]`. What is left in
+`unlisted_properties` is tuning constants and enhanced-variant numbers, not
+stats of the shop item.
 
 ## What is filtered out
 
@@ -124,8 +133,3 @@ python -m pytest -q
 
 `tests/test_live.py` checks the real cached source and is skipped until
 `build.py` has run once.
-
-## Scheduling
-
-`.github/workflows/refresh.yml` runs the build weekly and commits `output/` if
-it changed.

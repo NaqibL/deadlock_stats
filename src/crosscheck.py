@@ -15,7 +15,7 @@ from .text import number, tidy
 
 RAW_SLOTS = {"EItemSlotType_WeaponMod": "Weapon", "EItemSlotType_Armor": "Armor", "EItemSlotType_Tech": "Tech"}
 SPIRIT_SCALE_CLASSES = {
-    "scale_function_tech_damage", "scale_function_healing_spirit_scale"
+    "scale_function_tech_damage", "scale_function_healing_spirit_scale", None,
 }
 ENGINE_UNITS_PER_METRE = 1 / 0.0254  # the raw files store speeds and distances in inches
 _SKIP_PROPS = {"Key", "Name", "IsDisabled", "Upgrades", "BehaviourBits"}
@@ -70,8 +70,10 @@ def raw_property(raw_ability: dict, prop: str):
     spirit = None
     if isinstance(scale, dict) and isinstance(scale.get("m_flStatScale"), (int, float)):
         stat = scale.get("m_eSpecificStatScaleType")
-        # Spirit-scaling function classes default to spirit power when no stat is named.
-        if stat == "ETechPower" or (stat is None and scale.get("_class") in SPIRIT_SCALE_CLASSES):
+        # A scale function that names no stat ("EStatsCount" is the enum's unset
+        # value) scales with spirit power, unless its class is for another stat.
+        unnamed = stat in (None, "EStatsCount") and scale.get("_class") in SPIRIT_SCALE_CLASSES
+        if stat == "ETechPower" or unnamed:
             spirit = tidy(scale["m_flStatScale"])
     return value, spirit
 

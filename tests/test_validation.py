@@ -169,6 +169,15 @@ def test_cross_check_findings_are_warnings_and_note_build_mismatch(primary, raw,
     assert not validate.has_errors(findings)
 
 
+def test_scale_function_without_a_named_stat_counts_as_spirit():
+    def prop(scale):
+        return {"m_mapAbilityProperties": {"Damage": {"m_strValue": "60", "m_subclassScaleFunction": scale}}}
+    assert crosscheck.raw_property(prop({"m_flStatScale": 1.1}), "Damage") == (60, 1.1)
+    assert crosscheck.raw_property(prop({"_class": "scale_function_tech_damage", "m_eSpecificStatScaleType": "EStatsCount", "m_flStatScale": 1.0}), "Damage") == (60, 1)
+    assert crosscheck.raw_property(prop({"_class": "scale_function_single_stat", "m_eSpecificStatScaleType": "ELevelUpBoons", "m_flStatScale": 2}), "Damage") == (60, None)
+    assert crosscheck.raw_property(prop({"_class": "scale_function_tech_duration", "m_flStatScale": 1}), "Damage") == (60, None)
+
+
 def test_skipped_cross_check_is_reported_loudly():
     findings = validate.check_crosscheck(crosscheck.CrossCheck(available=False, note="could not download"))
     assert levels(findings) == [WARNING] and findings[0].message.startswith("NOT RUN")

@@ -167,7 +167,8 @@ def check_crosscheck(result) -> list:
     """Turn a cross-check result into findings. Disagreements are reported, never resolved."""
     if result is None or not result.available:
         note = result.note if result is not None else "cross-check was skipped"
-        return [Finding(WARNING, "cross-check", f"NOT RUN: {note}")]
+        return [Finding(WARNING, "cross-check", f"NOT RUN: {note}. Columns that come from the raw game files "
+                        "(hero_tags, gun_tag, off-tooltip item stats) are incomplete in this build")]
     findings = []
     if result.note:
         findings.append(Finding(WARNING, "cross-check", result.note))

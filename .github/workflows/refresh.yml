@@ -1,0 +1,33 @@
+name: Refresh sheet
+
+on:
+  schedule:
+    - cron: "23 5 * * 1"   # Mondays 05:23 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python build.py
+      - run: python -m pytest -q
+      - name: Commit changed output
+        run: |
+          if [ -n "$(git status --porcelain output)" ]; then
+            build=$(grep '^game_build,' output/meta.csv | cut -d, -f2)
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add output
+            git commit -m "Refresh sheet for game build ${build}"
+            git push
+          else
+            echo "No changes."
+          fi

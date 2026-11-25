@@ -1,0 +1,11 @@
+key,name,stat,value_at_start,value_at_max,start_minute,max_minute,duration_seconds,first_spawn_seconds,respawn_seconds
+gun_powerup_pickup,Gun,Fire Rate,12,35,5,40,160,300,300
+gun_powerup_pickup,Gun,Max Ammo,35,70,5,40,160,300,300
+survival_powerup_pickup,Survival,Bonus Health,200,750,5,40,160,300,300
+survival_powerup_pickup,Survival,Health Regen,4,40,5,40,160,300,300
+casting_powerup_pickup,Casting,Spirit Power,15,65,5,40,160,300,300
+casting_powerup_pickup,Casting,Ability Cooldown Reduction,12,20,5,40,160,300,300
+movement_powerup_pickup,Movement,Stamina,2,4,5,40,160,300,300
+movement_powerup_pickup,Movement,Sprint Speed,59.0551,157.48,5,40,160,300,300
+movement_powerup_pickup,Movement,Zipline Speed,40,80,5,40,160,300,300
+movement_powerup_pickup,Movement,Stamina Regen Per Second Percentage,20,50,5,40,160,300,300

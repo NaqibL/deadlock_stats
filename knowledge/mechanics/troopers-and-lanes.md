@@ -1,6 +1,6 @@
 # Troopers and lanes
 
-Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing.
+Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing. The patch notes do not record every change, so where a current number below differs from the newest note, the number is right. Questions already worked through are answered in [settled.md](../settled.md).
 
 ## What the game itself says
 
@@ -270,7 +270,26 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 | Weapon.DPS | 34.951 |
 | Weapon.SustainedDPS | 34.951 |
 
-## Patch history (328 lines, newest first)
+Server settings (`convars.json`)
+
+| Setting | Value |
+|---|---|
+| citadel_player_damage_from_trooper_scale | 0.5 |
+| citadel_super_trooper_gold_mult | 0.85 |
+| citadel_trooper_gold_reward | 100 |
+| citadel_trooper_gold_reward_bonus_per_minute | 2 |
+| citadel_trooper_health_mult | 1.5 |
+| citadel_trooper_health_mult_gametime | 35 |
+| citadel_trooper_spawn_initial | 16 |
+| citadel_trooper_spawn_interval_early | 30 |
+| citadel_trooper_spawn_interval_late | 25 |
+| citadel_trooper_spawn_interval_late_time | 20 |
+| citadel_trooper_spawn_interval_very_late | 20 |
+| citadel_trooper_spawn_interval_very_late_time | 35 |
+| citadel_trooper_squad_size | 4 |
+| citadel_zipline_nonbaselane_speed_mult | 1.1 |
+
+## Patch history (322 lines, newest first)
 
 **2026-10-05** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1845383656394833))
 
@@ -291,7 +310,6 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 - Rift Troopers spawn with 100% extra health and damage (they also look larger and have custom VFX). Their bonus health and damage grow slightly per event (first one is 100%, then 120%, 140%, etc)
 - Trooper bounty rescaled from 116 + 1.16/m to 100 + 2/m (less before 20m, more after)
 - Trooper bounty ratio in the deniable flying orb increased from 40% to 50%
-- Street Brawl: No longer locks you out of getting off the zipline in the first few seconds
 
 **2026-06-04** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1834602721188293))
 
@@ -345,12 +363,6 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 - Troopers now get stronger for the specific lane that the shrine died in, rather than only after both shrines died (when both die, middle lane also gets improved)
 - Improved blue zipline attach speed and fixed various bugs
-
-**2026-01-30** ([forum post](https://forums.playdeadlock.com/threads/01-30-2026-update.102822/))
-
-- Troopers now have 20% Spirit Resist. During overtime they have an additional 20% Spirit Resist.
-- Trooper Spawn Rate from: 20/20/20/15/15 to 18/18/15/15/15
-- Trooper Overtime DPS bonus increased by 20%
 
 **2025-12-16** ([forum post](https://forums.playdeadlock.com/threads/12-16-2025-update.93983/))
 
@@ -421,7 +433,6 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 **2025-06-17** ([forum post](https://forums.playdeadlock.com/threads/06-17-2025-update.68401/))
 
-- Mid Lane Rework (between Guardians):
 - Trooper damage to Walkers reduced from 80 DPS to 60 DPS
 - Trooper base bounty reduced from 132 to 120
 - Trooper bounty growth per minute increased from 1 to 1.5
@@ -613,7 +624,6 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 - Melee troopers no longer play swipe effect (to reduce some unnecessary noise)
 - Melee trooper hitbox improved
 - Fixed Medic Troopers sometimes using their heal on Guardian boss
-- Inner Lane Changes:
 - Angled the walkway connection from the outer lane exits to the inner lane exits
 
 **2024-08-29** ([forum post](https://forums.playdeadlock.com/threads/08-29-2024-update.22253/))

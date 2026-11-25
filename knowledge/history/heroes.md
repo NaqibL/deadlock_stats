@@ -441,7 +441,6 @@ Every patch-note line that starts with a hero's name, newest first. Quoted from 
 - Bebop: Sticky Bomb now drops on the ground and continues counting down when dispelled
 - Bebop: Sticky Bomb can no longer be selfcast
 - Bebop: Sticky Bomb T2 increased from +70 Damage to +75
-- Bebop: Hyperbeam duration reduced from 11s to 7s
 
 **2025-12-30** ([forum post](https://forums.playdeadlock.com/threads/12-29-2025-update.95233/post-180763))
 
@@ -912,10 +911,6 @@ Every patch-note line that starts with a hero's name, newest first. Quoted from 
 - Calico: Return to Shadows T2 reduced from 67.5 Damage to 65
 - Calico: Return to Shadows T3 no longer grants +18% Damage Amp for 6s, but grants 350 healing instead
 
-**2026-01-30** ([forum post](https://forums.playdeadlock.com/threads/01-30-2026-update.102822/))
-
-- Calico: Return to Shadows cooldown reduced from 90s to 60s
-
 **2025-11-21** ([forum post](https://forums.playdeadlock.com/threads/11-21-2025-update.90383/))
 
 - Calico: Clip size increased from 10 to 12
@@ -1268,7 +1263,6 @@ Every patch-note line that starts with a hero's name, newest first. Quoted from 
 - Drifter: Stalker's Mark T3 now also increases duration by 2s
 - Drifter: Fixed Stalkers Mark not gaining charges from items after upgrading the T3
 - Drifter: Eternal Night cooldown reduced from 130s to 120s
-- Drifter: Bloodscent Isolation Range reduced from 20m to 10m
 
 **2025-12-03** ([forum post](https://forums.playdeadlock.com/threads/11-21-2025-update.90383/post-174987))
 
@@ -1386,11 +1380,6 @@ Every patch-note line that starts with a hero's name, newest first. Quoted from 
 - Dynamo: Singularity DPS increased from 40 to 75
 - Dynamo: Singularity DPS spirit scaling increased from 0.19 to 0.28
 - Dynamo: Singularity T3 increased from 4% Max Health DPS to 5.5%
-
-**2026-01-30** ([forum post](https://forums.playdeadlock.com/threads/01-30-2026-update.102822/))
-
-- Dynamo: Rejuvenating Aurora T3 reduced from 2.5% to 2% (was previously being reduced)
-- Dynamo: Singularity max HP damage reduced from 1.5% to 1%
 
 **2025-12-16** ([forum post](https://forums.playdeadlock.com/threads/12-16-2025-update.93983/))
 
@@ -1668,11 +1657,6 @@ Every patch-note line that starts with a hero's name, newest first. Quoted from 
 - Graves: Jar of Dead distances deadheads bounce off enemies is reduced
 - Graves: Jar of Dead deadheads now die a little faster to damage
 - Graves: Borrowed Decree T3 changed from 5% Max HP to 5% Current HP
-
-**2026-01-30** ([forum post](https://forums.playdeadlock.com/threads/01-30-2026-update.102822/))
-
-- Graves: Borrowed Decree duration reduced by 30%
-- Graves: Borrowed Decree ghoul damage reduced by 30%
 
 ## Grey Talon
 
@@ -2250,11 +2234,6 @@ Every patch-note line that starts with a hero's name, newest first. Quoted from 
 
 - Holliday: Bounce Pad now provides allies with air control and stomp damage
 - Holliday: Crackshot T3 increased from -4s/-2s for hero/npc headshots to -6s/-3s
-
-**2026-01-30** ([forum post](https://forums.playdeadlock.com/threads/01-30-2026-update.102822/))
-
-- Holliday: Crackshot Spirit Scaling increased from 1.1 to 2.5
-- Holliday: Bounce Pad cooldown reduced by 20s
 
 **2025-12-29** ([forum post](https://forums.playdeadlock.com/threads/12-29-2025-update.95233/))
 
@@ -3370,8 +3349,6 @@ Every patch-note line that starts with a hero's name, newest first. Quoted from 
 - Lash: Fixed bugs with Ground Strike where it would sometimes not do damage on ramps and special locations
 - Lash: Grapple T1 reduced from -19s Cooldown to -17s
 - Lash: Flog damage spirit scaling reduced from 1.1 to 0.85
-- Lash: Death Slam throw distance reduced by 30%
-- Lash: Ground Strike damage reduced by 10%
 
 **2025-11-21** ([forum post](https://forums.playdeadlock.com/threads/11-21-2025-update.90383/))
 
@@ -3646,11 +3623,6 @@ Every patch-note line that starts with a hero's name, newest first. Quoted from 
 - McGinnis: Heavy Barrage T3 damage increased from +21 to +25
 - McGinnis: Heavy Barrage T3 spirit scaling from +0.2 to +0.25
 - McGinnis: Heavy Barrage T3 now also increases explosion radius by 2m
-
-**2026-01-30** ([forum post](https://forums.playdeadlock.com/threads/01-30-2026-update.102822/))
-
-- McGinnis: Mini Turret cooldown increased from 18s to 26s
-- McGinnis: Medicinal Specter regen reduced by 20% (was unaffected by the global regen change previously)
 
 **2025-12-30** ([forum post](https://forums.playdeadlock.com/threads/12-29-2025-update.95233/post-180763))
 
@@ -4103,10 +4075,6 @@ Every patch-note line that starts with a hero's name, newest first. Quoted from 
 - Mirage: Traveler T1 changed from "+2m Move Speed and -35s Cooldown" to "3m Move Speed for 12s"
 - Mirage: Traveler T2 changed from "Grants Traveler Buffs to Ally" to "400 Barrier for 12s"
 - Mirage: Traveler T3 "Unstoppable for 3s" to "-80s Cooldown"
-
-**2026-01-30** ([forum post](https://forums.playdeadlock.com/threads/01-30-2026-update.102822/))
-
-- Mirage: Traveler Cooldown reduced from 155s to 60s
 
 **2025-12-16** ([forum post](https://forums.playdeadlock.com/threads/12-16-2025-update.93983/))
 
@@ -5221,10 +5189,6 @@ Every patch-note line that starts with a hero's name, newest first. Quoted from 
 - Seven: Storm Cloud bullet resistance reduced from 20% to 0%
 - Seven: Storm Cloud T1 bullet resist increased from 35% to 55%
 - Seven: Storm Cloud T3 increases move speed by +3m (was +3.8m before)
-
-**2026-01-30** ([forum post](https://forums.playdeadlock.com/threads/01-30-2026-update.102822/))
-
-- Seven: Storm Cloud damage reduced by 25%
 
 **2025-12-29** ([forum post](https://forums.playdeadlock.com/threads/12-29-2025-update.95233/))
 
@@ -6960,7 +6924,6 @@ Every patch-note line that starts with a hero's name, newest first. Quoted from 
 **2026-01-30** ([forum post](https://forums.playdeadlock.com/threads/01-30-2026-update.102822/))
 
 - Warden: Bullet damage growth reduced from 0.47 to 0.44
-- Warden: Last Stand healing reduced by 25%
 
 **2025-11-22** ([forum post](https://forums.playdeadlock.com/threads/11-21-2025-update.90383/post-171913))
 

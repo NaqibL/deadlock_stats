@@ -4,7 +4,8 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
-TABLES = ("heroes", "abilities", "items", "investment", "progression", "units", "rules", "meta")
+TABLES = ("heroes", "abilities", "items", "investment", "progression", "units", "rules", "powerups",
+          "permanent_buffs", "meta")
 
 
 def cell(value):
@@ -63,4 +64,4 @@ def write_outputs(out_dir: Path, tables: dict) -> None:
     for name in TABLES:
         columns, rows = tables[name]
         write_csv(out_dir / f"{name}.csv", columns, rows)
-    write_xlsx(out_dir / "deadlock.xlsx", [(name.capitalize(), *tables[name]) for name in TABLES])
+    write_xlsx(out_dir / "deadlock.xlsx", [(name.replace("_", " ").capitalize(), *tables[name]) for name in TABLES])

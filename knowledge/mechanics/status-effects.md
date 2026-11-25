@@ -1,6 +1,6 @@
 # Status effects and resistance to them
 
-Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing.
+Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing. The patch notes do not record every change, so where a current number below differs from the newest note, the number is right. Questions already worked through are answered in [settled.md](../settled.md).
 
 ## What the game itself says
 
@@ -198,7 +198,7 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 - No dedicated block for this in the files the sheet reads; see the sheet's tables.
 
-## Patch history (181 lines, newest first)
+## Patch history (177 lines, newest first)
 
 **2026-10-05** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1845383656394833))
 
@@ -257,11 +257,9 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 - Doorman: Call Bell now continuously emits slow
 - Doorman: Call Bell T3 no longer increases slow by -15%
 - Doorman: Fixed Luggage Cart moving targets with Unstoppable if it goes through a Doorway
-- Improved the following Enhanced Items: Blood Tribute, Shadow Weave, Cultist Sacrifice, Magic Carpet, Healing Rite, Majestic Leap, Metal Skin, Monster Rounds, Veil Walker, Fury Trance, Return Fire, Restorative Locket, Rebuttal, Disarming Hex, Split Shot, Rescue Beam, Spirit Sap, Cursed Relic, Heroic Aura, Rusted Barrel, Weapon Shielding, Nullification Burst|l1=Nullification Blast{{sic}}, Cloak of Opportunity
 - Doorman: Call Bell now continuously emits slow
 - Doorman: Call Bell T3 no longer increases slow by -15%
 - Doorman: Fixed Luggage Cart moving targets with Unstoppable if it goes through a Doorway
-- Improved the following Enhanced Items: Blood Tribute, Shadow Weave, Cultist Sacrifice, Magic Carpet, Healing Rite, Majestic Leap, Metal Skin, Monster Rounds, Veil Walker, Fury Trance, Return Fire, Restorative Locket, Rebuttal, Disarming Hex, Split Shot, Rescue Beam, Spirit Sap, Cursed Relic, Heroic Aura, Rusted Barrel, Weapon Shielding, Nullification Blast, Cloak of Opportunity
 
 **2026-03-10** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/post-220287))
 
@@ -278,15 +276,10 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 - Doorman: Hotel Guest T3 changed from "-50s Cooldown" to "Unstoppable while Hotel is occupied. 10s Cooldown on Failure to Check Out"
 - Clubs: 30% Slow for 3s
 
-**2026-02-12** ([forum post](https://forums.playdeadlock.com/threads/01-30-2026-update.102822/post-204182))
-
-- Street Brawl: There is now a global time slow when the round ends
-
 **2026-01-30** ([forum post](https://forums.playdeadlock.com/threads/01-30-2026-update.102822/))
 
 - Updated various on bullet hit resistance reduction debuffs to apply increased damage for subsequent hits rather than initial hit (similar to the spirit damage proc cases)
 - Debuff Remover: Now renamed to Dispel Magic
-- Enhanced Unstable Concoction: Now increases Bonus Health, Weapon Damage, Spirit Power and Stun Duration
 
 **2025-12-17** ([forum post](https://forums.playdeadlock.com/threads/12-16-2025-update.93983/post-178389))
 

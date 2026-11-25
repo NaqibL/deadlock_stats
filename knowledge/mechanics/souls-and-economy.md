@@ -1,6 +1,6 @@
 # Souls and the economy
 
-Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing.
+Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing. The patch notes do not record every change, so where a current number below differs from the newest note, the number is right. Questions already worked through are answered in [settled.md](../settled.md).
 
 ## What the game itself says
 
@@ -72,6 +72,23 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 | Field | Value |
 |---|---|
 | TrooperKillGoldShareFrac | 1 / 0.54 / 0.36 / 0.25 / 0.2 / 0.16 |
+
+Server settings (`convars.json`)
+
+| Setting | Value |
+|---|---|
+| citadel_bounty_player_assist_window | 10 |
+| citadel_deny_denied_percentage | 0 |
+| citadel_deny_denier_percentage | 1 |
+| citadel_player_gold_killer_to_assist_ratio | 2.2 |
+| citadel_player_gold_reward_first_kill_bonus | 125 |
+| citadel_player_gold_reward_max | 2200 |
+| citadel_player_gold_reward_min | 200 |
+| citadel_player_gold_reward_time | 2400 |
+| citadel_player_starting_gold | 600 |
+| citadel_secure_gold_fixed | 1.2 |
+| citadel_secure_gold_fixed_growth | 0.08 |
+| citadel_secure_gold_percent | 0.00375 |
 
 ## Patch history (160 lines, newest first)
 

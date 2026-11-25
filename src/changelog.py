@@ -14,6 +14,8 @@ TABLE_KEYS = {
     "progression": (("level",), lambda r: f"Level {r.get('level')}"),
     "units": (("key",), lambda r: r.get("name") or r.get("key")),
     "rules": (("rule",), lambda r: r.get("rule")),
+    "powerups": (("key", "stat"), lambda r: f"{r.get('name')} powerup, {r.get('stat')}"),
+    "permanent_buffs": (("key", "stat"), lambda r: f"Permanent buff, {r.get('stat')}"),
 }
 CORE_TABLES = ("heroes", "abilities", "items")
 HEADER = "# Changelog\n\nChanges to the generated sheet, newest first under each game build.\n"

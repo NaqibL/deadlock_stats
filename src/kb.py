@@ -34,7 +34,8 @@ _BULLET = re.compile(r"^\s*[-*•]\s*")
 TOPICS = {
     "mid-boss-and-rejuvenator": {
         "title": "Mid Boss and Rejuvenator",
-        "notes": r"mid[- ]?boss|rejuv",
+        "notes": r"mid[- ]?boss|rejuv|\bobjectives\b",
+        "convars": r"^citadel_super_neutral_gold",
         "exclude": r"rejuvenating aurora",
         "text": r"midboss|mid_boss|rejuv|super_neutral",
         "data": [("generic", "RejuvParams"), ("npcs", "npc_super_neutral"), ("misc", "neutral_camp_midboss"),
@@ -44,6 +45,7 @@ TOPICS = {
         "title": "Souls and the economy",
         "notes": r"soul orb|unsecured|secure|\bden(y|ied|ies|ying)\b|bount|comeback|net ?worth|soul shar|souls? (are|is) (now )?(split|shared)|split among|assist",
         "text": r"soul|bounty|unsecured|networth",
+        "convars": r"^citadel_(player_gold_(reward|killer)|player_starting_gold|secure_gold_(percent|fixed)|deny_den|bounty_player_assist)",
         "data": [("generic", "ObjectiveParams"), ("generic", "HeroKillGoldShareFrac"), ("generic", "TrooperKillGoldShareFrac")],
         "general_only": True,
     },
@@ -51,18 +53,19 @@ TOPICS = {
         "title": "Troopers and lanes",
         "notes": r"trooper|\blanes?\b|zipline|creep wave|medic",
         "text": r"trooper|zipline|lane",
+        "convars": r"^citadel_(trooper_(gold|spawn_in|squad|health_mult)|super_trooper_gold|player_damage_from_trooper|zipline_nonbase)",
         "data": [("npcs", "trooper_normal"), ("npcs", "trooper_melee"), ("npcs", "trooper_medic")],
         "general_only": True,
     },
     "guardians": {
         "title": "Guardians and Base Guardians",
-        "notes": r"guardian", "exclude": r"guardian ward",
+        "notes": r"guardian|\bobjectives?\b|backdoor", "exclude": r"guardian ward",
         "text": r"guardian", "data": [("npcs", "npc_boss_tier1"), ("npcs", "npc_barrack_boss")],
         "general_only": True,
     },
     "walkers": {
         "title": "Walkers",
-        "notes": r"\bwalkers?\b", "exclude": r"veil walker",
+        "notes": r"\bwalkers?\b|\bobjectives?\b|flex slot", "exclude": r"veil walker",
         "text": r"walker", "data": [("npcs", "npc_boss_tier2")], "general_only": True,
     },
     "shrines-and-patron": {
@@ -74,6 +77,7 @@ TOPICS = {
         "title": "Neutral camps, vaults and Sinner's Sacrifice",
         "notes": r"neutral|denizen|jungle|\bcamps?\b|sinner|vault",
         "text": r"neutral|sinner|vault|denizen",
+        "convars": r"^citadel_neutral_(health|damage)",
         "data": [("npcs", "neutral_trooper_weak"), ("npcs", "neutral_trooper_normal"), ("npcs", "neutral_trooper_strong"),
                  ("npcs", "neutral_sinners_sacrifice"), ("misc", "neutral_camp_weak"), ("misc", "neutral_camp_medium"),
                  ("misc", "neutral_camp_strong"), ("misc", "neutral_camp_vaults")],
@@ -82,7 +86,14 @@ TOPICS = {
     "soul-urn": {
         "title": "Soul Urn",
         "notes": r"\burn\b|\bidol\b", "exclude": r"spirit snare|ability_tengu",
-        "text": r"\burn|idol", "data": [("generic", "IdolParams")], "general_only": True,
+        "text": r"\burn|idol", "data": [], "general_only": True,
+        "convars": r"^citadel_(crate_(reward|spawn_initial|respawn)|idol_(cashin|duration|decay))",
+    },
+    "unstable-rift": {
+        "title": "Unstable Rift",
+        "notes": r"unstable rift|\brifts?\b|king of the hill|\bkoth\b",
+        "text": r"rift|koth", "data": [("generic", "KothParams")], "general_only": True,
+        "convars": r"^citadel_koth_(spawn_initial|spawn_window|respawn_interval|warning|early_warning|reward)",
     },
     "breakables-and-powerups": {
         "title": "Crates, golden statues and powerups",
@@ -102,6 +113,7 @@ TOPICS = {
         "notes": r"invest|flex slot|item slot|\bshop\b|sell(ing)? |refund|component|tier \d items?|item (cost|price)s?",
         "text": r"invest|flex|shop|sellitem|component",
         "data": [("generic", "ItemPricePerTier")], "general_only": True,
+        "convars": r"^citadel_(item_sell_price|ability_upgrade_sell|autobuy_refund)",
     },
     "melee-and-parry": {
         "title": "Melee and parry",
@@ -132,6 +144,7 @@ TOPICS = {
         "title": "Respawn timers and death",
         "notes": r"respawn|death timer|spawn protect|revive", "text": r"respawn|revive", "data": [],
         "general_only": True,
+        "convars": r"^citadel_(player_spawn_time|player_death_no_heroes|tier3_phase1_kill)",
     },
 }
 
@@ -142,8 +155,17 @@ _SKIP_TEXT_KEY = re.compile(r"^(ability_|citadel_ability|upgrade_|modifier_|hero
                             r"citadel_chatwheel|HeroTesting|Menu|GameUI|DevMenu|ping_)", re.I)
 
 
+_SECTION_LINE = re.compile(r"^(\[\s*(?P<a>[^\]]+?)\s*\]|=+\s*(?P<b>[^=]+?)\s*=+|(?P<c>[^-*•].{0,60}):)$")
+_BRAWL = re.compile(r"brawl", re.I)
+
+
 def read_patch_notes(repo_dir: Path, entity_names: dict) -> list:
-    """Every patch-note line as ``{date, section, entity_kind, entity, line, link}``."""
+    """Every patch-note line as ``{date, section, mode, entity_kind, entity, line, link}``.
+
+    ``mode`` is "Street Brawl" for lines under a Street Brawl header or prefixed
+    with it. Those are a separate game mode with its own balance; they are kept
+    in the CSV but left out of the mechanics and history files.
+    """
     base = Path(repo_dir) / "data" / "changelogs"
     links = {}
     config = base / "changelog_configs.json"
@@ -162,14 +184,16 @@ def read_patch_notes(repo_dir: Path, entity_names: dict) -> list:
                     rows.pop()  # the line above the rule was the header, not a note
                 continue
             previous = line
-            text = _BULLET.sub("", line)
-            if re.fullmatch(r"\[.*\]", text):
-                section = text.strip("[] ")
+            header = _SECTION_LINE.match(line)
+            if header:
+                section = (header.group("a") or header.group("b") or header.group("c") or "").strip()
                 continue
+            text = _BULLET.sub("", line)
             prefix = text.split(":", 1)[0].strip().lower() if ":" in text else ""
             kind, entity = entity_names.get(prefix, ("", ""))
-            rows.append({"date": date, "section": section, "entity_kind": kind, "entity": entity,
-                         "line": text, "link": links.get(date, "")})
+            brawl = bool(_BRAWL.search(section)) or prefix == "street brawl" or text.lower().startswith("street brawl")
+            rows.append({"date": date, "section": section, "mode": "Street Brawl" if brawl else "",
+                         "entity_kind": kind, "entity": entity, "line": text, "link": links.get(date, "")})
     return rows
 
 
@@ -223,7 +247,7 @@ def topic_notes(topic: dict, notes: list) -> list:
     include, exclude = re.compile(topic["notes"], re.I), re.compile(topic.get("exclude") or r"(?!x)x", re.I)
     picked = []
     for row in notes:
-        if topic.get("general_only") and row["entity"]:
+        if row.get("mode") or (topic.get("general_only") and row["entity"]):
             continue
         if include.search(row["line"]) and not exclude.search(row["line"]):
             picked.append(row)
@@ -245,7 +269,9 @@ def render_topic(slug: str, topic: dict, primary: dict, notes: list, build: str)
     lines = [f"# {topic['title']}", "",
              f"Generated from the game files at build {build} and Valve's patch notes. Everything below is quoted "
              "from a source, not interpreted. Patch notes describe the game as of their date: read newest first, "
-             "and treat an older line as history once a newer one changes the same thing.", ""]
+             "and treat an older line as history once a newer one changes the same thing. The patch notes do not "
+             "record every change, so where a current number below differs from the newest note, the number is right. "
+             "Questions already worked through are answered in [settled.md](../settled.md).", ""]
     texts = game_text(primary["loc"], topic["text"])
     lines += ["## What the game itself says", ""]
     lines += [f"- {text} (`{key}`)" for key, text in texts] or ["- No explanatory text for this in the game's strings."]
@@ -259,6 +285,16 @@ def render_topic(slug: str, topic: dict, primary: dict, notes: list, build: str)
         any_numbers = True
         lines += [f"`{block_key}`", "", "| Field | Value |", "|---|---|"]
         lines += [f"| {path or block_key} | {value} |" for path, value in numbers] + [""]
+    settings = []
+    if topic.get("convars"):
+        for name, value in sorted((primary.get("convars") or {}).items()):
+            value = value.get("value") if isinstance(value, dict) else value
+            if re.search(topic["convars"], name) and isinstance(value, (int, float)) and not isinstance(value, bool):
+                settings.append((name, tidy(value)))
+    if settings:
+        any_numbers = True
+        lines += ["Server settings (`convars.json`)", "", "| Setting | Value |", "|---|---|"]
+        lines += [f"| {name} | {value} |" for name, value in settings] + [""]
     if not any_numbers:
         lines += ["- No dedicated block for this in the files the sheet reads; see the sheet's tables.", ""]
     picked = topic_notes(topic, notes)
@@ -271,7 +307,7 @@ def render_history(kind: str, notes: list) -> str:
     """Patch history for every hero or item, one section each, newest first."""
     by_entity = {}
     for row in notes:
-        if row["entity_kind"] == kind:
+        if row["entity_kind"] == kind and not row.get("mode"):
             by_entity.setdefault(row["entity"], []).append(row)
     title = "Hero" if kind == "hero" else "Item"
     lines = [f"# {title} patch history", "",
@@ -300,6 +336,18 @@ def render_index(primary: dict, notes: list, build: str, counts: dict) -> str:
         f"- Patch notes: {len(dates)} updates, {dates[0] if dates else '?'} to {dates[-1] if dates else '?'}, "
         f"{len(notes)} lines",
         "- Source: https://github.com/deadlock-wiki/deadlock-data (game text, game data, patch notes)", "",
+        "## Read this first", "",
+        "[settled.md](settled.md) answers the questions that the numbers alone leave open: what ambiguous fields "
+        "mean, which values in the files are leftovers, where the files and the patch notes disagree, and what "
+        "still needs an in-game test. It is hand-written and every patch-note quote in it is checked against "
+        "`patch_notes.csv` when the knowledge base is built.", "",
+        "## Which source wins", "",
+        "1. The game files (the sheet in `output/`, and the number tables in each mechanics file) are the current "
+        "build. For any number, they win.",
+        "2. Patch notes explain how a mechanic works and what a field means, but they do not record every change: "
+        "dozens of current values differ from the newest note that mentions them. Use notes for meaning, not for numbers.",
+        "3. The game's own tutorial text is the weakest source. Several strings describe older versions of a mechanic.",
+        "4. A field in the files is not proof the game uses it. Some are leftovers from retired designs.", "",
         "## How to use it", "",
         "- Start with the mechanic's file under `mechanics/`. Each has three parts: what the game's own text "
         "says, the current numbers in the files, and the patch history.",
@@ -313,12 +361,37 @@ def render_index(primary: dict, notes: list, build: str, counts: dict) -> str:
         "- Nothing here is from deadlock.wiki. The wiki blocks automated access, so its prose is not included.",
         "- Topic files are built by keyword match on patch-note lines, so a file can miss a relevant line that "
         "uses other words, and can include a line that only mentions the word in passing.",
-        "- Patch notes do not cover everything. A mechanic that has never changed may have no line at all.", "",
+        "- Patch notes do not cover everything. A mechanic that has never changed may have no line at all.",
+        "- Street Brawl is a separate mode with its own balance. Its patch lines are in `patch_notes.csv` "
+        "(column `mode`) but are left out of the mechanics and history files.", "",
         "## Mechanics", "", "| File | Topic | Patch lines |", "|---|---|---|",
     ]
     for slug, topic in TOPICS.items():
         lines.append(f"| [mechanics/{slug}.md](mechanics/{slug}.md) | {topic['title']} | {counts[slug]} |")
     return "\n".join(lines) + "\n"
+
+
+_QUOTE = re.compile(r"(\d{4}-\d{2}-\d{2}): \"(.+?)\"\s*$")
+
+
+def check_quotes(path: Path, notes: list) -> list:
+    """Return the dated quotes in a hand-written file that are not in the patch notes.
+
+    A quote is a line ending ``YYYY-MM-DD: "text"``. It passes if a patch-note
+    line of that date contains the text.
+    """
+    path = Path(path)
+    if not path.exists():
+        return []
+    by_date = {}
+    for row in notes:
+        by_date.setdefault(row["date"], []).append(row["line"].replace('""', '"'))
+    missing = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        match = _QUOTE.search(line)
+        if match and not any(match.group(2) in note for note in by_date.get(match.group(1), [])):
+            missing.append((match.group(1), match.group(2)))
+    return missing
 
 
 def build_knowledge(primary: dict, repo_dir: Path, out_dir: Path) -> dict:
@@ -336,10 +409,11 @@ def build_knowledge(primary: dict, repo_dir: Path, out_dir: Path) -> dict:
     (out_dir / "history" / "items.md").write_text(render_history("item", notes), encoding="utf-8")
     (out_dir / "game_text.md").write_text(render_game_text(primary["loc"]), encoding="utf-8")
     with open(out_dir / "patch_notes.csv", "w", newline="", encoding="utf-8") as fh:
-        writer = csv.DictWriter(fh, ["date", "section", "entity_kind", "entity", "line", "link"], lineterminator="\n")
+        writer = csv.DictWriter(fh, ["date", "section", "mode", "entity_kind", "entity", "line", "link"], lineterminator="\n")
         writer.writeheader()
         writer.writerows(notes)
     (out_dir / "README.md").write_text(render_index(primary, notes, build, counts), encoding="utf-8")
-    return {"notes": len(notes), "topics": counts,
+    return {"notes": len(notes), "topics": counts, "unverified_quotes": check_quotes(out_dir / "settled.md", notes),
+            "street_brawl_lines": sum(1 for r in notes if r.get("mode")),
             "hero_lines": sum(1 for r in notes if r["entity_kind"] == "hero"),
             "item_lines": sum(1 for r in notes if r["entity_kind"] == "item")}

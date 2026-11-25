@@ -89,7 +89,6 @@ Every patch-note line that starts with a item's name, newest first. Quoted from 
 
 - Alchemical Fire: Bullet Resist Reduction reduced from -8% to -7%
 - Alchemical Fire: Bullet Resist Reduction spirit scaling reduced from 0.07 to 0.055
-- Alchemical Fire: Damage reduced by 30%
 
 **2025-05-19** ([forum post](https://forums.playdeadlock.com/threads/05-19-2025-update.65381/))
 
@@ -696,17 +695,6 @@ Every patch-note line that starts with a item's name, newest first. Quoted from 
 
 - Capacitor: Cooldown increased from 30s to 40s
 
-## Celestial Blessing
-
-**2026-03-21** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/post-226950))
-
-- Celestial Blessing: Cooldown reduced from 50s to 30s
-- Celestial Blessing: Heal increased from up to 50% of your HP to 60%
-- Celestial Blessing: Heal min increased from 300 to 400
-- Celestial Blessing: Cooldown reduced from 50s to 30s
-- Celestial Blessing: Heal increased from up to 50% of your HP to 60%
-- Celestial Blessing: Heal min increased from 300 to 400
-
 ## Cheat Death
 
 **2026-03-06** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/))
@@ -739,15 +727,6 @@ Every patch-note line that starts with a item's name, newest first. Quoted from 
 
 - Cheat Death: Duration increased from 4s to 4.5s
 - Cheat Death: Cooldown reduced from 130s to 120s
-
-## Cloak of Opportunity
-
-**2026-03-21** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/post-226950))
-
-- Cloak of Opportunity: Barrier increased from 300 to 500
-- Cloak of Opportunity: Cooldown reduced from 14s to 12s
-- Cloak of Opportunity: Barrier increased from 300 to 500
-- Cloak of Opportunity: Cooldown reduced from 14s to 12s
 
 ## Close Quarters
 
@@ -1516,15 +1495,6 @@ Every patch-note line that starts with a item's name, newest first. Quoted from 
 **2024-05-16** ([forum post](https://forums.playdeadlock.com/threads/05-16-2024-update.902/))
 
 - Echo Shard: No longer gives +20 Spirit for the second cast
-
-## Electric Slippers
-
-**2026-03-21** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/post-226950))
-
-- Electric Slippers: Damage radius increased from 8m to 12m
-- Electric Slippers: Slide Fire Rate increased from 50% to 60%
-- Electric Slippers: Damage radius increased from 8m to 12m
-- Electric Slippers: Slide Fire Rate increased from 50% to 60%
 
 ## Enchanter's Emblem
 
@@ -2849,13 +2819,6 @@ Every patch-note line that starts with a item's name, newest first. Quoted from 
 - Indomitable: Bullet Resist increased from 8% to 10%
 - Indomitable: Spirit Resist increased from 8% to 10%
 
-## Infinite Rounds
-
-**2026-03-21** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/post-226950))
-
-- Infinite Rounds: Fire Rate increased from 30% to 35%
-- Infinite Rounds: Fire Rate increased from 30% to 35%
-
 ## Infuser
 
 **2026-05-22** ([forum post](https://forums.playdeadlock.com/threads/05-22-2026-update.135477/))
@@ -4055,22 +4018,6 @@ Every patch-note line that starts with a item's name, newest first. Quoted from 
 
 - Mystic Vulnerability: Fixed it stacking with Escalating Exposure
 
-## Mystical Piano
-
-**2026-03-21** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/post-226950))
-
-- Mystical Piano: Radius increased from 11m to 12m
-- Mystical Piano: Radius increased from 11m to 12m
-
-## Nullification Burst
-
-**2026-03-21** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/post-226950))
-
-- Nullification Burst: Radius increased from 12m to 20m
-- Nullification Burst: Now grants +40% Debuff Resistance
-- Nullification Burst: Radius increased from 12m to 20m
-- Nullification Burst: Now grants +40% Debuff Resistance
-
 ## Opening Rounds
 
 **2026-06-11** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1835236783562074))
@@ -4204,12 +4151,6 @@ Every patch-note line that starts with a item's name, newest first. Quoted from 
 **2024-06-27** ([forum post](https://forums.playdeadlock.com/threads/06-27-2024-update.8486/))
 
 - Point Blank: Bullet Shield health increased from +200 to +225
-
-## Prism Blast
-
-**2026-01-30** ([forum post](https://forums.playdeadlock.com/threads/01-30-2026-update.102822/))
-
-- Prism Blast: DPS reduced from 300 to 270
 
 ## Quicksilver Reload
 
@@ -4950,14 +4891,6 @@ Every patch-note line that starts with a item's name, newest first. Quoted from 
 - Ricochet: Ricochet Damage increased from 40% to 45%
 - Ricochet: Ammo increased from 30% to 35%
 
-## Runed Gauntlets
-
-**2026-03-21** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/post-226950))
-
-- Runed Gauntlets: Melee distance increased from 130% to 150%
-- Runed Gauntlets: Cooldown on hit reduced from -12% to -16%
-- Runed Gauntlets: Cooldown on hit reduced from -3s to -4s
-
 ## Rusted Barrel
 
 **2026-05-22** ([forum post](https://forums.playdeadlock.com/threads/05-22-2026-update.135477/))
@@ -5031,30 +4964,6 @@ Every patch-note line that starts with a item's name, newest first. Quoted from 
 **2025-05-19** ([forum post](https://forums.playdeadlock.com/threads/05-19-2025-update.65381/))
 
 - Scourge: Damage reduced from 3.5% to 3.25%
-
-## Seraphim Wings
-
-**2026-03-21** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/post-226950))
-
-- Seraphim Wings: In Air Damage Reduction increased from -40% to -60%
-- Seraphim Wings: Additional air dash/jump increased from +1 to unlimited
-- Seraphim Wings: In Air Damage Reduction increased from -40% to -60%
-- Seraphim Wings: Additional air dash/jump increased from +1 to unlimited
-
-## Shadow Strike
-
-**2026-03-21** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/post-226950))
-
-- Shadow Strike: Stamina increased from +2 to +3
-- Shadow Strike: Now grants +350 Health
-- Shadow Strike: DPS increased from 75 to 125
-- Shadow Strike: DPS spirit scaling increased from 0.2 to 0.4
-- Shadow Strike: Invis duration increased from 2.5s to 3s
-- Shadow Strike: Stamina increased from +2 to +3
-- Shadow Strike: Now grants +350 Health
-- Shadow Strike: DPS increased from 75 to 125
-- Shadow Strike: DPS spirit scaling increased from 0.2 to 0.4
-- Shadow Strike: Invis duration increased from 2.5s to 3s
 
 ## Shadow Weave
 
@@ -5213,13 +5122,6 @@ Every patch-note line that starts with a item's name, newest first. Quoted from 
 **2024-06-06** ([forum post](https://forums.playdeadlock.com/threads/06-06-2024-update.4096/))
 
 - Sharpshooter: Damage falloff bonus reduced from 20% to 15%
-
-## Shrink Ray
-
-**2026-03-21** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/post-226950))
-
-- Shrink Ray: Now grants +20% Fire Rate while shrunk
-- Shrink Ray: Now grants +20% Fire Rate while shrunk
 
 ## Silence Wave
 
@@ -6564,15 +6466,6 @@ Every patch-note line that starts with a item's name, newest first. Quoted from 
 **2025-05-19** ([forum post](https://forums.playdeadlock.com/threads/05-19-2025-update.65381/))
 
 - Trophy Collector: Max Stacks increased from 14 to 16
-
-## Unstable Concoction
-
-**2026-03-21** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/post-226950))
-
-- Unstable Concoction: Now grants you unstoppable during the pre explosion state
-- Unstable Concoction: Radius increased from 18m to 22m
-- Unstable Concoction: Now grants you unstoppable during the pre explosion state
-- Unstable Concoction: Radius increased from 18m to 22m
 
 ## Unstoppable
 

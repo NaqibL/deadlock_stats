@@ -26,7 +26,10 @@ def main() -> int:
           f"{summary['notes']} patch-note lines ({summary['hero_lines']} about heroes, {summary['item_lines']} about items)")
     for slug, count in summary["topics"].items():
         print(f"  mechanics/{slug}.md  {count} patch lines")
-    return 0
+    print(f"  {summary['street_brawl_lines']} Street Brawl lines kept out of the mechanics and history files")
+    for date, quote in summary["unverified_quotes"]:
+        print(f"WARNING: knowledge/settled.md quotes a line that is not in the patch notes: {date}: {quote[:80]}")
+    return 1 if summary["unverified_quotes"] else 0
 
 
 if __name__ == "__main__":

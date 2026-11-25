@@ -1,6 +1,6 @@
 # Guardians and Base Guardians
 
-Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing.
+Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing. The patch notes do not record every change, so where a current number below differs from the newest note, the number is right. Questions already worked through are answered in [settled.md](../settled.md).
 
 ## What the game itself says
 
@@ -87,20 +87,29 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 | Weapon.DPS | 40 |
 | Weapon.SustainedDPS | 40 |
 
-## Patch history (109 lines, newest first)
+## Patch history (130 lines, newest first)
 
 **2026-09-16** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1844115010490072))
 
 - Guardian bounty increased by 10%
+- Share for objectives bounty to nearby heroes reduced from 30% to 25% (the remaining gets split between all 6 players)
+
+**2026-07-09** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165584438))
+
+- Objectives bounty split for nearby heroes reduced from 40% to 30% (this means slightly more portion of the bounty is split team wide rather than towards an individual player)
 
 **2026-06-30** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165563227))
 
+- King of the Hill objective has been rethemed and renamed to "Unstable Rift"
+- Unstable Rift bounty increased by 35% (to account for the 35% loss with no urn runner bounty, overall objective bounty is unchanged)
+- Urn running is now its own objective. Spawns on either end of the map (where the previous neutral pickup locations were), and gets delivered to the opposite end. Spawns at 10/15/20/25/etc.
 - Guardian bounty reduced from 1500 to 1250
 
 **2026-05-22** ([forum post](https://forums.playdeadlock.com/threads/05-22-2026-update.135477/))
 
 - Guardians scaling resistance from +75%->-50% over 12 minutes to +50%->-50% (takes more damage early)
 - Shrines are now invulnerable until one pair of Base Guardians are destroyed
+- Backdoor removal linger duration reduced from 20s to 14s
 - Base Guardian Bullet Resistance increased from 10% to 20%
 - [ General ] - Base HP reduced by 10 for all heroes - HP per boon reduced by 3 - Guardians scaling resistance from +75%->-50% over 12 minutes to +50%->-50% (takes more damage early) - Medium neutrals initial spawn time reduced from 6 minutes to 5 minutes - Breakables spawn time increased from 2...
 
@@ -127,6 +136,11 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 - Guardians now start with 75% Damage Resist that decay's to -50% over the first 10 minutes of a match
 - Base slot count increased from 8 to 9 and Flex slot count reduced from 4 to 3. One is given for each Walker killed. Previously the 4 were given for: "3 Guardians", "1 Walker", "3 Walkers", and "Set of Base Guardians"
 
+**2025-07-29** ([forum post](https://forums.playdeadlock.com/threads/07-29-2025-update.72760/))
+
+- Objectives no longer have 20-25% Spirit Resistance
+- The following abilities now do 50% damage to objectives: Last Stand, Storm Cloud, Hyper Beam, Heavy Barrage
+
 **2025-07-04** ([forum post](https://forums.playdeadlock.com/threads/07-04-2025-update.70156/))
 
 - Zip Line after taking Base Guardians in a lane increased from +120% to +140%
@@ -136,12 +150,13 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 **2025-06-17** ([forum post](https://forums.playdeadlock.com/threads/06-17-2025-update.68401/))
 
-- Mid Lane Rework (between Guardians):
 - Flex Slot changed from "Two Guardians" to "Three Guardians"
 - Guardian and Walker total bounty is now split with all nearby players (including players that have done damage to it within 20s). Nearby players get 40% and the rest is split evenly with all 6 players (including those nearby).
+- Destroying objectives no longer spawns orbs, instead the souls are directly awarded to the killer and their team
 
 **2025-05-19** ([forum post](https://forums.playdeadlock.com/threads/05-19-2025-update.65381/))
 
+- Objectives Spirit Resistance reduced from 50% to 40%
 - Moved outer lane Base Guardians down to the lower landing.
 
 **2025-04-17** ([forum post](https://forums.playdeadlock.com/threads/04-17-2025-update.61382/))
@@ -155,6 +170,10 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 - Fixed shotguns doing too much damage to Guardians
 
+**2025-01-27** ([forum post](https://forums.playdeadlock.com/threads/01-27-2025-update.54590/))
+
+- All objectives now take 50% less damage from Spirit Damage (abilities no longer have one off values for this)
+
 **2024-12-06** ([forum post](https://forums.playdeadlock.com/threads/12-06-2024-update.50599/))
 
 - Reverted: - Guardians now deal 25% more damage to troopers
@@ -167,6 +186,8 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 **2024-11-21** ([forum post](https://forums.playdeadlock.com/threads/11-21-2024-update.47476/))
 
+- Related to the above, both patrons will now call out the Greenwich/Green Lane objectives specifically when they are destroyed
+- Steam Game Recording timeline no longer records Shrine objectives as "The World"
 - Flex Slot changed from All Shrines to 1 Shrine and 2 Base Guardians
 - Moved rooftop neutral camps on Amber Yellow and Sapphire Purple to rooftops closer to the Guardian
 
@@ -176,15 +197,19 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 **2024-11-07** ([forum post](https://forums.playdeadlock.com/threads/11-07-2024-update.44786/))
 
+- Added support for the new Steam Game Recording Timeline API. This automatically adds timeline markers for kills, deaths, and team objectives.
 - Troopers now take 28% more damage from Guardians
 - Guardians will now focus their attack on enemy players if an enemy player shoots a hero and the enemy player is within 15m of the Guardian
 - Fixed Troopers resistance against Base Guardians not working properly
 
 **2024-10-24** ([forum post](https://forums.playdeadlock.com/threads/10-24-2024-update.40951/))
 
+- Missing AP from above is redistributed along souls reward line at similar soul levels that the objectives previously died on average
 - Guardian attack range requirement changed from 20m to requiring you are above the ramp on high ground
 - Guardian resist vs troopers changed from starting at 70% and ending at -30% at 10 min to starting at 60% and ending at -35% at 8 minutes
 - Guardians now have resist vs players starting at 40% and ending at -35% at 8 minutes
+- Backdoor protection detection range for troopers increased (harder to kill troopers approaching the objectives with long range spells to stall making the game think you are backdooring when you aren't)
+- Backdoor protection removal now has a 20s buffer (so it doesn't go into protection mode immediately once creeps die)
 - Base Guardians and Shrines no longer have out-of-combat regen
 
 **2024-10-15** ([forum post](https://forums.playdeadlock.com/threads/10-15-2024-update.38925/))
@@ -279,6 +304,10 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 - Added Patron VO for when allied or enemy base guardians are destroyed
 
+**2024-06-07** ([forum post](https://forums.playdeadlock.com/threads/06-07-2024-update.4443/))
+
+- Fixed rejuv buff applying to objectives
+
 **2024-06-06** ([forum post](https://forums.playdeadlock.com/threads/06-06-2024-update.4096/))
 
 - Added new objective health bars for Guardians and Walkers
@@ -289,6 +318,7 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 **2024-05-30** ([forum post](https://forums.playdeadlock.com/threads/05-30-2024-update.2514/))
 
+- Fixed Turrets causing backdoor protection to be lost
 - Lane Guardian HP increased from 3750 to 4600
 - Various adjustments to lane layout to give defenders more options for forward positions near their Guardian
 - Base Guardians moved a little bit further towards the outside of the base
@@ -303,8 +333,11 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 **2024-05-13** ([forum post](https://forums.playdeadlock.com/threads/05-13-2024-update.807/))
 
+- Adjusted how the Anti Backdoor system works. It does a little less % damage reduction now, but it regens “backdoor damage” dealt to it over time. Backdoor damage is defined as any damage taken with no candle troopers within 50m in the last 20 seconds.
 - Troopers DPS vs Base Guardians from 110 DPS to 80 DPS
 
 **2024-05-03** ([forum post](https://forums.playdeadlock.com/threads/05-03-2024-update.427/))
 
+- Improved UI display when endgame objectives are being attacked
 - Troopers DPS vs Lane Guardians reduced from 44 to 36
+- Objectives now have 80% damage reduction anti-backdoor defense when there haven't been creeps nearby in a while

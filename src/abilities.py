@@ -39,7 +39,7 @@ TRIVIAL_SCALES = {"duration", "cooldown", "range", "radius", "max_charges", "cha
 SCALE_NAMES = {
     "spirit": "spirit power",
     "power_increase": "boon",
-    "melee": "melee damage",
+    "melee": "light melee damage",
     "heavy_melee": "heavy melee damage",
     "weapon_damage": "weapon damage",
     "weapon_damage_increase": "weapon damage %",
@@ -148,18 +148,29 @@ def ability_row(hero_name: str, form: str | None, slot: int, key: str, ability: 
     row.update(hero=hero_name, form=form, slot=slot, key=key, name=ability.get("Name") or card.get("Name"))
     row["description"] = describe(key, card, loc) or None
 
+    # Only what the in-game tooltip card shows counts as the ability's numbers.
+    # The files also hold values the card never shows; some are tuning, some are
+    # leftovers of older designs, so they go to internal_properties untouched.
+    card_keys = {source_key for source_key, _ in _card_props(card)} or set(ability)
+    always_shown = {"AbilityCooldown", "AbilityCharges", "AbilityCooldownBetweenCharge", "AbilityDuration", "AbilityCastRange"}
+    on_card = card_keys | always_shown
+
     for column, keys in MAIN_PROPERTIES.items():
         for source_key in keys:
+            if source_key not in on_card:
+                continue
             value = split_value(ability.get(source_key))[0]
             # 0 and -1 mean "does not apply" for cooldowns, charges and the like.
             if value is not None and value > 0:
                 row[column] = value
                 break
-    row["damage_spirit_scale"] = spirit_scale(ability.get("Damage"))
-    row["dps_spirit_scale"] = spirit_scale(ability.get("DPS"))
+    row["damage_spirit_scale"] = spirit_scale(ability.get("Damage")) if "Damage" in on_card else None
+    row["dps_spirit_scale"] = spirit_scale(ability.get("DPS")) if "DPS" in on_card else None
 
-    spirit, other_scaling, shown = [], [], set(_MAIN_KEYS)
+    spirit, other_scaling, shown = [], [], set(_MAIN_KEYS) & on_card
     for source_key, raw in ability.items():
+        if source_key not in on_card:
+            continue
         scales = split_value(raw)[2]
         name = label(loc, source_key)
         if "spirit" in scales:

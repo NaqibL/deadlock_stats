@@ -1,6 +1,6 @@
 # Soul Urn
 
-Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing.
+Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing. The patch notes do not record every change, so where a current number below differs from the newest note, the number is right. Questions already worked through are answered in [settled.md](../settled.md).
 
 ## What the game itself says
 
@@ -11,13 +11,19 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 ## Current numbers in the game files
 
-`IdolParams`
+Server settings (`convars.json`)
 
-| Field | Value |
+| Setting | Value |
 |---|---|
-| IdolDropDuration | 12.5 |
+| citadel_crate_respawn_interval | 300 |
+| citadel_crate_reward_base | 250 |
+| citadel_crate_reward_time_multiplier | 70 |
+| citadel_crate_spawn_initial_delay | 600 |
+| citadel_idol_cashin_buff_count | 4 |
+| citadel_idol_decay_duration | 45 |
+| citadel_idol_duration_until_decay | 45 |
 
-## Patch history (164 lines, newest first)
+## Patch history (163 lines, newest first)
 
 **2026-07-09** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165584438))
 
@@ -93,7 +99,6 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 **2026-05-22** ([forum post](https://forums.playdeadlock.com/threads/05-22-2026-update.135477/))
 
-- === Soul Urn ===
 - We are experimenting with an alternate set of Urn mechanics. Please give us your thoughts on this after you've played with it some.
 - To pickup the Urn, rather than standing in place to channel, you now light or heavy melee the Urn to pick it up.
 - The Urn is now always dropped off on top of the bridge on the middle of the map.

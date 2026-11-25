@@ -1,6 +1,6 @@
 # Walkers
 
-Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing.
+Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing. The patch notes do not record every change, so where a current number below differs from the newest note, the number is right. Questions already worked through are answered in [settled.md](../settled.md).
 
 ## What the game itself says
 
@@ -117,19 +117,27 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 | StunDuration | 2 |
 | TossSpeed | 8.89 |
 
-## Patch history (107 lines, newest first)
+## Patch history (131 lines, newest first)
 
 **2026-09-16** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1844115010490072))
 
 - Walker bounty increased by 5%
+- Share for objectives bounty to nearby heroes reduced from 30% to 25% (the remaining gets split between all 6 players)
 
 **2026-08-12** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1840944183775204))
 
 - Doorman: Walker will no longer consider Luggage Cart dragged enemies as valid targets to trigger the stomp on until soon after they are dropped off
 - Doorman: Similar to the Walker change above, the turrets in the healing area in base now also wait on considering valid targets
 
+**2026-07-09** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165584438))
+
+- Objectives bounty split for nearby heroes reduced from 40% to 30% (this means slightly more portion of the bounty is split team wide rather than towards an individual player)
+
 **2026-06-30** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165563227))
 
+- King of the Hill objective has been rethemed and renamed to "Unstable Rift"
+- Unstable Rift bounty increased by 35% (to account for the 35% loss with no urn runner bounty, overall objective bounty is unchanged)
+- Urn running is now its own objective. Spawns on either end of the map (where the previous neutral pickup locations were), and gets delivered to the opposite end. Spawns at 10/15/20/25/etc.
 - Walker bounty reduced from 4000 to 3500
 
 **2026-05-22** ([forum post](https://forums.playdeadlock.com/threads/05-22-2026-update.135477/))
@@ -187,6 +195,8 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 - Removed the teleporters behind the Walkers
 - Side Walkers HP increased by 10%
+- Objectives no longer have 20-25% Spirit Resistance
+- The following abilities now do 50% damage to objectives: Last Stand, Storm Cloud, Hyper Beam, Heavy Barrage
 
 **2025-07-04** ([forum post](https://forums.playdeadlock.com/threads/07-04-2025-update.70156/))
 
@@ -195,9 +205,11 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 **2025-06-17** ([forum post](https://forums.playdeadlock.com/threads/06-17-2025-update.68401/))
 
+- Flex Slot changed from "Two Guardians" to "Three Guardians"
 - Flex Slot changed from "Two Walker" to "Three Walkers"
 - Guardian and Walker total bounty is now split with all nearby players (including players that have done damage to it within 20s). Nearby players get 40% and the rest is split evenly with all 6 players (including those nearby).
 - Trooper damage to Walkers reduced from 80 DPS to 60 DPS
+- Destroying objectives no longer spawns orbs, instead the souls are directly awarded to the killer and their team
 - Walker HP increased by 10%
 - Walker Spirit Resist reduced from 40% to 30%
 
@@ -209,21 +221,27 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 - Walker HP increased by 10%
 - Walkers resistance vs troopers reaches -40% at 20 minutes instead of 16 minutes
+- Objectives Spirit Resistance reduced from 50% to 40%
 
 **2025-01-27** ([forum post](https://forums.playdeadlock.com/threads/01-27-2025-update.54590/))
 
+- All objectives now take 50% less damage from Spirit Damage (abilities no longer have one off values for this)
 - Can no longer stand on top of Walkers
 
 **2024-11-21** ([forum post](https://forums.playdeadlock.com/threads/11-21-2024-update.47476/))
 
+- Related to the above, both patrons will now call out the Greenwich/Green Lane objectives specifically when they are destroyed
+- Steam Game Recording timeline no longer records Shrine objectives as "The World"
 - Walkers Stomp now also deals 10% Max HP as damage
 - Walkers Laser now also deals 2% Max HP DPS
 - Walkers now provide nearby allied heroes 25% Bullet and Spirit Resistance
 - Walkers now have Resistance based on how many nearby enemies there are (0/8/16/24/32/40% for 1/2/3/4/5/6 players; they are more tanky against a large attacking team)
 - Middle Lane Walkers HP increased from 5800 to 8000 (side walkers HP is 5175)
+- Flex Slot changed from All Shrines to 1 Shrine and 2 Base Guardians
 
 **2024-11-07** ([forum post](https://forums.playdeadlock.com/threads/11-07-2024-update.44786/))
 
+- Added support for the new Steam Game Recording Timeline API. This automatically adds timeline markers for kills, deaths, and team objectives.
 - Walkers damage vs players increased by 10%
 - Moved 8 neutral camps (4 on each side) from outside the outer lanes behind the Walkers to in between inner and outer lanes
 - Walker armor loss over time now happens at 16m instead of 14m
@@ -231,10 +249,17 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 **2024-10-24** ([forum post](https://forums.playdeadlock.com/threads/10-24-2024-update.40951/))
 
 - AP is no longer granted for Walkers
+- Shrine Flex Slot moved to "All Shrines"
+- Missing AP from above is redistributed along souls reward line at similar soul levels that the objectives previously died on average
 - Walkers now have resist vs troopers starting at 60% and ending at -30% at 14 minutes
 - Walkers now have resist vs players starting at 60% and ending at -30% at 14 minutes
+- Backdoor protection detection range for troopers increased (harder to kill troopers approaching the objectives with long range spells to stall making the game think you are backdooring when you aren't)
 - Connection hallways behind the Chapel and Firehouse now has an option to continue inside to the Walker arenas
 - Neutral camps beside Amber Purple and Sapphire Yellow Walker arenas moved from the ground floor to the upper floor
+
+**2024-10-15** ([forum post](https://forums.playdeadlock.com/threads/10-15-2024-update.38925/))
+
+- First flex slot is now granted after 3 Guardians die instead of 4
 
 **2024-10-10** ([forum post](https://forums.playdeadlock.com/threads/10-10-2024-update.36958/))
 
@@ -249,6 +274,7 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 **2024-09-26** ([forum post](https://forums.playdeadlock.com/threads/09-26-2024-update.33015/))
 
+- Fixed Flex Slot unlock order not matching the usual order of unlocks
 - Redesigned outer lane path (ziplines and trooper nodes) from Walker to Guardian on Amber Yellow and Sapphire Purple
 
 **2024-09-12** ([forum post](https://forums.playdeadlock.com/threads/09-12-2024-update.27974/))
@@ -259,6 +285,7 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 **2024-08-29** ([forum post](https://forums.playdeadlock.com/threads/08-29-2024-update.22253/))
 
+- Moved a flex slot from "Set of enemy Base Guardians" to "All Enemy Lane Guardians"
 - The minimum range the player must be to attack a walker is increased from 30m to 32m
 - Added two bounce pads next to sidelane walkers at cultural center and courthouse
 - Added bounce pad from the Amber Orange/Sapphire Blue Walker walkway to the low roofs toward the Walker.
@@ -309,6 +336,10 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 - There is no longer a reinforcement trooper wave after Guardians and Walkers die
 
+**2024-06-07** ([forum post](https://forums.playdeadlock.com/threads/06-07-2024-update.4443/))
+
+- Fixed rejuv buff applying to objectives
+
 **2024-06-06** ([forum post](https://forums.playdeadlock.com/threads/06-06-2024-update.4096/))
 
 - Added new objective health bars for Guardians and Walkers
@@ -330,3 +361,8 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 - Fixed Walker boss moving around while the game is paused
 - Troopers DPS vs Walkers from 110 DPS to 80 DPS
+
+**2024-05-03** ([forum post](https://forums.playdeadlock.com/threads/05-03-2024-update.427/))
+
+- Improved UI display when endgame objectives are being attacked
+- Objectives now have 80% damage reduction anti-backdoor defense when there haven't been creeps nearby in a while

@@ -1,6 +1,6 @@
 # Mid Boss and Rejuvenator
 
-Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing.
+Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing. The patch notes do not record every change, so where a current number below differs from the newest note, the number is right. Questions already worked through are answered in [settled.md](../settled.md).
 
 ## What the game itself says
 
@@ -84,15 +84,49 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 | PunchPickupModifier.NearRejuvAuraModifier.AuraRadius | 300 |
 | PunchPickupModifier.ParryCheckModifier.ParryCheckRadius | 80 |
 
-## Patch history (96 lines, newest first)
+Server settings (`convars.json`)
+
+| Setting | Value |
+|---|---|
+| citadel_super_neutral_gold_reward | 1500 |
+| citadel_super_neutral_gold_reward_bonus_per_minute | 25 |
+
+## Patch history (136 lines, newest first)
+
+**2026-10-05** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1845383656394833))
+
+- Sinclair: Vexing Bolt - Now does half damage to objectives
+
+**2026-09-16** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1844115010490072))
+
+- Share for objectives bounty to nearby heroes reduced from 30% to 25% (the remaining gets split between all 6 players)
+- Silver: Boot Kick can only target heroes and objectives now
+
+**2026-07-28** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839041357039193))
+
+- Silver: Slam Fire now does 100% bonus damage against NPCs (troopers and neutrals, not objectives)
+
+**2026-07-09** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165584438))
+
+- Objectives bounty split for nearby heroes reduced from 40% to 30% (this means slightly more portion of the bounty is split team wide rather than towards an individual player)
 
 **2026-06-30** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165563227))
 
 - Rejuv buff duration reduced from 4 minutes to 3
 
+**2026-06-11** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1835236783562074))
+
+- Pocket: Affliction now does half damage on objectives
+
 **2026-05-22** ([forum post](https://forums.playdeadlock.com/threads/05-22-2026-update.135477/))
 
 - Midboss now starts spawned at the beginning of the game
+- Victor: Aura of Suffering now does 50% damage to objectives
+
+**2026-03-10** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/post-220287))
+
+- Paradox: Pulse Grenade does half damage to objectives
+- Paradox: Pulse Grenade does half damage to objectives
 
 **2026-03-06** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/))
 
@@ -113,6 +147,7 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 - Mid Boss base health increased from 13000 to 14000
 - Mid Boss health growth per minute increased from 200 to 230
 - Team that kills Mid Boss gets +2 permanent buffs for each player
+- Mirage: Traveler can now target friendly objectives
 
 **2025-10-02** ([forum post](https://forums.playdeadlock.com/threads/10-02-2025-update.84332/))
 
@@ -120,10 +155,17 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 - Mid Boss damage resistance per second reduced from 50 + 7/min to 35 + 5/min
 - Rejuv bonus HP reduced from 15% to 10%
 - 2nd Midboss rejuv credits reduced from 4 to 3
+- Mina: Nox Nostra now has 50% reduction in damage against objectives
+- Mina: Nox Nostra reduced the Cap on objective damage from the T3 from +50 Damage per Bat to +20 Damage (only a nerf against objectives)
+- Vyper: Lethal Venom can now be cast on non-trooper enemies (neutrals and objectives)
 
 **2025-09-04** ([forum post](https://forums.playdeadlock.com/threads/09-04-2025-update.80693/))
 
 - Rejuv only heals the person hitting the crystal
+
+**2025-08-22** ([forum post](https://forums.playdeadlock.com/threads/08-18-2025-update.75046/post-145970))
+
+- Billy: Blasted no longer gives bonus health from objectives
 
 **2025-08-08** ([forum post](https://forums.playdeadlock.com/threads/07-29-2025-update.72760/post-141214))
 
@@ -137,6 +179,10 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 - Mid Boss HP is now fixed at the spawn time. Base HP increased from 6725 to 12500 and growth reduced from 470 to 200.
 - Reworked Rejuv reward from Mid Boss. No longer buffs troopers, reduces respawn time and buffs various stats. Upon death, 3 rejuv crystals fall to the ground (4 for subsequent midboss kills). Claiming one now grants you in place revive after 3s. If you already claimed one and claim another, it'll go to an ally (priority is closest allies first, then most recent dead allies). Dying with Rejuv no longer counts as a kill/death nor gives out bounties. While you have the Rejuv buff, you gain the following: +20% Max HP, +20% Fire Rate, and +15% Spirit Damage. Gaining the buff heals you to full and lasts up to 7 minutes.
+- Objectives no longer have 20-25% Spirit Resistance
+- The following abilities now do 50% damage to objectives: Last Stand, Storm Cloud, Hyper Beam, Heavy Barrage
+- Kelvin: Arctic Beam T3 no longer bounces off of objectives
+- Vindicta: Crow T1 bounce no longer bounces off of objectives
 
 **2025-07-04** ([forum post](https://forums.playdeadlock.com/threads/07-04-2025-update.70156/))
 
@@ -150,21 +196,30 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 - Mid Boss Spirit Resistance from abilities reduced from 30% to 20%
 - Mid Boss Spirit Resistance from items reduced from 50% to 20%
 - Fixed some AoE abilities not hitting midboss (Kelvin Frost Grenade, Lady Geist Blood Bomb, Holliday Barrel)
+- Ricochet: No longer bounces off objectives
+- Kelvin: Frozen Shelter now freezes Urn (like it does other objectives)
 
 **2025-06-17** ([forum post](https://forums.playdeadlock.com/threads/06-17-2025-update.68401/))
 
 - Removed the rope entrances to Mid Boss.
 - Added stairway entrance to Mid Boss.
 - Veil areas connect to Mid Boss.
-- Mid Boss Changes:
 - Started Mid Boss Sewer theming.
 - Added connection from the rope shafts to upper area of Mid Boss.
 - Increase height of entrances to rope shafts from Mid Boss.
+- Destroying objectives no longer spawns orbs, instead the souls are directly awarded to the killer and their team
 - Rejuv drop duration reduced from 9s to 8s
+- Opening Rounds: No longer works against objectives
 
 **2025-05-27** ([forum post](https://forums.playdeadlock.com/threads/05-27-2025-update.66453/))
 
 - Improved lighting in Mid Boss area
+- Melee Charge: Fixed always giving 25% more damage against objectives
+- Crushing Fists: Fixed always giving 25% more damage against objectives
+
+**2025-05-19** ([forum post](https://forums.playdeadlock.com/threads/05-19-2025-update.65381/))
+
+- Objectives Spirit Resistance reduced from 50% to 40%
 
 **2025-05-11** ([forum post](https://forums.playdeadlock.com/threads/05-11-2025-update.64113/))
 
@@ -174,26 +229,41 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 - Fix an edge case where a player can claim the Rejuv but also get parried
 
+**2025-01-27** ([forum post](https://forums.playdeadlock.com/threads/01-27-2025-update.54590/))
+
+- All objectives now take 50% less damage from Spirit Damage (abilities no longer have one off values for this)
+
 **2025-01-12** ([forum post](https://forums.playdeadlock.com/threads/01-12-2025-update.53389/))
 
 - Alchemical Fire: Effectiveness reduction (40%) vs buildings/midboss now affects the Weapon Damage bonus too (instead of just DPS)
 
+**2024-12-21** ([forum post](https://forums.playdeadlock.com/threads/12-21-2024-update.52206/))
+
+- Warden: Last Stand now does 40% less damage to objectives (similar to various other abilities)
+
 **2024-12-06** ([forum post](https://forums.playdeadlock.com/threads/12-06-2024-update.50599/))
 
 - Fixed rejuv collect sound playing from wrong location in hero sandbox
+- Dynamo: Singularity now deals half damage to objectives
 - Lash: Death Slam fixed a rendering issue that could lead to crashes, especially in tight spaces like Mid Boss arena
 
 **2024-11-21** ([forum post](https://forums.playdeadlock.com/threads/11-21-2024-update.47476/))
 
 - Gaining Rejuvenator buff now shows what stats have been improved on your hero (like powerups and other buffs)
+- Related to the above, both patrons will now call out the Greenwich/Green Lane objectives specifically when they are destroyed
+- Steam Game Recording timeline no longer records Shrine objectives as "The World"
 - Mid Boss trooper health for first spawn reduced from 95% to 70%
+- Haze: Fixation damage vs objectives reduced by 30%
 
 **2024-11-07** ([forum post](https://forums.playdeadlock.com/threads/11-07-2024-update.44786/))
 
+- Added support for the new Steam Game Recording Timeline API. This automatically adds timeline markers for kills, deaths, and team objectives.
 - Mid Boss Rejuv Trooper Health increased by 30%
 
 **2024-10-24** ([forum post](https://forums.playdeadlock.com/threads/10-24-2024-update.40951/))
 
+- Missing AP from above is redistributed along souls reward line at similar soul levels that the objectives previously died on average
+- Backdoor protection detection range for troopers increased (harder to kill troopers approaching the objectives with long range spells to stall making the game think you are backdooring when you aren't)
 - Mid Boss respawn timer decreases with subsequent boss kills, from 7 to 7/6/5 minutes
 
 **2024-10-10** ([forum post](https://forums.playdeadlock.com/threads/10-10-2024-update.36958/))
@@ -201,6 +271,8 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 - Mid Boss now has 15 regen
 - Mid Boss creep buff rescaled from 70% to 50/70/90% for the 1/2/3rd mid boss death (further deaths don't increase)
 - Mid Boss rejuv respawn rescaled from 50% to 40/50/60% for the 1/2/3rd mid boss death (further deaths don't increase)
+- Percentage of deniable orbs from objectives for Guardian/Walker/Patron/Shrines rescaled from 54.55/66.67/100/0% to 35%
+- McGinnis: Mini Turret damage reduction against objectives increased from -60% to -70%
 - Vindicta: Crow Familiar % damage no longer affects Mid Boss
 
 **2024-09-26** ([forum post](https://forums.playdeadlock.com/threads/09-26-2024-update.33015/))
@@ -246,6 +318,7 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 - Added a shatter sound effect for meleeing the mid boss rejuvenator
 - Added rejuvenator pickup sound
+- McGinnis: Mini Turret damage reduction against objectives increased from -50% to -60%
 
 **2024-06-27** ([forum post](https://forums.playdeadlock.com/threads/06-27-2024-update.8486/))
 
@@ -256,6 +329,7 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 **2024-06-20** ([forum post](https://forums.playdeadlock.com/threads/06-20-2024-update.7003/))
 
 - Rejuv buff is now only granted to the players that are alive. Players that are dead will have their respawn times cut in half from their current values.
+- Ivy: Kudzu Bomb now does 50% less damage to objectives
 
 **2024-06-13** ([forum post](https://forums.playdeadlock.com/threads/06-13-2024-update.5773/))
 
@@ -277,6 +351,10 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 - Mid Boss Rejuv claim time reduced from 2.5s to 1.5s
 - Mid boss area has reduced destructibles
 
+**2024-05-30** ([forum post](https://forums.playdeadlock.com/threads/05-30-2024-update.2514/))
+
+- McGinnis: Rocket Barrage now does less damage to objectives similar to other ability damage
+
 **2024-05-23** ([forum post](https://forums.playdeadlock.com/threads/05-23-2024-update.1245/))
 
 - Fixed the Rejuvenator falling during pause
@@ -289,3 +367,8 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 **2024-05-13** ([forum post](https://forums.playdeadlock.com/threads/05-13-2024-update.807/))
 
 - Paradox: Time Wall no longer deals damage to Mid Boss
+
+**2024-05-03** ([forum post](https://forums.playdeadlock.com/threads/05-03-2024-update.427/))
+
+- Improved UI display when endgame objectives are being attacked
+- Objectives now have 80% damage reduction anti-backdoor defense when there haven't been creeps nearby in a while

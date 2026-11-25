@@ -95,7 +95,8 @@ def test_hero_row_reads_the_right_fields(primary):
     assert row["role"] == "Charges in" and row["weapon_tags"] == "Close Range"
     assert row["base_bullet_resist"] is None  # blank, not an invented zero
     assert row["sustained_dps_level_1"] == 32.069 and row["reloads_single_bullets"] is True
-    assert row["dash_distance"] == 10 and row["crit_bonus_pct"] == 0
+    assert row["dash_distance"] == 10 and row["headshot_bonus_scale_pct"] == 0
+    assert row["headshot_damage_taken_reduction_pct"] is None and row["bullet_resist_per_boon"] is None
     assert row["spirit_scaling"] == "Clip Size: 0.5"  # how the hero's own stats scale with spirit
     assert row["ability_1"] == "One 1" and row["ability_4"] == "One 4"
     assert set(row) == set(heroes.COLUMNS)
@@ -126,20 +127,34 @@ def test_ability_rows_four_per_hero_plus_alternate_form(primary):
 def test_ability_row_numbers_spirit_scaling_and_upgrades(primary):
     rows, _ = abilities.build_abilities(primary)
     row = next(r for r in rows if r["hero"] == "One" and r["slot"] == 1)
-    assert row["cooldown"] == 42 and row["dps"] == 22 and row["radius"] == 8
+    assert row["cooldown"] == 42 and row["dps"] == 22
+    assert row["radius"] is None  # in the files but not on the tooltip card, so not counted
     assert row["dps_spirit_scale"] == 0.6
     assert row["charge_cooldown"] is None  # -1 in the files means "not applicable"
     assert row["damage"] is None and row["damage_spirit_scale"] is None
     assert row["description"] == "Drain health, dealing spirit damage over time. Lasts a while."
     assert row["spirit_scaling"] == "Damage Per Second: 0.6; Reach: 0.14"
     assert row["other_properties"] == "Reach: 14m (+0.14 x spirit power)"  # zero-valued props are left out
-    assert row["internal_properties"] == "TickRate=0.25"
+    assert row["internal_properties"] == "Radius=8; TickRate=0.25"
+
+
+def test_off_card_scaling_is_not_listed_as_live(primary):
+    primary["abilities"]["ability_drain"]["BeamHeal"] = {"Value": 0, "Scale": {"Value": 0.6, "Type": "spirit"}}
+    row = next(r for r in abilities.build_abilities(primary)[0] if r["hero"] == "One" and r["slot"] == 1)
+    assert "Beam Heal" not in row["spirit_scaling"]
+    assert "BeamHeal=0 (+0.6 x spirit power)" in row["internal_properties"]
+
+
+def test_hit_once_pellets_count_once_per_shot(primary):
+    primary["heroes"]["hero_one"]["Weapon"]["HitOnceAcrossAllBullets"] = True
+    row = heroes.hero_row("hero_one", primary["heroes"]["hero_one"], primary["loc"])
+    assert row["pellets_per_shot"] == 9 and row["damage_per_shot"] == 3.78
 
 
 def test_camera_and_sound_values_are_not_gameplay(primary):
     primary["abilities"]["ability_drain"].update(CameraDistance=250, BeepSoundBuildupCount=4, PullRange=3)
     row = next(r for r in abilities.build_abilities(primary)[0] if r["hero"] == "One" and r["slot"] == 1)
-    assert row["internal_properties"] == "TickRate=0.25; PullRange=3"
+    assert row["internal_properties"] == "Radius=8; TickRate=0.25; PullRange=3"
     assert row["upgrade_1"] == "Cooldown -20s"
     assert row["upgrade_2"] == "Move Speed Slow +24%"
     assert row["upgrade_3"] == "Damage Per Second +22 and +0.12 x spirit power scaling; Radius +2m | +22 DPS & more"
@@ -183,7 +198,7 @@ def test_conditional_and_enemy_effects_stay_out_of_innate_stats(primary):
     assert row["bullet_resist_pct"] is None
     assert "Weapon Damage: 35%" in row["conditional_effects"]
     assert "Move Speed" not in (row["enemy_effects"] or "")
-    assert row["enemy_effects"] == "[Passive] Bullet Resist: -10%"
+    assert row["enemy_effects"] == "[Passive] Bullet Resist Reduction: -10%"
     assert "3m" in row["conditional_effects"] and "16s cooldown" in row["conditional_effects"]
     assert row["activation"] == "Active" and row["cooldown"] == 16
     assert row["unlisted_properties"] == "LifeThreshold=65; TechResist=14; SlowPercent=30; EnhancedOnly=75"
@@ -193,7 +208,8 @@ def test_conditional_and_enemy_effects_stay_out_of_innate_stats(primary):
 @pytest.mark.parametrize("section,prop,expected", [
     ("Innate", {"Key": "BonusHealth", "Type": "health"}, "innate"),
     ("Innate", {"Key": "X", "UsageFlags": "ConditionallyApplied"}, "conditional"),
-    ("Passive", {"Key": "BulletResist", "UsageFlags": "IntrinsicallyProvidedInAbility"}, "innate"),
+    ("Innate", {"Key": "BulletResist", "UsageFlags": "IntrinsicallyProvidedInAbility"}, "innate"),
+    ("Passive", {"Key": "BonusFireRate", "UsageFlags": "IntrinsicallyProvidedInAbility"}, "conditional"),
     ("Passive", {"Key": "BonusFireRate", "Type": "fire_rate"}, "conditional"),
     ("Passive", {"Key": "FireRateSlow", "UsageFlags": "ConditionallyEnemyApplied"}, "enemy"),
     ("Active", {"Key": "SlowPercent", "Type": "slow"}, "enemy"),
@@ -206,12 +222,36 @@ def test_bucket_rules(section, prop, expected):
     assert items.bucket(section, prop) == expected
 
 
-def test_raw_files_settle_stats_that_are_on_no_tooltip_section(primary, raw):
+def test_off_tooltip_values_are_listed_but_never_counted_as_stats(primary, raw):
     row = next(r for r in items.build_items(primary, raw)[0] if r["name"] == "Hollow Point")
-    assert row["spirit_resist_pct"] == 14                      # provided by the game, no usage flag: innate
-    assert row["stats_not_on_tooltip"] == "Spirit Resist: 14%"
-    assert "[Not on tooltip] Move Speed Slow: 30%" in row["enemy_effects"]   # flagged conditional, slows enemies
+    assert row["spirit_resist_pct"] is None  # in the files, on no tooltip: unconfirmed, so not a stat
+    assert row["stats_not_on_tooltip"] == "Spirit Resist: 14%; Move Speed Slow: 30% (flagged conditional)"
+    assert "Not on tooltip" not in (row["enemy_effects"] or "") + (row["conditional_effects"] or "")
     assert row["unlisted_properties"] == "LifeThreshold=65; EnhancedOnly=75"  # not stats the game provides
+
+
+def test_unconditional_passive_counts_as_always_on_only_with_raw_confirmation():
+    prop = {"Key": "CooldownReduction", "Type": "cooldown"}
+    assert items.bucket("Passive", prop, always=True) == "innate"
+    assert items.bucket("Passive", prop, always=False) == "conditional"
+    assert items.bucket("Active", prop, always=True) == "conditional"
+    assert items.bucket("Passive", {"Key": "SlowPercent", "Type": "slow"}, always=True) == "enemy"
+    raw_item = {"m_mapAbilityProperties": {"A": {"m_eProvidedPropertyType": "X", "m_eStatsUsageFlags": ""},
+                                           "B": {"m_eProvidedPropertyType": "X", "m_eStatsUsageFlags": "ConditionallyApplied"},
+                                           "C": {}}}
+    assert [items.provided_always(k, raw_item) for k in "ABC"] == [True, False, False]
+    assert items._CONDITION.search("Imbue an ability to reduce its Cooldown.")
+    assert not items._CONDITION.search("Reduces the Cooldown of your abilities and items.")
+
+
+def test_tooltip_wording_overrides_the_side_heuristic(primary, raw):
+    primary["items"]["upgrade_hollow"]["Name"] = "Cheat Death"
+    card = primary["item_cards"]["upgrade_hollow"]
+    card["Info2"]["Main"].append({"Key": "HealAmpReceivePenaltyPercent", "Value": -60, "Type": "damage",
+                                  "UsageFlags": "ConditionallyApplied"})
+    row = next(r for r in items.build_items(primary, raw)[0] if r["name"] == "Cheat Death")
+    assert "Incoming Healing: -60" in row["conditional_effects"]  # a penalty on the user, not the enemy
+    assert "Incoming Healing" not in row["enemy_effects"]
 
 
 def test_raw_files_supply_hero_tags_and_gun_tag(primary, raw):
@@ -250,22 +290,46 @@ def test_units_table(primary):
     assert creep["first_spawn_seconds"] == 120 and creep["respawn_seconds"] == 85
     assert units["npc_super_neutral"]["health"] == 15600
     assert "npc_boss_tier2" in missing  # not in the fixture: reported, not fatal
+    assert guardian["weapon_dps"] is None  # the per-target figures are the live ones
+    assert "team total" in guardian["note"]
+    trooper = units["trooper_normal"]
+    assert trooper["dps_vs_players"] == 28 and trooper["dps_vs_troopers"] == 35 and trooper["weapon_dps"] is None
+    shrine = units["destroyable_building"]
+    assert (shrine["health"], shrine["health_second"], shrine["soul_reward"]) == (5000, 10000, 2000)
+    boss = units["npc_super_neutral"]
+    assert boss["respawn_change_per_kill_seconds"] == -60 and boss["respawn_min_seconds"] == 300
+    assert creep["health_growth_pct_per_minute"] == 2.1
+
+
+def test_powerup_and_permanent_buff_tables(primary):
+    powerups = world.build_powerups(primary)
+    assert powerups == [{"key": "gun_powerup_pickup", "name": "Gun", "stat": "Fire Rate", "value_at_start": 12,
+                         "value_at_max": 35, "start_minute": 5, "max_minute": 40, "duration_seconds": 160,
+                         "first_spawn_seconds": 300, "respawn_seconds": 300}]
+    buffs = world.build_permanent_buffs(primary)
+    assert buffs == [{"key": "hp_permanent_pickup", "name": "+15 Bonus Health", "stat": "Health Max", "level_1": 15,
+                      "level_2": 20, "level_3": 30, "level_2_from_minute": 10, "level_3_from_minute": 30,
+                      "drop_weight": 2}]
 
 
 def test_rules_table(primary):
     rules = {r["rule"]: r for r in world.build_rules(primary)}
     assert rules["Item price, tier 4"]["value"] == 6400
-    assert rules["Guardian kill bounty (souls)"]["source_field"] == "ObjectiveParams.Tier1GoldKill"
-    assert rules["Hero kill soul share, 2 player(s) sharing"]["value"] == 0.575
+    assert rules["Guardian kill bounty, team total (souls)"]["source_field"] == "ObjectiveParams.Tier1GoldKill"
+    assert rules["Hero kill: average share of the bounty per participant, 2 in the kill"]["value"] == 0.575
+    assert rules["Starting souls"] == {"rule": "Starting souls", "value": 600,
+                                       "source_field": "convar citadel_player_starting_gold"}
+    assert rules["Respawn time at 20 min (s)"]["value"] == 38  # convars may be {"value": ...} or bare numbers
     assert rules["Rejuvenator drop count"]["value"] == 3 and rules["Rejuvenator revive delay (s)"]["value"] == 3
     assert not any("multiplier" in rule for rule in rules)  # retired by the 2025-07-29 rework
 
 
 def test_world_tables_survive_a_missing_source_file(primary):
-    for name in ("investment", "soul_unlocks", "npcs", "misc", "generic"):
+    for name in ("investment", "soul_unlocks", "npcs", "misc", "generic", "convars"):
         primary[name] = None
     assert world.build_investment(primary) == [] and world.build_progression(primary) == []
     assert world.build_units(primary)[0] == [] and world.build_rules(primary) == []
+    assert world.build_powerups(primary) == [] and world.build_permanent_buffs(primary) == []
 
 
 # --- knowledge base --------------------------------------------------------
@@ -281,6 +345,10 @@ NOTES_OLD = """General Changes:
 
 [ Heroes ]
 * One: Now has a hat
+
+[ Street Brawl ]
+- Troopers now have 20% Spirit Resist.
+- One: Brawl-only cooldown is 1s
 """
 
 
@@ -296,7 +364,7 @@ def notes_repo(tmp_path):
 
 def test_patch_notes_are_read_with_date_section_and_entity(primary, notes_repo):
     notes = kb.read_patch_notes(notes_repo, kb.entity_names(primary))
-    assert len(notes) == 6  # headers are sections, not notes
+    assert len(notes) == 8  # headers are sections, not notes
     by_line = {n["line"]: n for n in notes}
     old = by_line["Mid Boss respawn rescaled from 50% to 40/50/60% for the 1/2/3rd mid boss death"]
     assert (old["date"], old["section"], old["entity"]) == ("2024-10-10", "General Changes", "")
@@ -304,6 +372,28 @@ def test_patch_notes_are_read_with_date_section_and_entity(primary, notes_repo):
     assert by_line["One: Drain cooldown reduced from 44s to 42s"]["entity_kind"] == "hero"
     assert by_line["Extra Health: Bonus health increased from 200 to 210"]["entity"] == "Extra Health"
     assert by_line["Rejuv buff duration reduced from 4 minutes to 3"]["link"] == "https://example.test/1"
+    assert by_line["Troopers now have 20% Spirit Resist."]["mode"] == "Street Brawl"
+    assert by_line["One: Now has a hat"]["mode"] == ""
+
+
+def test_street_brawl_lines_stay_out_of_mechanics_and_history(primary, notes_repo):
+    notes = kb.read_patch_notes(notes_repo, kb.entity_names(primary))
+    assert kb.topic_notes({"notes": "spirit resist"}, notes) == []
+    assert "Brawl-only" not in kb.render_history("hero", notes)
+
+
+def test_settled_file_quotes_are_checked_against_the_patch_notes(primary, notes_repo, tmp_path):
+    notes = kb.read_patch_notes(notes_repo, kb.entity_names(primary))
+    settled = tmp_path / "settled.md"
+    settled.write_text('- 2026-06-30: "Rejuv buff duration reduced from 4 minutes to 3"\n'
+                       '- 2026-06-30: "Rejuv buff duration reduced from 5 minutes to 3"\n'
+                       '- 2024-10-10: "Rejuv buff duration reduced from 4 minutes to 3"\n'
+                       'Plain prose with a date 2026-06-30 and "quotes" is ignored.\n')
+    assert kb.check_quotes(settled, notes) == [
+        ("2026-06-30", "Rejuv buff duration reduced from 5 minutes to 3"),   # wrong text
+        ("2024-10-10", "Rejuv buff duration reduced from 4 minutes to 3"),   # right text, wrong date
+    ]
+    assert kb.check_quotes(tmp_path / "missing.md", notes) == []
 
 
 def test_topic_picks_matching_lines_newest_first(primary, notes_repo):
@@ -324,7 +414,8 @@ def test_flatten_keeps_gameplay_numbers_only():
 def test_knowledge_base_is_written(primary, notes_repo, tmp_path):
     out = tmp_path / "knowledge"
     summary = kb.build_knowledge(primary, notes_repo, out)
-    assert summary["notes"] == 6 and summary["hero_lines"] == 2 and summary["item_lines"] == 1
+    assert summary["notes"] == 8 and summary["hero_lines"] == 3 and summary["item_lines"] == 1
+    assert summary["street_brawl_lines"] == 2 and summary["unverified_quotes"] == []
     page = (out / "mechanics" / "mid-boss-and-rejuvenator.md").read_text()
     assert "immediate respawns on their next deaths. (`guide_the_map_midboss_desc`)" in page  # markup stripped
     assert "| RejuvinatorDropCount | 3 |" in page and "Sound" not in page
@@ -333,5 +424,6 @@ def test_knowledge_base_is_written(primary, notes_repo, tmp_path):
     heroes_page = (out / "history" / "heroes.md").read_text()
     assert "## One" in heroes_page and "Now has a hat" in heroes_page
     assert "## Extra Health" in (out / "history" / "items.md").read_text()
-    assert (out / "patch_notes.csv").read_text().count("\n") == 7
+    assert (out / "patch_notes.csv").read_text().count("\n") == 9
+    assert "| citadel_super_neutral_gold_reward | 1500 |" in page  # server settings are shown per topic
     assert "mechanics/mid-boss-and-rejuvenator.md" in (out / "README.md").read_text()

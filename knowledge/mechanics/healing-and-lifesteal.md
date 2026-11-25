@@ -1,6 +1,6 @@
 # Healing, regen, lifesteal and heal reduction
 
-Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing.
+Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing. The patch notes do not record every change, so where a current number below differs from the newest note, the number is right. Questions already worked through are answered in [settled.md](../settled.md).
 
 ## What the game itself says
 
@@ -419,7 +419,7 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 - No dedicated block for this in the files the sheet reads; see the sheet's tables.
 
-## Patch history (214 lines, newest first)
+## Patch history (208 lines, newest first)
 
 **2026-08-12** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1840944183775204))
 
@@ -447,7 +447,6 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 - Fixed the following abilities taking you out of zoom temporarily when cast: Blasted, Gloom Bombs, Shining Wonder, Call Bell, Luggage Cart, Stalker's Mark, Rejuvenating Aurora, Charged Shot, Powder Keg, Bounce Pad, Spirit Lasso, Napalm, Ice Path, Flog, Spectral Wall, Rake, Fire Scarabs, Scorn, Sand Blast, Time Wall, Paradoxical Swap, Barrage, Flying Cloak, Pillow Toss, Lightning Ball, Entangling Bola, Go For The Throat, Vexing Bolt, Consecrating Grenade, Gut Shot, Snap Trap, Ira Domini, Pain Battery, Jumpstart, Flight, Crow Familiar, Lethal Venom, Petrifying Bola, Alchemical Flask, Card Trick, Capacitor, Restorative Locket, Healing Nova, Silence Wave, Magic Carpet, Refresher
 - Fixed the following items and abilities not working through veils: Heroic Aura, Healing Rite, Healing Nova, Rescue Beam, Divine Barrier, Kudzu Connection, Cube, Tag Along, Lil Helpers, Guardian Ward, Scourge, Plot Armor
 - Added a new T1 Vitality Item, Grit. Active grants you 200 Barrier for 4s duration. Innate grants 1 Out of Combat Regen. Cooldown: 60s. Upgrades to Weapon Shielding, Spirit Shielding, Reactive Barrier (these do not inherit the manual cast active) and Guardian Ward.
-- Fixed the following Enhanced Items not maintaining their stats from components: Opening Rounds, Tankbuster, Kinetic Dash, Radiant Regeneration, Burst Fire, Veil Walker, Arcane Surge, Fury Trance, Leech
 
 **2026-04-30** ([forum post](https://forums.playdeadlock.com/threads/04-30-2026-update.129989/))
 
@@ -463,9 +462,7 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 **2026-03-21** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/post-226950))
 
 - Hero health growth increased by +3 and 4%
-- Improved the following Enhanced Items: Blood Tribute, Shadow Weave, Cultist Sacrifice, Magic Carpet, Healing Rite, Majestic Leap, Metal Skin, Monster Rounds, Veil Walker, Fury Trance, Return Fire, Restorative Locket, Rebuttal, Disarming Hex, Split Shot, Rescue Beam, Spirit Sap, Cursed Relic, Heroic Aura, Rusted Barrel, Weapon Shielding, Nullification Burst|l1=Nullification Blast{{sic}}, Cloak of Opportunity
 - Hero health growth increased by +3 and 4%
-- Improved the following Enhanced Items: Blood Tribute, Shadow Weave, Cultist Sacrifice, Magic Carpet, Healing Rite, Majestic Leap, Metal Skin, Monster Rounds, Veil Walker, Fury Trance, Return Fire, Restorative Locket, Rebuttal, Disarming Hex, Split Shot, Rescue Beam, Spirit Sap, Cursed Relic, Heroic Aura, Rusted Barrel, Weapon Shielding, Nullification Blast, Cloak of Opportunity
 
 **2026-03-10** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/post-220287))
 
@@ -481,15 +478,6 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 - Mid Boss global announcement health threshold reduced from 70% to 50%
 - Spirit Shredder Bullets: Spirit Lifesteal increased from 8% to 12%
 - Hearts: Heals you for 75 HP (1.25 spirit scaling, half heal no non-heroes)
-
-**2026-02-04** ([forum post](https://forums.playdeadlock.com/threads/01-30-2026-update.102822/post-198653))
-
-- Street Brawl: Healing in base is now 2x faster
-
-**2026-01-30** ([forum post](https://forums.playdeadlock.com/threads/01-30-2026-update.102822/))
-
-- Removed global 40% healing reduction (balance note: it didn't actually work on many things that it was supposed to work on. We'll be adjusting specific things that need healing reductions directly instead.)
-- Enhanced Unstable Concoction: Now increases Bonus Health, Weapon Damage, Spirit Power and Stun Duration
 
 **2026-01-20** ([forum post](https://forums.playdeadlock.com/threads/12-29-2025-update.95233/post-185824))
 

@@ -1,6 +1,6 @@
 # Respawn timers and death
 
-Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing.
+Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing. The patch notes do not record every change, so where a current number below differs from the newest note, the number is right. Questions already worked through are answered in [settled.md](../settled.md).
 
 ## What the game itself says
 
@@ -19,7 +19,35 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 ## Current numbers in the game files
 
-- No dedicated block for this in the files the sheet reads; see the sheet's tables.
+Server settings (`convars.json`)
+
+| Setting | Value |
+|---|---|
+| citadel_player_death_no_heroes_respawn_penalty | 10 |
+| citadel_player_spawn_time_in_base_penalty | 10 |
+| citadel_player_spawn_time_max_ramp_1 | 38 |
+| citadel_player_spawn_time_max_ramp_1_time | 1200 |
+| citadel_player_spawn_time_max_ramp_2 | 70 |
+| citadel_player_spawn_time_max_ramp_2_time | 1800 |
+| citadel_player_spawn_time_max_ramp_3 | 85 |
+| citadel_player_spawn_time_max_ramp_3_time | 2400 |
+| citadel_player_spawn_time_max_respawn_time | 90 |
+| citadel_player_spawn_time_min_ramp_1 | 8 |
+| citadel_player_spawn_time_min_ramp_1_time | 300 |
+| citadel_player_spawn_time_min_ramp_2 | 38 |
+| citadel_player_spawn_time_min_ramp_2_time | 1200 |
+| citadel_player_spawn_time_min_ramp_3 | 70 |
+| citadel_player_spawn_time_min_ramp_3_time | 1800 |
+| citadel_player_spawn_time_rich_nw_penalty_max_ramp_behind_nw_pct | 20 |
+| citadel_player_spawn_time_rich_nw_penalty_max_ramp_extratime | 22 |
+| citadel_player_spawn_time_rich_nw_penalty_max_ramp_gametime | 1500 |
+| citadel_player_spawn_time_rich_nw_penalty_max_ramp_pct | 30 |
+| citadel_player_spawn_time_rich_nw_penalty_min_ramp_behind_nw_pct | 5 |
+| citadel_player_spawn_time_rich_nw_penalty_min_ramp_extratime | 6 |
+| citadel_player_spawn_time_rich_nw_penalty_min_ramp_gametime | 600 |
+| citadel_player_spawn_time_rich_nw_penalty_min_ramp_pct | 15 |
+| citadel_tier3_phase1_kill_respawn_reduction | 20 |
+| citadel_tier3_phase1_kill_respawn_reduction_limit | 10 |
 
 ## Patch history (46 lines, newest first)
 

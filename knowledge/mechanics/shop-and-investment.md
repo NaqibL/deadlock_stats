@@ -1,6 +1,6 @@
 # Shop, item slots and investment bonuses
 
-Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing.
+Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing. The patch notes do not record every change, so where a current number below differs from the newest note, the number is right. Questions already worked through are answered in [settled.md](../settled.md).
 
 ## What the game itself says
 
@@ -172,20 +172,26 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 |---|---|
 | ItemPricePerTier | 0 / 800 / 1600 / 3200 / 6400 / 9999 |
 
-## Patch history (101 lines, newest first)
+Server settings (`convars.json`)
+
+| Setting | Value |
+|---|---|
+| citadel_ability_upgrade_sell_time | 10 |
+| citadel_autobuy_refund_time | 12 |
+| citadel_item_sell_price_ratio | 0.5 |
+
+## Patch history (98 lines, newest first)
 
 **2026-06-30** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165563227))
 
 - Urn bounty when deposited is worth 250 + 70/min for just the urn runner. Still has the comeback bounty component. Upon deposit all of the souls are released as orbs into the air (if another ally secures the orbs, they share the bounty with the urn runner).
 - Hovering an item in the shop now shows you a preview for your investment bars
-- Street Brawl: Fixed Enhanced Sharpshooter and Enhanced Spiritual Overflow not maintaining the bonuses from their enhanced components
 
 **2026-05-22** ([forum post](https://forums.playdeadlock.com/threads/05-22-2026-update.135477/))
 
 - Weapon Investment Bonus now has a 6.4k line, changed from 4.8k/7.2k/9.6k/16k to 4.8k/6.4k/8k/11.2k/16k with bonuses from 46/55/70/85 to 46/54/62/74/86
 - Vitality Investment Bonus now has a 6.4k line, changed from 4.8k/7.2k/9.6k/16k to 4.8k/6.4k/8k/11.2k/16k with bonuses from 38/42/46/50 to 38/42/46/50 (final two tiers shifted up by +4)
 - Spirit Investment Bonus now has a 6.4k line, changed from 4.8k/7.2k/9.6k/16k to 4.8k/6.4k/8k/11.2k/16k with bonuses from 38/48/57/66 to 38/45/52/59/66
-- Fixed the following Enhanced Items not maintaining their stats from components: Opening Rounds, Tankbuster, Kinetic Dash, Radiant Regeneration, Burst Fire, Veil Walker, Arcane Surge, Fury Trance, Leech
 
 **2026-04-30** ([forum post](https://forums.playdeadlock.com/threads/04-30-2026-update.129989/))
 
@@ -204,10 +210,6 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 - Doorman: Call Bell now has Impact Damage (40+1) and Explosion Damage (55+1.7) as separate components again (previous values for impact/explosion)
 - Vitality investment bonuses increased by 12%
 - Doorman: Call Bell now has Impact Damage (40+1) and Explosion Damage (55+1.7) as separate components again (previous values for impact/explosion)
-
-**2026-03-06** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/))
-
-- Street Brawl: Removed item slot limit (don't need to sell items in the final round sometimes)
 
 **2025-12-16** ([forum post](https://forums.playdeadlock.com/threads/12-16-2025-update.93983/))
 

@@ -1,6 +1,6 @@
 # Melee and parry
 
-Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing.
+Generated from the game files at build 6868 and Valve's patch notes. Everything below is quoted from a source, not interpreted. Patch notes describe the game as of their date: read newest first, and treat an older line as history once a newer one changes the same thing. The patch notes do not record every change, so where a current number below differs from the newest note, the number is right. Questions already worked through are answered in [settled.md](../settled.md).
 
 ## What the game itself says
 
@@ -98,7 +98,7 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 
 - No dedicated block for this in the files the sheet reads; see the sheet's tables.
 
-## Patch history (102 lines, newest first)
+## Patch history (101 lines, newest first)
 
 **2026-09-16** ([forum post](https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1844115010490072))
 
@@ -136,10 +136,6 @@ Generated from the game files at build 6868 and Valve's patch notes. Everything 
 - Parry anti mash protection previously would last for 0.25s after the parry success (so you couldn't parry again for that duration). It is now for 0.25s only after the initial parry input is provided, irrespective of when the parry success happens (this means there is less delay before you can do a back to back parry when parry success is done later in the duration)
 - Parrying is now allowed while ground dashing in order to bring it in-line with air dashing
 - Parry anti mash protection previously would last for 0.25s after the parry success (so you couldn't parry again for that duration). It is now for 0.25s only after the initial parry input is provided, irrespective of when the parry success happens (this means there is less delay before you can do a back to back parry when parry success is done later in the duration)
-
-**2026-03-21** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/post-226950))
-
-- Runed Gauntlet: Melee distance increased from 130% to 150%
 
 **2026-03-06** ([forum post](https://forums.playdeadlock.com/threads/03-06-2026-update.114328/))
 

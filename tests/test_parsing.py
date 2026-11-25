@@ -1,7 +1,7 @@
 """Parsing: KV3, text clean-up, and the three table builders."""
 import pytest
 
-from src import abilities, heroes, items, kv3, source, text
+from src import abilities, heroes, items, kv3, source, text, world
 
 
 # --- KV3 -------------------------------------------------------------------
@@ -94,6 +94,9 @@ def test_hero_row_reads_the_right_fields(primary):
     assert row["stamina_recovery_seconds"] == 4.5
     assert row["role"] == "Charges in" and row["weapon_tags"] == "Close Range"
     assert row["base_bullet_resist"] is None  # blank, not an invented zero
+    assert row["sustained_dps_level_1"] == 32.069 and row["reloads_single_bullets"] is True
+    assert row["dash_distance"] == 10 and row["crit_bonus_pct"] == 0
+    assert row["spirit_scaling"] == "Clip Size: 0.5"  # how the hero's own stats scale with spirit
     assert row["ability_1"] == "One 1" and row["ability_4"] == "One 4"
     assert set(row) == set(heroes.COLUMNS)
 
@@ -131,6 +134,12 @@ def test_ability_row_numbers_spirit_scaling_and_upgrades(primary):
     assert row["spirit_scaling"] == "Damage Per Second: 0.6; Reach: 0.14"
     assert row["other_properties"] == "Reach: 14m (+0.14 x spirit power)"  # zero-valued props are left out
     assert row["internal_properties"] == "TickRate=0.25"
+
+
+def test_camera_and_sound_values_are_not_gameplay(primary):
+    primary["abilities"]["ability_drain"].update(CameraDistance=250, BeepSoundBuildupCount=4, PullRange=3)
+    row = next(r for r in abilities.build_abilities(primary)[0] if r["hero"] == "One" and r["slot"] == 1)
+    assert row["internal_properties"] == "TickRate=0.25; PullRange=3"
     assert row["upgrade_1"] == "Cooldown -20s"
     assert row["upgrade_2"] == "Move Speed Slow +24%"
     assert row["upgrade_3"] == "Damage Per Second +22 and +0.12 x spirit power scaling; Radius +2m | +22 DPS & more"
@@ -210,3 +219,46 @@ def test_raw_files_supply_hero_tags_and_gun_tag(primary, raw):
     assert rows["One"]["hero_tags"] == "Tank; Brawler" and rows["One"]["gun_tag"] == "Shotgun"
     assert rows["LiveDev"]["hero_tags"] is None and rows["LiveDev"]["gun_tag"] is None
     assert heroes.build_heroes(primary)[0][0]["gun_tag"] is None  # without the raw files: blank
+
+
+# --- game-wide tables ------------------------------------------------------
+
+def test_investment_table(primary):
+    rows = world.build_investment(primary)
+    assert rows[0] == {"category": "Weapon", "souls_spent": 800, "bonus": 9, "bonus_stat": "Weapon Damage Increases"}
+    assert [r["category"] for r in rows] == ["Weapon", "Weapon", "Vitality", "Spirit"]
+
+
+def test_progression_table_keeps_running_totals(primary):
+    rows = world.build_progression(primary)
+    assert rows[0]["boon"] is None and rows[0]["ability_unlock"] == 1
+    assert rows[2] == {"level": 2, "souls_required": 500, "boon": 1, "ability_unlock": 1, "ability_point": None,
+                       "total_boons": 2, "total_ability_unlocks": 2, "total_ability_points": 1}
+
+
+def test_units_table(primary):
+    rows, missing = world.build_units(primary)
+    units = {r["key"]: r for r in rows}
+    guardian = units["npc_boss_tier1"]
+    assert guardian["name"] == "Guardian" and guardian["health"] == 5500
+    assert guardian["bullet_resist_pct"] == 10 and guardian["spirit_resist_pct"] == 0
+    assert guardian["soul_reward"] == 1375 and guardian["dps_vs_players"] == 116
+    creep = units["neutral_trooper_weak"]
+    assert creep["soul_reward"] == 45 and creep["bullet_resist_pct"] == 50
+    assert creep["first_spawn_seconds"] == 120 and creep["respawn_seconds"] == 85
+    assert units["npc_super_neutral"]["health"] == 15600
+    assert "npc_boss_tier2" in missing  # not in the fixture: reported, not fatal
+
+
+def test_rules_table(primary):
+    rules = {r["rule"]: r for r in world.build_rules(primary)}
+    assert rules["Item price, tier 4"]["value"] == 6400
+    assert rules["Guardian kill bounty (souls)"]["source_field"] == "ObjectiveParams.Tier1GoldKill"
+    assert rules["Hero kill soul share, 2 player(s) sharing"]["value"] == 0.575
+
+
+def test_world_tables_survive_a_missing_source_file(primary):
+    for name in ("investment", "soul_unlocks", "npcs", "misc", "generic"):
+        primary[name] = None
+    assert world.build_investment(primary) == [] and world.build_progression(primary) == []
+    assert world.build_units(primary)[0] == [] and world.build_rules(primary) == []

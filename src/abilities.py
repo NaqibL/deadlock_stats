@@ -1,6 +1,8 @@
 """Abilities table: one row per hero ability."""
 from __future__ import annotations
 
+import re
+
 from .heroes import alternate_forms, split_heroes
 from .text import clean, fmt, humanise, label, number, postfix, tidy
 
@@ -44,6 +46,8 @@ SCALE_NAMES = {
     "weapon_power": "weapon power",
 }
 _UNIT_BY_TYPE = {"duration": "s", "cooldown": "s", "charge_cooldown": "s", "distance": "m", "range": "m", "cast": "s"}
+# Camera, sound and visual tuning values: not gameplay, left out of the sheet.
+_PRESENTATION = re.compile(r"Camera|Sound|PostProcess|Visual|Particle|ModelScale|Beep|Preview")
 _SKIP_INTERNAL = {"Key", "Name", "IsDisabled", "Upgrades", "BehaviourBits", "AbilityUnitTargetLimit", "ChannelMoveSpeed"}
 
 
@@ -180,7 +184,7 @@ def ability_row(hero_name: str, form: str | None, slot: int, key: str, ability: 
 
     internal = []
     for source_key, raw in ability.items():
-        if source_key in shown or source_key in _SKIP_INTERNAL:
+        if source_key in shown or source_key in _SKIP_INTERNAL or _PRESENTATION.search(source_key):
             continue
         value, unit, scales = split_value(raw)
         if value is None or isinstance(raw, bool):

@@ -1,0 +1,34 @@
+category,souls_spent,bonus,bonus_stat
+Weapon,800,9,Weapon Damage Increases
+Weapon,1600,12,Weapon Damage Increases
+Weapon,2400,15,Weapon Damage Increases
+Weapon,3200,18,Weapon Damage Increases
+Weapon,4800,46,Weapon Damage Increases
+Weapon,6400,54,Weapon Damage Increases
+Weapon,8000,62,Weapon Damage Increases
+Weapon,11200,74,Weapon Damage Increases
+Weapon,16000,86,Weapon Damage Increases
+Weapon,22400,100,Weapon Damage Increases
+Weapon,28800,115,Weapon Damage Increases
+Vitality,800,9,Health Increases
+Vitality,1600,12,Health Increases
+Vitality,2400,15,Health Increases
+Vitality,3200,20,Health Increases
+Vitality,4800,38,Health Increases
+Vitality,6400,42,Health Increases
+Vitality,8000,46,Health Increases
+Vitality,11200,50,Health Increases
+Vitality,16000,54,Health Increases
+Vitality,22400,60,Health Increases
+Vitality,28800,66,Health Increases
+Spirit,800,7,Spirit Power Increases
+Spirit,1600,11,Spirit Power Increases
+Spirit,2400,15,Spirit Power Increases
+Spirit,3200,19,Spirit Power Increases
+Spirit,4800,38,Spirit Power Increases
+Spirit,6400,45,Spirit Power Increases
+Spirit,8000,52,Spirit Power Increases
+Spirit,11200,59,Spirit Power Increases
+Spirit,16000,66,Spirit Power Increases
+Spirit,22400,75,Spirit Power Increases
+Spirit,28800,100,Spirit Power Increases

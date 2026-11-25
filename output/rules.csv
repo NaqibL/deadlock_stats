@@ -1,0 +1,29 @@
+rule,value,source_field
+"Item price, tier 1",800,ItemPricePerTier[1]
+"Item price, tier 2",1600,ItemPricePerTier[2]
+"Item price, tier 3",3200,ItemPricePerTier[3]
+"Item price, tier 4",6400,ItemPricePerTier[4]
+Guardian kill bounty (souls),1375,ObjectiveParams.Tier1GoldKill
+Walker kill bounty (souls),3675,ObjectiveParams.Tier2GoldKill
+Base Guardian kill bounty (souls),1000,ObjectiveParams.BaseGuardiansGoldKill
+Shrine kill bounty (souls),2000,ObjectiveParams.ShrinesGoldKill
+Objective bounty share for nearby players (%),25,ObjectiveParams.NearPlayerSplitPct
+"Hero kill soul share, 1 player(s) sharing",1.25,HeroKillGoldShareFrac[0]
+"Hero kill soul share, 2 player(s) sharing",0.575,HeroKillGoldShareFrac[1]
+"Hero kill soul share, 3 player(s) sharing",0.283,HeroKillGoldShareFrac[2]
+"Hero kill soul share, 4 player(s) sharing",0.175,HeroKillGoldShareFrac[3]
+"Hero kill soul share, 5 player(s) sharing",0.11,HeroKillGoldShareFrac[4]
+"Hero kill soul share, 6 player(s) sharing",0.083,HeroKillGoldShareFrac[5]
+"Trooper kill soul share, 1 player(s) sharing",1,TrooperKillGoldShareFrac[0]
+"Trooper kill soul share, 2 player(s) sharing",0.54,TrooperKillGoldShareFrac[1]
+"Trooper kill soul share, 3 player(s) sharing",0.36,TrooperKillGoldShareFrac[2]
+"Trooper kill soul share, 4 player(s) sharing",0.25,TrooperKillGoldShareFrac[3]
+"Trooper kill soul share, 5 player(s) sharing",0.2,TrooperKillGoldShareFrac[4]
+"Trooper kill soul share, 6 player(s) sharing",0.16,TrooperKillGoldShareFrac[5]
+Rejuvenator buff duration (s),180,RejuvParams.RejuvinatorBuffDuration
+"Rejuvenator trooper health multiplier, level 1",1.7,RejuvParams.TrooperHealthMult[0]
+"Rejuvenator trooper health multiplier, level 2",2,RejuvParams.TrooperHealthMult[1]
+"Rejuvenator trooper health multiplier, level 3",2.3,RejuvParams.TrooperHealthMult[2]
+"Rejuvenator respawn time multiplier, level 1",0.5,RejuvParams.PlayerRespawnMult[0]
+"Rejuvenator respawn time multiplier, level 2",0.4,RejuvParams.PlayerRespawnMult[1]
+"Rejuvenator respawn time multiplier, level 3",0.3,RejuvParams.PlayerRespawnMult[2]

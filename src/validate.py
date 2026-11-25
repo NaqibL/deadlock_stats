@@ -163,6 +163,24 @@ def check_sanity(hero_rows, ability_rows, item_rows, reference=SANITY) -> list:
     return findings
 
 
+def check_extra_tables(extra: dict, missing_units=()) -> list:
+    """The game-wide tables are a bonus: an empty or odd one is a warning, not a failed build."""
+    findings = []
+    for name, rows in extra.items():
+        if not rows:
+            findings.append(Finding(WARNING, "extra tables", f"{name}: no rows (source file missing or its layout changed)"))
+    for key in missing_units:
+        findings.append(Finding(WARNING, "extra tables", f"units: {key} is no longer in the source"))
+    for category in ("Weapon", "Vitality", "Spirit"):
+        steps = [r for r in extra.get("investment") or [] if r.get("category") == category]
+        if steps and any(b["souls_spent"] <= a["souls_spent"] or b["bonus"] < a["bonus"] for a, b in zip(steps, steps[1:])):
+            findings.append(Finding(WARNING, "extra tables", f"investment: {category} thresholds or bonuses are not increasing"))
+    souls = [r["souls_required"] for r in extra.get("progression") or []]
+    if any(b <= a for a, b in zip(souls, souls[1:])):
+        findings.append(Finding(WARNING, "extra tables", "progression: soul thresholds are not increasing"))
+    return findings
+
+
 def check_crosscheck(result) -> list:
     """Turn a cross-check result into findings. Disagreements are reported, never resolved."""
     if result is None or not result.available:

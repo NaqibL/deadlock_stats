@@ -4,7 +4,7 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
-TABLES = ("heroes", "abilities", "items", "meta")
+TABLES = ("heroes", "abilities", "items", "investment", "progression", "units", "rules", "meta")
 
 
 def cell(value):

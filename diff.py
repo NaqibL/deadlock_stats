@@ -44,10 +44,10 @@ def main(argv=None) -> int:
             old_dir = Path(tmp)
             committed_snapshot(args.rev, old_dir)
         old, new = changelog.load_snapshot(old_dir), changelog.load_snapshot(args.new)
-    if not any(new[t] for t in changelog.TABLE_KEYS):
+    if not any(new[t] for t in changelog.CORE_TABLES):
         print(f"ERROR: no output CSVs found in {args.new}", file=sys.stderr)
         return 1
-    initial = not any(old[t] for t in changelog.TABLE_KEYS)
+    initial = not any(old[t] for t in changelog.CORE_TABLES)
     diff = changelog.diff_snapshots(old, new)
     if not initial and not changelog.has_changes(diff):
         print("No data changes between the two snapshots.")

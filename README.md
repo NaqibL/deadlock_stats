@@ -30,8 +30,8 @@ Options: `--offline` (reuse the cached source, no network), `--no-crosscheck`,
 
 | File | Contents |
 |---|---|
-| `output/deadlock.xlsx` | The sheet: Heroes, Abilities, Items and Meta tabs |
-| `output/heroes.csv`, `abilities.csv`, `items.csv`, `meta.csv` | The same tables as CSV |
+| `output/deadlock.xlsx` | The sheet: Heroes, Abilities, Items, Investment, Progression, Units, Rules and Meta tabs |
+| `output/*.csv` | The same tables as CSV, one file per tab |
 | `output/CHANGELOG.md` | What changed in each build: old and new value per entity and field, newest first |
 | `output/REPORT.md` | The last build's validation findings, cross-check results and the list of what was filtered out |
 
@@ -57,6 +57,9 @@ none. `role` is blank for heroes the game has no role line for. `sprint_speed` i
 `stamina_recovery_seconds` is the time to regain one stamina.
 `damage_per_shot` is `bullet_damage` x `pellets_per_shot`. Distances are metres.
 
+`spirit_scaling` lists hero stats that grow with spirit power (Haze's clip
+size, for example), per point of spirit power.
+
 **Abilities.** Four rows per hero (`slot` 4 is the ultimate). A hero with an
 alternate form has extra rows for that form's own abilities, marked in `form`.
 `damage_spirit_scale` and `dps_spirit_scale` are the spirit power coefficients
@@ -64,7 +67,8 @@ for those two properties; `spirit_scaling` lists the coefficient for every
 property that scales with spirit power (`TechPower` in the files).
 `other_scaling` lists scaling with boons, melee damage and weapon damage.
 `other_properties` holds the remaining properties shown on the in-game tooltip,
-`internal_properties` the ones the files hold but the tooltip does not show.
+`internal_properties` the ones the files hold but the tooltip does not show
+(camera, sound and visual tuning values are left out).
 
 **Items.** Effects are split three ways:
 
@@ -86,6 +90,21 @@ so you can see which numbers the tooltip does not show) or, when flagged
 conditional, in the effect columns marked `[Not on tooltip]`. What is left in
 `unlisted_properties` is tuning constants and enhanced-variant numbers, not
 stats of the shop item.
+
+**Investment.** The bonus you hold once you have spent that many souls in a
+shop category: weapon damage %, health %, or spirit power.
+
+**Progression.** What each soul threshold grants (a boon, an ability unlock,
+an ability point) with running totals. Multiply a hero's per-boon columns by
+`total_boons` to get their stats at a given soul count.
+
+**Units.** Health, resists, damage and soul reward for objectives, troopers and
+neutral camp creeps, with camp spawn timers. Names the files do not give (Base
+Guardian, Mid Boss, the camp sizes) are written in `src/world.py`.
+
+**Rules.** A few global numbers (objective bounties, how kill souls are shared,
+Rejuvenator multipliers). `source_field` is the name in the game files; the
+plain-English reading in `rule` is mine.
 
 ## What is filtered out
 

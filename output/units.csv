@@ -1,0 +1,13 @@
+key,name,group,health,health_phase_2,health_gain_per_minute,bullet_resist_pct,spirit_resist_pct,weapon_dps,bullet_damage,melee_damage,dps_vs_players,dps_vs_troopers,soul_reward,soul_reward_growth_pct_per_minute,first_spawn_seconds,respawn_seconds
+npc_boss_tier1,Guardian,Objective,5500,,,10,0,80,16,,116,35,1375,,,
+npc_boss_tier2,Walker,Objective,6000,,,35,0,,,300,,,3675,,,
+npc_barrack_boss,Base Guardian,Objective,4000,,,20,0,40,8,,116,35,1000,,,
+npc_boss_tier3,Patron,Objective,12000,12000,,,0,,,,,,,,,
+npc_super_neutral,Mid Boss,Objective,15600,,234,15,0,100,20,,,,,,0,420
+trooper_normal,Trooper,Trooper,300,,,,,34.951,36,50,,,,,,
+trooper_melee,Melee Trooper,Trooper,400,,,,,60,61.8,80,,,,,,
+trooper_medic,Medic Trooper,Trooper,350,,,,,34.951,36,25,,,,,,
+neutral_trooper_weak,Small camp creep,Neutral camp,142,,,50,45,5.314,2.657,,,,45,1.08,120,85
+neutral_trooper_normal,Medium camp creep,Neutral camp,354,,,50,45,13.476,6.738,,,,75,1.08,300,290
+neutral_trooper_strong,Large camp creep,Neutral camp,1246,,,60,55,20.02,10.01,,,,199,1.08,480,335
+neutral_sinners_sacrifice,Sinner's Sacrifice,Neutral camp,500,,,,,0,0,,,,155,1.08,480,300

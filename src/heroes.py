@@ -1,17 +1,19 @@
 """Heroes table: one row per playable hero."""
 from __future__ import annotations
 
-from .text import clean, tidy
+from .text import clean, fmt, label, tidy
 
 COLUMNS = [
     "key", "name", "hero_type", "hero_tags", "role", "gun_tag", "weapon_tags",
     "base_health", "health_per_boon", "health_regen",
     "bullet_damage", "bullet_damage_per_boon", "pellets_per_shot", "damage_per_shot",
-    "fire_rate", "weapon_dps_level_1", "clip_size", "reload_time", "bullet_velocity",
-    "falloff_start", "falloff_end",
+    "fire_rate", "bullets_per_burst", "weapon_dps_level_1", "sustained_dps_level_1", "dps_per_boon",
+    "clip_size", "reload_time", "reloads_single_bullets", "bullet_velocity",
+    "falloff_start", "falloff_end", "falloff_end_damage_scale", "crit_bonus_pct", "move_speed_while_shooting_scale",
     "light_melee", "heavy_melee", "light_melee_per_boon", "heavy_melee_per_boon",
-    "move_speed", "sprint_speed", "stamina", "stamina_recovery_seconds", "stamina_regen_per_second",
-    "spirit_power_per_boon", "base_bullet_resist", "base_spirit_resist",
+    "move_speed", "sprint_speed", "dash_distance", "air_dash_distance",
+    "stamina", "stamina_recovery_seconds", "stamina_regen_per_second",
+    "spirit_power_per_boon", "base_bullet_resist", "base_spirit_resist", "base_melee_resist", "spirit_scaling",
     "ability_1", "ability_2", "ability_3", "ability_4",
 ]
 
@@ -96,9 +98,23 @@ def hero_row(key: str, hero: dict, loc: dict, raw_hero: dict | None = None) -> d
         "pellets_per_shot": pellets,
         "damage_per_shot": tidy(bullet_damage * pellets) if bullet_damage is not None and pellets is not None else None,
         "fire_rate": _get(weapon, "RoundsPerSecond"),
+        "bullets_per_burst": _get(weapon, "BulletsPerBurst"),
         "weapon_dps_level_1": _get(weapon, "DPS"),
+        "sustained_dps_level_1": _get(weapon, "SustainedDPS"),
+        "dps_per_boon": _get(scaling, "DPS"),
         "clip_size": _get(weapon, "ClipSize"),
         "reload_time": _get(weapon, "ReloadTime"),
+        "reloads_single_bullets": bool(weapon["ReloadSingle"]) if "ReloadSingle" in weapon else None,
+        "falloff_end_damage_scale": _get(weapon, "FalloffEndScale"),
+        "crit_bonus_pct": _get(hero, "CritDamageBonusPercent"),
+        "move_speed_while_shooting_scale": _get(weapon, "ShootMoveSpeed"),
+        "dash_distance": _get(hero, "GroundDashDistanceInMeters"),
+        "air_dash_distance": _get(hero, "AirDashDistanceInMeters"),
+        "base_melee_resist": _get(hero, "MeleeResist"),
+        "spirit_scaling": "; ".join(
+            f"{label(loc, stat)}: {fmt(value)}" for stat, value in (hero.get("SpiritScaling") or {}).items()
+            if isinstance(value, (int, float)) and value
+        ) or None,
         "bullet_velocity": _get(weapon, "BulletSpeed"),
         "falloff_start": _get(weapon, "FalloffStartRange"),
         "falloff_end": _get(weapon, "FalloffEndRange"),

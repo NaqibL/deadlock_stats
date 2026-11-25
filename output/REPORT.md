@@ -1,8 +1,8 @@
 # Build report
 
-- Game build: **6865** (2026-11-23)
-- Source: https://github.com/deadlock-wiki/deadlock-data at `cac2045974c9` (2026-11-23T19:47:32+00:00)
-- Generated: 2026-11-24T09:16:59+00:00
+- Game build: **6868** (2026-11-24)
+- Source: https://github.com/deadlock-wiki/deadlock-data at `d82561117154` (2026-11-24T23:48:59+00:00)
+- Generated: 2026-11-25T02:22:15+00:00
 - Rows: 44 heroes, 176 hero abilities (+3 alternate-form abilities), 156 items (53 weapon, 54 vitality, 49 spirit)
 
 ## Validation
@@ -11,7 +11,7 @@
 
 ## Cross-check against the raw game files
 
-- Raw files at game build 6865; 5705 values compared, 0 disagreement(s).
+- Raw files at game build 6868; 5705 values compared, 0 disagreement(s).
 
 | Compared | Values |
 |---|---|

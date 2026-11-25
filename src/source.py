@@ -30,6 +30,14 @@ PRIMARY_JSON = {
     "item_cards": "data/json/item-cards.json",
     "loc": "data/localizations/english.json",
 }
+# Extra tables; a missing one costs a tab, not the build.
+PRIMARY_OPTIONAL = {
+    "investment": "data/json/item-investment-data.json",
+    "soul_unlocks": "data/json/soul-unlock-data.json",
+    "npcs": "data/json/npc-data.json",
+    "misc": "data/json/misc-data.json",
+    "generic": "data/json/generic-data.json",
+}
 
 
 class SourceError(RuntimeError):
@@ -83,6 +91,12 @@ def load_primary(repo_dir: Path) -> dict:
             raise SourceError(f"primary source is missing {rel}; its layout may have changed")
         with open(path, encoding="utf-8") as fh:
             data[name] = json.load(fh)
+    for name, rel in PRIMARY_OPTIONAL.items():
+        path = repo_dir / rel
+        data[name] = None
+        if path.exists():
+            with open(path, encoding="utf-8") as fh:
+                data[name] = json.load(fh)
     version_path = repo_dir / "data" / "version.txt"
     if not version_path.exists():
         raise SourceError("primary source is missing data/version.txt")

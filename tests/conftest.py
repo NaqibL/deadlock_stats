@@ -19,7 +19,8 @@ LOC = {
     "BonusHealth_label": "Bonus Health", "BaseAttackDamagePercent_label": "Weapon Damage",
     "BaseAttackDamagePercent_postfix": "%", "BulletArmorReduction_label": "Bullet Resist",
     "BulletArmorReduction_postfix": "%", "GunTag_Shotgun": "Shotgun", "Tag_A": "Tank", "Tag_B": "Brawler",
-    "TechResist_label": "Spirit Resist", "TechResist_postfix": "%",
+    "TechResist_label": "Spirit Resist", "guardian_unit": "Guardian",
+    "Citadel_ModBonus_WeaponInvestmentDesc": "Weapon Damage Increases", "ClipSize_label": "Clip Size", "TechResist_postfix": "%",
     "item_cond_desc": "Above {s:LifeThreshold}% health, deal more damage.",
 }
 
@@ -34,7 +35,8 @@ def _hero(hero_id, name, hero_type="Brawler", **extra):
                          "LightMeleeDamage": 1.738, "HeavyMeleeDamage": 4.0322},
         "Weapon": {"BulletDamage": 3.78, "BulletsPerShot": 9, "RoundsPerSecond": 1.5873, "ClipSize": 9,
                    "ReloadTime": 0.3525, "BulletSpeed": 609.6, "FalloffStartRange": 17.0, "FalloffEndRange": 40.0,
-                   "DPS": 54.0, "WeaponTypes": ["Attribute_Close"]},
+                   "DPS": 54.0, "SustainedDPS": 32.069, "BulletsPerBurst": 1, "ReloadSingle": True, "WeaponTypes": ["Attribute_Close"]},
+        "CritDamageBonusPercent": 0.0, "GroundDashDistanceInMeters": 10.0, "SpiritScaling": {"ClipSize": 0.5, "Zero": 0},
         "BoundAbilities": {str(n): {"Name": f"{name} {n}", "Key": "ability_drain" if n == 1 else f"ability_{hero_id}_{n}"}
                            for n in (1, 2, 3, 4)},
     }
@@ -115,7 +117,28 @@ def primary():
                       "ChannelMoveSpeed": {"Key": "ChannelMoveSpeed", "Value": -1}},
         },
     }
+    world = {
+        "investment": {"ItemInvestments": {
+            "Weapon": [{"GoldThreshold": 800, "Bonus": 9}, {"GoldThreshold": 1600, "Bonus": 12}],
+            "Vitality": [{"GoldThreshold": 800, "Bonus": 9}], "Spirit": [{"GoldThreshold": 800, "Bonus": 7}]}},
+        "soul_unlocks": [{"RequiredSouls": 0, "AbilityUnlocks": 1},
+                         {"RequiredSouls": 200, "PowerIncrease": True, "AbilityPoints": 1},
+                         {"RequiredSouls": 500, "PowerIncrease": True, "AbilityUnlocks": 1}],
+        "npcs": {
+            "npc_boss_tier1": {"MaxHealth": 5500, "PlayerDPS": 116.0, "TrooperDPS": 35.0, "LocUnitName": "guardian_unit",
+                               "Weapon": {"BulletDamage": 16, "DPS": 80.0},
+                               "IntrinsicModifiers": [{"ABILITY_DAMAGE_REDUCTION_PERCENT": 0.0, "BULLET_ARMOR_DAMAGE_RESIST": 10}]},
+            "neutral_trooper_weak": {"MaxHealth": 142, "GoldReward": 45, "GoldRewardBonusPercentPerMinute": 1.08,
+                                     "IntrinsicModifiers": [{"BULLET_DAMAGE_REDUCTION_PERCENT": 50.0}]},
+            "npc_super_neutral": {"StartingHealth": 15600, "HealthGainPerMinute": 234},
+        },
+        "misc": {"neutral_camp_weak": {"InitialSpawnDelayInSeconds": 120, "SpawnIntervalInSeconds": 85}},
+        "generic": {"ItemPricePerTier": [0, 800, 1600, 3200, 6400, 9999],
+                    "ObjectiveParams": {"Tier1GoldKill": 1375, "NearPlayerSplitPct": 25.0},
+                    "HeroKillGoldShareFrac": [1.25, 0.575], "RejuvParams": {"RejuvinatorBuffDuration": 180}},
+    }
     return {
+        **world,
         "heroes": heroes, "abilities": abilities, "ability_cards": cards, "items": items, "item_cards": item_cards,
         "loc": dict(LOC), "version": {"ClientVersion": "6865", "VersionDate": "Nov 23 2026"},
         "commit": {"hash": "abc123", "date": "2026-11-23T19:47:32+00:00"},

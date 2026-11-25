@@ -12,7 +12,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from src import abilities, changelog, crosscheck, heroes, items, output, source, validate
+from src import abilities, changelog, crosscheck, heroes, items, output, source, validate, world
 from src.abilities import split_value
 
 ROOT = Path(__file__).resolve().parent
@@ -138,6 +138,11 @@ def main(argv=None) -> int:
     if raw is not None:
         check = crosscheck.cross_check(primary, raw, hero_rows, ability_rows, item_rows)
 
+    investment_rows, progression_rows = world.build_investment(primary), world.build_progression(primary)
+    unit_rows, missing_units = world.build_units(primary)
+    rule_rows = world.build_rules(primary)
+    extra = {"investment": investment_rows, "progression": progression_rows, "units": unit_rows, "rules": rule_rows}
+
     old = changelog.load_snapshot(out_dir)
     with_cooldown = {
         key for key, ability in primary["abilities"].items()
@@ -148,6 +153,7 @@ def main(argv=None) -> int:
     findings += validate.check_completeness(hero_rows, ability_rows, item_rows, with_cooldown)
     findings += validate.check_prices(item_rows)
     findings += validate.check_sanity(hero_rows, ability_rows, item_rows)
+    findings += validate.check_extra_tables(extra, missing_units)
     findings += validate.check_crosscheck(check)
 
     print(f"\nRows: {counts['heroes']} heroes, {counts['abilities']} abilities "
@@ -160,16 +166,21 @@ def main(argv=None) -> int:
         return 1
 
     meta = meta_rows(primary, counts, check, source.now_iso())
+    meta += [{"field": f"rows_{name}", "value": len(rows)} for name, rows in extra.items()]
     tables = {
         "heroes": (heroes.COLUMNS, hero_rows),
         "abilities": (abilities.COLUMNS, ability_rows),
         "items": (items.COLUMNS, item_rows),
+        "investment": (world.INVESTMENT_COLUMNS, investment_rows),
+        "progression": (world.PROGRESSION_COLUMNS, progression_rows),
+        "units": (world.UNIT_COLUMNS, unit_rows),
+        "rules": (world.RULE_COLUMNS, rule_rows),
         "meta": (["field", "value"], meta),
     }
     with tempfile.TemporaryDirectory() as tmp:
         output.write_outputs(Path(tmp), tables)
         new = changelog.load_snapshot(Path(tmp))
-        initial = not any(old[t] for t in changelog.TABLE_KEYS)
+        initial = not any(old[t] for t in changelog.CORE_TABLES)
         diff = changelog.diff_snapshots(old, new)
         data_changed = initial or changelog.has_changes(diff)
         volatile = {"generated_at"}
@@ -185,7 +196,8 @@ def main(argv=None) -> int:
         render_report(meta, counts, hero_excluded, item_excluded, findings, check), encoding="utf-8")
     if data_changed:
         changelog.append_entry(out_dir / "CHANGELOG.md", changelog.render_entry(diff, new["meta"], old["meta"], initial))
-        changes = sum(len(d["added"]) + len(d["removed"]) + len(d["changed"]) for d in diff.values())
+        changes = sum(len(d["added"]) + len(d["removed"]) + len(d["changed"]) + len(d["new_columns"])
+                      + bool(d["new_table"]) for d in diff.values())
         print(f"\nWrote {out_dir}/ ({'initial snapshot' if initial else f'{changes} change(s) logged in CHANGELOG.md'})")
     else:
         print(f"\nWrote {out_dir}/ (no data changes; source metadata updated)")

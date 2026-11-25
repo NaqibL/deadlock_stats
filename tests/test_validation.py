@@ -185,24 +185,30 @@ def test_skipped_cross_check_is_reported_loudly():
 
 # --- changelog -------------------------------------------------------------
 
-def snapshot(tmp_path, name, tables, build="6865"):
+def snapshot(tmp_path, name, tables, build="6865", with_rules=False):
     from src import abilities, heroes, items
     hero_rows, ability_rows, item_rows = tables
     meta = [{"field": "game_build", "value": build}, {"field": "game_build_date", "value": "2026-11-23"},
             {"field": "generated_at", "value": "now"}, {"field": "rows_heroes", "value": len(hero_rows)},
             {"field": "rows_abilities", "value": 8}, {"field": "rows_items", "value": len(item_rows)}]
     out = tmp_path / name
+    rules = [{"rule": "Item price, tier 1", "value": 800, "source_field": "x"}] if with_rules else []
     output.write_outputs(out, {"heroes": (heroes.COLUMNS, hero_rows), "abilities": (abilities.COLUMNS, ability_rows),
-                               "items": (items.COLUMNS, item_rows), "meta": (["field", "value"], meta)})
+                               "items": (items.COLUMNS, item_rows), "investment": (["category", "souls_spent"], []),
+                               "progression": (["level"], []), "units": (["key"], []),
+                               "rules": (["rule", "value", "source_field"], rules),
+                               "meta": (["field", "value"], meta)})
     return changelog.load_snapshot(out)
 
 
 def test_outputs_are_written_with_numbers_as_numbers(tmp_path, tables):
     from openpyxl import load_workbook
     snapshot(tmp_path, "a", tables)
-    assert {p.name for p in (tmp_path / "a").iterdir()} == {"heroes.csv", "abilities.csv", "items.csv", "meta.csv", "deadlock.xlsx"}
+    assert {p.name for p in (tmp_path / "a").iterdir()} == {
+        "heroes.csv", "abilities.csv", "items.csv", "investment.csv", "progression.csv", "units.csv", "rules.csv",
+        "meta.csv", "deadlock.xlsx"}
     workbook = load_workbook(tmp_path / "a" / "deadlock.xlsx")
-    assert workbook.sheetnames == ["Heroes", "Abilities", "Items", "Meta"]
+    assert workbook.sheetnames == ["Heroes", "Abilities", "Items", "Investment", "Progression", "Units", "Rules", "Meta"]
     header = [c.value for c in workbook["Heroes"][1]]
     row = dict(zip(header, [c.value for c in workbook["Heroes"][2]]))
     assert row["base_health"] == 800 and isinstance(row["base_health"], int)
@@ -230,6 +236,29 @@ def test_diff_finds_changed_added_and_removed(tmp_path, tables):
     assert "previous snapshot was build 6865" in entry
     assert "- **One** base_health: 800 -> 820" in entry
     assert "- New: **Newcomer**" in entry and f"- Removed: **{removed['name']}**" in entry
+
+
+def test_new_columns_and_tables_are_one_line_each(tmp_path, tables):
+    old = snapshot(tmp_path, "old", tables)
+    for row in old["heroes"]:
+        del row["dash_distance"]
+    new = snapshot(tmp_path, "new", copy.deepcopy(tables), with_rules=True)
+    diff = changelog.diff_snapshots(old, new)
+    assert diff["heroes"]["new_columns"] == ["dash_distance"] and diff["heroes"]["changed"] == []
+    assert diff["rules"]["new_table"] == 1 and diff["rules"]["added"] == []
+    entry = changelog.render_entry(diff, new["meta"], old["meta"])
+    assert "- New columns in the sheet: dash_distance" in entry
+    assert "- New table in the sheet (1 rows)" in entry
+
+
+def test_extra_table_checks():
+    good = {"investment": [{"category": "Weapon", "souls_spent": 800, "bonus": 9}, {"category": "Weapon", "souls_spent": 1600, "bonus": 12}],
+            "progression": [{"souls_required": 0}, {"souls_required": 200}], "units": [{}], "rules": [{}]}
+    assert validate.check_extra_tables(good) == []
+    bad = dict(good, units=[], progression=[{"souls_required": 200}, {"souls_required": 200}],
+               investment=[{"category": "Weapon", "souls_spent": 800, "bonus": 9}, {"category": "Weapon", "souls_spent": 800, "bonus": 5}])
+    findings = validate.check_extra_tables(bad, missing_units=["npc_boss_tier2"])
+    assert levels(findings) == [WARNING] * 4 and not validate.has_errors(findings)
 
 
 def test_identical_snapshots_have_no_changes(tmp_path, tables):

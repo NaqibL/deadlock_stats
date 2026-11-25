@@ -10,7 +10,12 @@ TABLE_KEYS = {
     "heroes": (("key",), lambda r: r.get("name") or r.get("key")),
     "abilities": (("hero", "form", "key"), lambda r: " / ".join(x for x in (r.get("hero"), r.get("form"), r.get("name")) if x)),
     "items": (("key",), lambda r: r.get("name") or r.get("key")),
+    "investment": (("category", "souls_spent"), lambda r: f"{r.get('category')} investment at {r.get('souls_spent')} souls"),
+    "progression": (("level",), lambda r: f"Level {r.get('level')}"),
+    "units": (("key",), lambda r: r.get("name") or r.get("key")),
+    "rules": (("rule",), lambda r: r.get("rule")),
 }
+CORE_TABLES = ("heroes", "abilities", "items")
 HEADER = "# Changelog\n\nChanges to the generated sheet, newest first under each game build.\n"
 
 
@@ -30,6 +35,10 @@ def diff_table(table: str, old_rows: list, new_rows: list) -> dict:
     key_columns, name_of = TABLE_KEYS[table]
     index = lambda rows: {tuple(row.get(c, "") for c in key_columns): row for row in rows}
     old, new = index(old_rows), index(new_rows)
+    if not old_rows:  # a table the previous snapshot did not have: one line, not one per row
+        return {"added": [], "removed": [], "changed": [], "new_columns": [], "new_table": len(new_rows)}
+    old_columns = set(old_rows[0])
+    new_columns = [c for c in (new_rows[0] if new_rows else {}) if c not in old_columns]
     changed = []
     for key in new:
         if key not in old:
@@ -38,10 +47,8 @@ def diff_table(table: str, old_rows: list, new_rows: list) -> dict:
         for column in after:
             if column in before and before[column] != after[column]:
                 changed.append((name_of(after), column, before[column], after[column]))
-        for column in after.keys() - before.keys():
-            if after[column] != "":
-                changed.append((name_of(after), column, "", after[column]))
     return {
+        "new_columns": new_columns, "new_table": 0,
         "added": [name_of(new[key]) for key in new if key not in old],
         "removed": [name_of(old[key]) for key in old if key not in new],
         "changed": changed,
@@ -53,7 +60,7 @@ def diff_snapshots(old: dict, new: dict) -> dict:
 
 
 def has_changes(diff: dict) -> bool:
-    return any(d["added"] or d["removed"] or d["changed"] for d in diff.values())
+    return any(d["added"] or d["removed"] or d["changed"] or d["new_columns"] or d["new_table"] for d in diff.values())
 
 
 def _show(value: str) -> str:
@@ -74,9 +81,13 @@ def render_entry(diff: dict, new_meta: dict, old_meta: dict | None = None, initi
     came_from = f"previous snapshot was build {previous}" if previous else "previous build unknown"
     lines += [f"Generated {generated}; {came_from}.", ""]
     for table, table_diff in diff.items():
-        if not (table_diff["added"] or table_diff["removed"] or table_diff["changed"]):
+        if not any(table_diff.values()):
             continue
         lines += [f"### {table.capitalize()}", ""]
+        if table_diff["new_table"]:
+            lines.append(f"- New table in the sheet ({table_diff['new_table']} rows)")
+        if table_diff["new_columns"]:
+            lines.append(f"- New columns in the sheet: {', '.join(table_diff['new_columns'])}")
         lines += [f"- New: **{name}**" for name in table_diff["added"]]
         lines += [f"- Removed: **{name}**" for name in table_diff["removed"]]
         for name, column, before, after in table_diff["changed"]:

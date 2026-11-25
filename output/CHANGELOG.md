@@ -4,6 +4,14 @@ Changes to the generated sheet, newest first under each game build.
 
 ## Build 6868 (2026-11-24)
 
+Generated 2026-11-25T04:16:16+00:00; previous snapshot was build 6868.
+
+### Investment
+
+- New columns in the sheet: bonus_unit
+
+## Build 6868 (2026-11-24)
+
 Generated 2026-11-25T03:08:06+00:00; previous snapshot was build 6868.
 
 ### Rules

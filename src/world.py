@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from .text import clean, tidy
 
-INVESTMENT_COLUMNS = ["category", "souls_spent", "bonus", "bonus_stat"]
+INVESTMENT_COLUMNS = ["category", "souls_spent", "bonus", "bonus_unit", "bonus_stat"]
 PROGRESSION_COLUMNS = [
     "level", "souls_required", "boon", "ability_unlock", "ability_point",
     "total_boons", "total_ability_unlocks", "total_ability_points",
@@ -27,6 +27,11 @@ _INVESTMENT_STAT = {
     "Vitality": "Citadel_ModBonus_ArmorInvestmentDesc",
     "Spirit": "Citadel_ModBonus_TechInvestmentDesc",
 }
+
+# The files hold bare numbers. The units are from Valve's patch notes (2025-11-21,
+# 2026-03-21, 2026-04-30): weapon and vitality bonuses are written with a % sign,
+# vitality as "% base hp", and spirit as a plain amount of spirit power.
+_INVESTMENT_UNIT = {"Weapon": "% weapon damage", "Vitality": "% of base health", "Spirit": "spirit power (flat)"}
 
 # (source key, group, name or localisation token, objective bounty field, neutral camp key)
 # The files give no display name for some units; those names are written here.
@@ -60,7 +65,8 @@ def build_investment(primary: dict) -> list:
         for step in data.get(category) or []:
             rows.append({
                 "category": category, "souls_spent": _num(step.get("GoldThreshold")),
-                "bonus": _num(step.get("Bonus")), "bonus_stat": stat,
+                "bonus": _num(step.get("Bonus")), "bonus_unit": _INVESTMENT_UNIT[category],
+                "bonus_stat": stat,
             })
     return rows
 

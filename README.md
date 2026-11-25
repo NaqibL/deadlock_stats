@@ -92,7 +92,9 @@ conditional, in the effect columns marked `[Not on tooltip]`. What is left in
 stats of the shop item.
 
 **Investment.** The bonus you hold once you have spent that many souls in a
-shop category: weapon damage %, health %, or spirit power.
+shop category. `bonus_unit` says what the number is: a percentage of weapon
+damage, a percentage of base health, or a flat amount of spirit power. The
+units come from Valve's patch notes; the files hold bare numbers.
 
 **Progression.** What each soul threshold grants (a boon, an ability unlock,
 an ability point) with running totals. Multiply a hero's per-boon columns by

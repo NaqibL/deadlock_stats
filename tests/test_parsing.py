@@ -225,7 +225,9 @@ def test_raw_files_supply_hero_tags_and_gun_tag(primary, raw):
 
 def test_investment_table(primary):
     rows = world.build_investment(primary)
-    assert rows[0] == {"category": "Weapon", "souls_spent": 800, "bonus": 9, "bonus_stat": "Weapon Damage Increases"}
+    assert rows[0] == {"category": "Weapon", "souls_spent": 800, "bonus": 9, "bonus_unit": "% weapon damage",
+                       "bonus_stat": "Weapon Damage Increases"}
+    assert {r["category"]: r["bonus_unit"] for r in rows}["Spirit"] == "spirit power (flat)"
     assert [r["category"] for r in rows] == ["Weapon", "Weapon", "Vitality", "Spirit"]
 
 

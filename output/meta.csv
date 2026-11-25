@@ -8,7 +8,7 @@ crosscheck_source,https://raw.githubusercontent.com/SteamDatabase/GameTracking-D
 crosscheck_build,6868
 crosscheck_values_compared,5705
 crosscheck_disagreements,0
-generated_at,2026-11-25T02:22:15+00:00
+generated_at,2026-11-25T03:08:06+00:00
 rows_heroes,44
 rows_abilities,176
 rows_alternate_form_abilities,3
@@ -19,4 +19,4 @@ rows_items_spirit,49
 rows_investment,33
 rows_progression,36
 rows_units,12
-rows_rules,28
+rows_rules,26

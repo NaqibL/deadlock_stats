@@ -4,6 +4,25 @@ Changes to the generated sheet, newest first under each game build.
 
 ## Build 6868 (2026-11-24)
 
+Generated 2026-11-25T03:08:06+00:00; previous snapshot was build 6868.
+
+### Rules
+
+- New: **Rejuvenator duration (s)**
+- New: **Rejuvenator drop count**
+- New: **Rejuvenator time to drop (s)**
+- New: **Rejuvenator revive delay (s)**
+- New: **Rejuvenator revive health (%)**
+- Removed: **Rejuvenator buff duration (s)**
+- Removed: **Rejuvenator trooper health multiplier, level 1**
+- Removed: **Rejuvenator trooper health multiplier, level 2**
+- Removed: **Rejuvenator trooper health multiplier, level 3**
+- Removed: **Rejuvenator respawn time multiplier, level 1**
+- Removed: **Rejuvenator respawn time multiplier, level 2**
+- Removed: **Rejuvenator respawn time multiplier, level 3**
+
+## Build 6868 (2026-11-24)
+
 Generated 2026-11-25T02:22:15+00:00; previous snapshot was build 6865.
 
 ### Heroes

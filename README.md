@@ -103,7 +103,7 @@ neutral camp creeps, with camp spawn timers. Names the files do not give (Base
 Guardian, Mid Boss, the camp sizes) are written in `src/world.py`.
 
 **Rules.** A few global numbers (objective bounties, how kill souls are shared,
-Rejuvenator multipliers). `source_field` is the name in the game files; the
+Rejuvenator duration and revive). `source_field` is the name in the game files; the
 plain-English reading in `rule` is mine.
 
 ## What is filtered out
@@ -133,6 +133,27 @@ Run on every build (`src/validate.py`):
 - **Cross-check**: hero roster and key stats, item tier, cost and category, and
   every numeric ability and item property with its spirit scaling are compared
   with the raw game files. Disagreements are listed, never resolved silently.
+
+## Knowledge base
+
+```bash
+python kb.py
+```
+
+writes `knowledge/`, the companion to the sheet: how the mechanics work, in the
+words of the game and of Valve's patch notes. Run it after `build.py`.
+
+| Path | Contents |
+|---|---|
+| `knowledge/README.md` | Index and how to read it |
+| `knowledge/mechanics/*.md` | One file per mechanic (Mid Boss and Rejuvenator, souls, troopers, objectives, neutral camps, urn, shop, melee, movement, damage rules, healing, status effects, respawn). Each has the game's own text, the current numbers in the files, and the patch history newest first |
+| `knowledge/history/heroes.md`, `items.md` | Every patch-note line per hero and per item |
+| `knowledge/game_text.md` | The game's tutorial pages, stat descriptions and HUD hints |
+| `knowledge/patch_notes.csv` | Every patch-note line, for searching |
+
+Everything in it is quoted from a source, not written by the tool. It does not
+include deadlock.wiki: the wiki blocks automated access. Topic files are built
+by keyword match, so they can miss a line or include a passing mention.
 
 ## Comparing snapshots
 

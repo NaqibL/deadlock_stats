@@ -20,6 +20,8 @@ LOC = {
     "BaseAttackDamagePercent_postfix": "%", "BulletArmorReduction_label": "Bullet Resist",
     "BulletArmorReduction_postfix": "%", "GunTag_Shotgun": "Shotgun", "Tag_A": "Tank", "Tag_B": "Brawler",
     "TechResist_label": "Spirit Resist", "guardian_unit": "Guardian",
+    "guide_the_map_midboss_desc": "The team that kills it will have <b>immediate respawns</b> on their next deaths.",
+    "citadel_chatwheel_label_mid_boss_here": "Mid Boss is Here", "Item_Rejuvenator": "Rejuvenator",
     "Citadel_ModBonus_WeaponInvestmentDesc": "Weapon Damage Increases", "ClipSize_label": "Clip Size", "TechResist_postfix": "%",
     "item_cond_desc": "Above {s:LifeThreshold}% health, deal more damage.",
 }
@@ -132,10 +134,12 @@ def primary():
                                      "IntrinsicModifiers": [{"BULLET_DAMAGE_REDUCTION_PERCENT": 50.0}]},
             "npc_super_neutral": {"StartingHealth": 15600, "HealthGainPerMinute": 234},
         },
-        "misc": {"neutral_camp_weak": {"InitialSpawnDelayInSeconds": 120, "SpawnIntervalInSeconds": 85}},
+        "misc": {"citadel_item_pickup_rejuv": {"RebirthModifier": {"RespawnDelay": 3.0, "RespawnLifePct": 100.0}},
+                 "neutral_camp_weak": {"InitialSpawnDelayInSeconds": 120, "SpawnIntervalInSeconds": 85}},
         "generic": {"ItemPricePerTier": [0, 800, 1600, 3200, 6400, 9999],
                     "ObjectiveParams": {"Tier1GoldKill": 1375, "NearPlayerSplitPct": 25.0},
-                    "HeroKillGoldShareFrac": [1.25, 0.575], "RejuvParams": {"RejuvinatorBuffDuration": 180}},
+                    "HeroKillGoldShareFrac": [1.25, 0.575], "RejuvParams": {"RejuvinatorBuffDuration": 180, "RejuvinatorDropCount": 3,
+                                    "TrooperHealthMult": [1.7, 2.0, 2.3], "RejuvPickupSound": "x"}},
     }
     return {
         **world,

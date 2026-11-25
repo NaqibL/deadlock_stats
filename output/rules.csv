@@ -20,10 +20,8 @@ Objective bounty share for nearby players (%),25,ObjectiveParams.NearPlayerSplit
 "Trooper kill soul share, 4 player(s) sharing",0.25,TrooperKillGoldShareFrac[3]
 "Trooper kill soul share, 5 player(s) sharing",0.2,TrooperKillGoldShareFrac[4]
 "Trooper kill soul share, 6 player(s) sharing",0.16,TrooperKillGoldShareFrac[5]
-Rejuvenator buff duration (s),180,RejuvParams.RejuvinatorBuffDuration
-"Rejuvenator trooper health multiplier, level 1",1.7,RejuvParams.TrooperHealthMult[0]
-"Rejuvenator trooper health multiplier, level 2",2,RejuvParams.TrooperHealthMult[1]
-"Rejuvenator trooper health multiplier, level 3",2.3,RejuvParams.TrooperHealthMult[2]
-"Rejuvenator respawn time multiplier, level 1",0.5,RejuvParams.PlayerRespawnMult[0]
-"Rejuvenator respawn time multiplier, level 2",0.4,RejuvParams.PlayerRespawnMult[1]
-"Rejuvenator respawn time multiplier, level 3",0.3,RejuvParams.PlayerRespawnMult[2]
+Rejuvenator duration (s),180,RejuvParams.RejuvinatorBuffDuration
+Rejuvenator drop count,3,RejuvParams.RejuvinatorDropCount
+Rejuvenator time to drop (s),7.5,RejuvParams.RejuvinatorDropDuration
+Rejuvenator revive delay (s),3,citadel_item_pickup_rejuv.RebirthModifier.RespawnDelay
+Rejuvenator revive health (%),100,citadel_item_pickup_rejuv.RebirthModifier.RespawnLifePct

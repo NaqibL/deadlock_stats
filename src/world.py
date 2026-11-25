@@ -144,10 +144,15 @@ def build_rules(primary: dict) -> list:
     for field, rule in (("HeroKillGoldShareFrac", "Hero kill soul share"), ("TrooperKillGoldShareFrac", "Trooper kill soul share")):
         for index, value in enumerate(generic.get(field) or []):
             add(f"{rule}, {index + 1} player(s) sharing", value, f"{field}[{index}]")
+    # Rejuvenator: only the fields the current design uses. The files still carry
+    # TrooperHealthMult and PlayerRespawnMult lists, but the 2025-07-29 patch notes
+    # say the Rejuvenator no longer buffs troopers or shortens respawns, so they are
+    # left out. See knowledge/mechanics/mid-boss-and-rejuvenator.md.
     rejuv = generic.get("RejuvParams") or {}
-    add("Rejuvenator buff duration (s)", rejuv.get("RejuvinatorBuffDuration"), "RejuvParams.RejuvinatorBuffDuration")
-    for field, rule in (("TrooperHealthMult", "Rejuvenator trooper health multiplier"),
-                        ("PlayerRespawnMult", "Rejuvenator respawn time multiplier")):
-        for index, value in enumerate(rejuv.get(field) or []):
-            add(f"{rule}, level {index + 1}", value, f"RejuvParams.{field}[{index}]")
+    add("Rejuvenator duration (s)", rejuv.get("RejuvinatorBuffDuration"), "RejuvParams.RejuvinatorBuffDuration")
+    add("Rejuvenator drop count", rejuv.get("RejuvinatorDropCount"), "RejuvParams.RejuvinatorDropCount")
+    add("Rejuvenator time to drop (s)", rejuv.get("RejuvinatorDropDuration"), "RejuvParams.RejuvinatorDropDuration")
+    pickup = ((primary.get("misc") or {}).get("citadel_item_pickup_rejuv") or {}).get("RebirthModifier") or {}
+    add("Rejuvenator revive delay (s)", pickup.get("RespawnDelay"), "citadel_item_pickup_rejuv.RebirthModifier.RespawnDelay")
+    add("Rejuvenator revive health (%)", pickup.get("RespawnLifePct"), "citadel_item_pickup_rejuv.RebirthModifier.RespawnLifePct")
     return rows

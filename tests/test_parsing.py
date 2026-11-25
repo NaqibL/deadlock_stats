@@ -1,7 +1,7 @@
 """Parsing: KV3, text clean-up, and the three table builders."""
 import pytest
 
-from src import abilities, heroes, items, kv3, source, text, world
+from src import abilities, heroes, items, kb, kv3, source, text, world
 
 
 # --- KV3 -------------------------------------------------------------------
@@ -255,6 +255,8 @@ def test_rules_table(primary):
     assert rules["Item price, tier 4"]["value"] == 6400
     assert rules["Guardian kill bounty (souls)"]["source_field"] == "ObjectiveParams.Tier1GoldKill"
     assert rules["Hero kill soul share, 2 player(s) sharing"]["value"] == 0.575
+    assert rules["Rejuvenator drop count"]["value"] == 3 and rules["Rejuvenator revive delay (s)"]["value"] == 3
+    assert not any("multiplier" in rule for rule in rules)  # retired by the 2025-07-29 rework
 
 
 def test_world_tables_survive_a_missing_source_file(primary):
@@ -262,3 +264,72 @@ def test_world_tables_survive_a_missing_source_file(primary):
         primary[name] = None
     assert world.build_investment(primary) == [] and world.build_progression(primary) == []
     assert world.build_units(primary)[0] == [] and world.build_rules(primary) == []
+
+
+# --- knowledge base --------------------------------------------------------
+
+NOTES_NEW = """- Rejuv buff duration reduced from 4 minutes to 3
+- One: Drain cooldown reduced from 44s to 42s
+- Extra Health: Bonus health increased from 200 to 210
+- Dynamo: Rejuvenating Aurora cooldown reduced from 48s to 45s
+"""
+NOTES_OLD = """General Changes:
+==
+- Mid Boss respawn rescaled from 50% to 40/50/60% for the 1/2/3rd mid boss death
+
+[ Heroes ]
+* One: Now has a hat
+"""
+
+
+@pytest.fixture
+def notes_repo(tmp_path):
+    raw = tmp_path / "data" / "changelogs" / "raw"
+    raw.mkdir(parents=True)
+    (raw / "2026-06-30.txt").write_text(NOTES_NEW)
+    (raw / "2024-10-10.txt").write_text(NOTES_OLD)
+    (tmp_path / "data" / "changelogs" / "changelog_configs.json").write_text('{"2026-06-30": {"link": "https://example.test/1"}}')
+    return tmp_path
+
+
+def test_patch_notes_are_read_with_date_section_and_entity(primary, notes_repo):
+    notes = kb.read_patch_notes(notes_repo, kb.entity_names(primary))
+    assert len(notes) == 6  # headers are sections, not notes
+    by_line = {n["line"]: n for n in notes}
+    old = by_line["Mid Boss respawn rescaled from 50% to 40/50/60% for the 1/2/3rd mid boss death"]
+    assert (old["date"], old["section"], old["entity"]) == ("2024-10-10", "General Changes", "")
+    assert by_line["One: Now has a hat"]["section"] == "Heroes"
+    assert by_line["One: Drain cooldown reduced from 44s to 42s"]["entity_kind"] == "hero"
+    assert by_line["Extra Health: Bonus health increased from 200 to 210"]["entity"] == "Extra Health"
+    assert by_line["Rejuv buff duration reduced from 4 minutes to 3"]["link"] == "https://example.test/1"
+
+
+def test_topic_picks_matching_lines_newest_first(primary, notes_repo):
+    notes = kb.read_patch_notes(notes_repo, kb.entity_names(primary))
+    picked = kb.topic_notes(kb.TOPICS["mid-boss-and-rejuvenator"], notes)
+    assert [n["date"] for n in picked] == ["2026-06-30", "2024-10-10"]  # the Dynamo ability line is excluded
+    general = kb.topic_notes({"notes": "hat|44s", "general_only": True}, notes)
+    assert general == []  # lines about one hero belong to the hero history
+
+
+def test_flatten_keeps_gameplay_numbers_only():
+    block = {"RejuvinatorBuffDuration": 180, "RejuvPickupSound": "x", "TrooperHealthMult": [1.7, 2.0, 2.3],
+             "Unset": -1, "Zero": 0, "Flag": True, "Nested": {"RespawnDelay": 3.0, "ParticleEffect": 5}}
+    assert dict(kb.flatten(block)) == {"RejuvinatorBuffDuration": 180, "TrooperHealthMult": "1.7 / 2 / 2.3",
+                                       "Nested.RespawnDelay": 3}
+
+
+def test_knowledge_base_is_written(primary, notes_repo, tmp_path):
+    out = tmp_path / "knowledge"
+    summary = kb.build_knowledge(primary, notes_repo, out)
+    assert summary["notes"] == 6 and summary["hero_lines"] == 2 and summary["item_lines"] == 1
+    page = (out / "mechanics" / "mid-boss-and-rejuvenator.md").read_text()
+    assert "immediate respawns on their next deaths. (`guide_the_map_midboss_desc`)" in page  # markup stripped
+    assert "| RejuvinatorDropCount | 3 |" in page and "Sound" not in page
+    assert page.index("2026-06-30") < page.index("2024-10-10")
+    assert "[forum post](https://example.test/1)" in page
+    heroes_page = (out / "history" / "heroes.md").read_text()
+    assert "## One" in heroes_page and "Now has a hat" in heroes_page
+    assert "## Extra Health" in (out / "history" / "items.md").read_text()
+    assert (out / "patch_notes.csv").read_text().count("\n") == 7
+    assert "mechanics/mid-boss-and-rejuvenator.md" in (out / "README.md").read_text()

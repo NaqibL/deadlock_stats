@@ -187,6 +187,24 @@ Apart from `settled.md`, everything in it is quoted from a source, not written
 by the tool. It does not include deadlock.wiki: the wiki blocks automated access. Topic files are built
 by keyword match, so they can miss a line or include a passing mention.
 
+## Formulas and analysis
+
+```bash
+python analysis/formulas.py
+```
+
+prints the worked examples from `analysis/formulas.md`, which sets out how the
+numbers combine: hero growth, investment, ability scaling, resist stacking and
+shred, soul sharing, bounties over time and respawn. Each rule is labelled with
+how far it can be trusted (game data, settled, community wiki, inferred or
+assumed), and the formulas still open come with sandbox tests that tell the
+candidates apart. `analysis/formulas.py` implements the rules against
+`output/`; `tests/test_formulas.py` checks them. The resist rules come from
+deadlock.wiki, pasted in by hand rather than fetched.
+
+`analysis/deadlock-systems-explainer.md` is a longer read-through of every
+system; where it and `formulas.md` differ, `formulas.md` is newer.
+
 ## Comparing snapshots
 
 ```bash

@@ -2,6 +2,14 @@
 
 Data: `main` branch, game build **6868** (2026-11-24), cross-checked against the raw game files with 0 disagreements (`output/REPORT.md`, `output/meta.csv`).
 
+> **Status:** written before the sheet's 2026-11-25 audit and before the resist rules were known. `analysis/formulas.md` is newer and corrects it on these points:
+> - **Hero kill sharing:** the table value is the average share, and the killer gets 2.2 times an assister.
+> - **Vitality:** the bonus most likely applies to starting plus boon health ("reading B").
+> - **Resists:** stack multiplicatively, with shred subtracted (community wiki), so assumption A1 is replaced.
+> - **Components:** whether an upgrade costs the full price or the difference is open, not known.
+> - **Item data changes:** Enchanter's Emblem's spirit power is now a conditional effect.
+> - **Map numbers:** the new bounty, timing and pickup numbers are in `output/rules.csv`, `powerups.csv` and `permanent_buffs.csv`.
+
 ## How to read this
 
 Every claim carries one of these labels:

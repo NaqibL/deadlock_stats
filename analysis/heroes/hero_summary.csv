@@ -1,0 +1,45 @@
+hero,type,health_30k,gun_dps_30k,shots_per_s,weapon_tab_gun_gain_12k8,kit_upgraded_sp0,kit_upgraded_sp150,hard_cc,denial,damage_types,flags
+Abrams,Brawler,2221.0,95.43,1.59,37.33,306.0,1296.75,2,,spirit,Spirit scaling; Control chain
+Apollo,Assassin,2075.0,111.65,2.63,41.37,215.0,815.0,2,disarm,spirit,Spirit scaling; Control chain; Late gun
+Baba,Mystic,2085.0,66.74,3.23,24.62,575.0,905.0,2,silence,spirit,Crossover hook (spirit); Cheap to skip weapon items; Control chain; Late gun
+Bebop,Brawler,2388.0,98.99,11.9,39.24,245.0,560.0,2,,"melee, spirit",Trigger carrier; Melee hook; Control chain; Natural tank
+Billy,Brawler,2357.0,117.45,11.77,47.15,195.0,750.0,1,movement silence,"melee, spirit",Trigger carrier; Melee hook; Spirit scaling; Natural tank
+Calico,Assassin,1803.0,132.3,4.76,52.38,370.0,558.0,0,,"melee, spirit",Melee hook
+Celeste,Mystic,1647.0,72.03,1.72,26.63,380.0,710.0,0,silence,spirit,Cheap to skip weapon items; Late gun
+Deadman Danny,Marksman,1861.0,108.72,4.0,42.28,535.0,1252.6,2,,"spirit, weapon",Crossover hook (weapon); Control chain
+Drifter,Assassin,1944.0,77.8,2.27,30.68,40.0,250.0,0,,"melee, target health %",Melee hook; Self-sufficient damage; Cheap to skip weapon items; Spirit scaling
+Dynamo,Healer,2649.0,103.24,3.81,38.73,250.0,482.5,2,,"spirit, target health %",Self-sufficient damage; Control chain; Natural tank; Late gun
+Graves,Mystic,1745.0,50.08,9.8,20.69,311.0,779.0,1,,"spirit, target health %",Trigger carrier; Self-sufficient damage; Cheap to skip weapon items; Charges
+Grey Talon,Mystic,1882.0,80.27,1.67,30.41,474.0,914.61,2,"curse, disarm, silence",spirit,Crossover hook (spirit); Cheap to skip weapon items; Control chain
+Haze,Assassin,1687.0,89.59,9.52,34.95,65.0,395.0,1,,"spirit, weapon",Trigger carrier; Crossover hook (spirit); Crossover hook (weapon); Spirit scaling
+Holliday,Marksman,2027.0,111.91,2.12,40.34,404.5,883.45,2,,"spirit, weapon",Crossover hook (weapon); Control chain; Charges; Late gun
+Infernus,Mystic,1961.0,76.69,9.52,31.42,415.0,1026.24,1,,spirit,Trigger carrier
+Ivy,Healer,2060.0,92.11,13.61,37.36,350.0,1625.0,1,silence,spirit,Trigger carrier; Spirit scaling; Surprise burst
+Kelvin,Healer,2620.0,117.04,3.81,46.51,415.0,1360.0,0,,spirit,Surprise burst; Charges; Natural tank
+Lady Geist,Mystic,2359.0,105.18,2.12,38.65,280.7,856.59,0,silence,spirit,Natural tank; Late gun
+Lash,Assassin,2230.0,101.75,5.83,38.49,310.0,702.31,1,,spirit,
+McGinnis,Mystic,2288.0,131.42,11.9,51.09,96.0,259.68,0,,spirit,Trigger carrier; Natural tank
+Mina,Mystic,1443.0,60.66,3.97,22.88,216.5,658.1,0,silence,"spirit, target health %",Self-sufficient damage; Cheap to skip weapon items
+Mirage,Assassin,2035.0,63.94,2.72,25.66,156.0,343.5,2,,spirit,Cheap to skip weapon items; Control chain; Charges
+Mo & Krill,Brawler,2815.0,113.75,5.29,43.75,155.0,256.25,2,disarm,spirit,Control chain; Natural tank
+Nurse Harrow,Healer,1658.0,66.58,2.63,26.09,115.0,482.5,1,,spirit,Cheap to skip weapon items; Spirit scaling
+Paige,Healer,1579.0,99.38,2.0,40.1,675.0,1245.0,2,,spirit,Crossover hook (spirit); Surprise burst; Control chain
+Paradox,Marksman,2064.0,108.39,7.56,40.82,210.0,495.0,3,,"spirit, target health %, weapon",Crossover hook (weapon); Self-sufficient damage; Control chain
+Pocket,Assassin,1824.0,111.2,1.9,42.57,333.0,762.75,0,,spirit,
+Rat King,Brawler,2250.0,99.76,5.0,39.27,486.0,498.0,1,,"spirit, weapon",Crossover hook (weapon)
+Rem,Healer,1492.0,99.46,3.85,39.74,295.0,775.0,2,movement silence,spirit,Surprise burst; Control chain
+Seven,Mystic,1919.0,103.56,5.83,41.2,288.0,537.32,1,,spirit,
+Shiv,Brawler,2164.0,104.33,1.81,39.73,325.0,505.0,0,,"spirit, target health %",Self-sufficient damage; Charges
+Silver,Brawler,1729.0,69.95,1.18,27.74,145.0,685.0,0,,"melee, spirit, target health %",Melee hook; Self-sufficient damage; Cheap to skip weapon items; Spirit scaling
+Sinclair,Mystic,1832.0,88.3,2.72,33.73,273.6,606.6,1,,spirit,Crossover hook (spirit)
+Solomon,Mystic,1940.0,73.2,2.0,29.99,240.0,915.0,2,,spirit,Crossover hook (spirit); Cheap to skip weapon items; Spirit scaling; Control chain
+The Doorman,Mystic,1973.0,95.63,1.59,34.86,510.0,1080.0,2,,spirit,Control chain; Late gun
+Venator,Marksman,2067.0,125.64,7.94,47.94,360.0,690.0,2,,"spirit, weapon",Trigger carrier; Crossover hook (spirit); Crossover hook (weapon); Control chain; Charges
+Victor,Brawler,1786.0,114.27,5.85,45.57,1261.0,2755.0,1,,spirit,Crossover hook (spirit)
+Vindicta,Marksman,1567.0,115.52,4.33,43.28,295.0,826.6,1,,"spirit, target health %",Crossover hook (spirit); Self-sufficient damage; Charges; Late gun
+Violet,Mystic,1696.0,70.69,1.54,28.63,295.0,1150.0,1,silence,spirit,Cheap to skip weapon items; Spirit scaling; Charges
+Viscous,Brawler,2085.0,98.95,4.76,37.63,320.0,740.0,2,,"melee, spirit",Melee hook; Control chain
+Vyper,Assassin,1795.0,167.75,14.29,65.47,451.0,1296.4,1,,"spirit, target health %",Trigger carrier; Crossover hook (spirit); Self-sufficient damage; Charges
+Warden,Brawler,2545.0,93.68,3.81,38.71,925.0,2555.1,1,silence,spirit,Crossover hook (spirit); Natural tank
+Wraith,Marksman,1745.0,102.65,10.58,40.4,285.0,577.5,1,,spirit,Trigger carrier; Crossover hook (spirit); Charges
+Yamato,Assassin,2035.0,116.38,2.38,45.1,350.0,869.0,0,,"melee, spirit",Crossover hook (spirit); Melee hook

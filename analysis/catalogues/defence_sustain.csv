@@ -1,0 +1,413 @@
+source,owner,name,slot,cooldown,charges,radius,tier,effect,value,unit,spirit_coef,raw
+ability,Abrams,Siphon Life,1,42,,8,0,heal,70.0,%,,Lifesteal: 70%
+ability,Abrams,Siphon Life,1,42,,8,0,heal,35.0,%,,Lifesteal vs Non-Heroes: 35%
+ability,Abrams,Infernal Resilience,3,,,,0,heal,13.0,%,,Damage Regenerated: 13%
+ability,Abrams,Infernal Resilience,3,,,,0,heal,20.0,s,,Regeneration Time: 20s
+ability,Abrams,Infernal Resilience,3,,,,0,heal,1.0,,,Health Regen: 1
+ability,Abrams,Infernal Resilience,3,,,,2,heal,18.0,%,,Melee Lifesteal +18%
+ability,Abrams,Infernal Resilience,3,,,,3,heal,9.0,%,,Damage Regenerated +9%
+ability,Abrams,Infernal Resilience,3,,,,3,debuff resist,20.0,%,,Debuff Resist +20%
+ability,Apollo,Riposte,2,22,,,0,invulnerability,0.3,s,,Invulnerability Duration: 0.3s
+ability,Apollo,Riposte,2,22,,,0,own resist,-25.0,%,,Melee Resist: -25%
+ability,Apollo,Riposte,2,22,,,2,own resist,-25.0,%,,Melee Resist -25%
+ability,Apollo,Riposte,2,22,,,3,heal,75.0,%,,Bullet & Spirit Lifesteal vs Target +75%
+ability,Apollo,Riposte,2,22,,,3,heal,13.0,s,,Lifesteal Duration +13s
+ability,Apollo,Flawless Advance,3,26,,,1,heal,35.0,,1.3,Heal on hero hit +35 and +1.3 x spirit power scaling
+ability,Apollo,Flawless Advance,3,26,,,2,own resist,60.0,%,,Bullet Resist +60%
+ability,Apollo,Itani Lo Sahn,4,145,,,0,own resist,70.0,%,,Time Slow Damage Reduction: 70%
+ability,Baba,Granny Long Legs,2,32,,8,0,debuff resist,25.0,%,,Debuff Resist: 25%
+ability,Baba,Granny Long Legs,2,32,,8,0,own resist,25.0,%,,Melee Resist: 25%
+ability,Baba,Granny Long Legs,2,32,,8,3,debuff resist,15.0,%,,Debuff Resist +15%
+ability,Baba,Granny Long Legs,2,32,,8,3,own resist,15.0,%,,Melee Resist +15%
+ability,Baba,Granny Long Legs,2,32,,8,3,heal,50.0,%,,Melee Lifesteal +50%
+ability,Baba,Baba's Brew,3,28,,6,0,barrier,8.0,s,,Barrier Duration: 8s
+ability,Baba,Baba's Brew,3,28,,6,3,barrier,1.3333,,1.3333,Barrier +1.3333 and +1.3333 x spirit power scaling
+ability,Baba,Baba's Brew,3,28,,6,3,resist reduction,1.3333,,,Spirit Resist Reduction +1.3333
+ability,Bebop,Exploding Uppercut,1,22,,,3,heal,18.0,%,,Missing HP Heal +18%
+ability,Bebop,Sticky Bomb,2,18,,8,3,debuff resist,25.0,%,,Debuff Resist +25%
+ability,Bebop,Hyper Beam,4,120,,,3,heal,65.0,,,Beam Lifesteal +65
+ability,Bebop,Hyper Beam,4,120,,,3,heal,20.0,,,Beam Lifesteal Non Hero Percent +20
+ability,Billy,Blasted,3,25,,,0,damage amp on target,10.0,%,,Wrecked Bullet Amp: 10%
+ability,Billy,Chain Gang,4,175,,,1,own resist,40.0,%,,Bullet Resist +40%
+ability,Billy,Chain Gang,4,175,,,1,own resist,40.0,%,,Spirit Resist +40%
+ability,Calico,Gloom Bombs,1,14,,3,2,own resist,-6.0,%,,Melee Resist -6%
+ability,Calico,Leaping Slash,2,13,,,1,heal,25.0,,,Heal Amount +25
+ability,Calico,Ava,3,30,,,2,heal,15.0,,,Health Regen +15
+ability,Calico,Return to Shadows,4,115,,7.5,3,heal,450.0,,,Heal Amount +450
+ability,Celeste,Light Eater,1,20,,,0,heal,18.0,%,,Spirit Lifesteal: 18%
+ability,Celeste,Light Eater,1,20,,,1,heal,15.0,%,,Spirit Lifesteal +15%
+ability,Celeste,Dazzling Trick,2,38,,,2,barrier,70.0,,0.76,Barrier +70 and +0.76 x spirit power scaling
+ability,Celeste,Radiant Daggers,3,33,1,,0,damage amp on target,6.0,%,,Spirit Amp per Stack: 6%
+ability,Celeste,Radiant Daggers,3,33,1,,3,damage amp on target,5.0,%,,Spirit Amp per Stack +5%
+ability,Deadman Danny,Chimera Mk1,2,21,,8,2,heal,125.0,,1.7,Heal On Hit +125 and +1.7 x spirit power scaling
+ability,Deadman Danny,Jettison Fuel,3,22,,,0,own resist,-15.0,%,,Bullet Resist: -15%
+ability,Deadman Danny,Jettison Fuel,3,22,,,3,resist reduction,-10.0,%,,Bullet Resist Reduction -10%
+ability,Drifter,Stalker's Mark,2,26,,,1,resist reduction,-8.0,%,,Bullet Resist Reduction -8%
+ability,Drifter,Stalker's Mark,2,26,,,3,anti-heal,-40.0,%,,Incoming Healing -40%
+ability,Drifter,Stalker's Mark,2,26,,,3,anti-heal,-40.0,%,,Healing From Regen -40%
+ability,Drifter,Bloodscent,3,,,,0,damage amp on target,15.0,%,,Amplified Damage: 15%
+ability,Drifter,Bloodscent,3,,,,2,heal,24.0,%,,Missing Health as Healing +24%
+ability,Drifter,Bloodscent,3,,,,3,damage amp on target,12.0,%,,Amplified Damage +12%
+ability,Dynamo,Kinetic Pulse,1,26,1,,2,resist reduction,-15.0,%,,Bullet Resist Reduction -15%
+ability,Dynamo,Rejuvenating Aurora,3,48,,,0,heal,30.0,,0.4,Health Restored: 30/s (+0.4 x spirit power)
+ability,Dynamo,Rejuvenating Aurora,3,48,,,0,heal,8.0,m,,Friendly Heal Radius: 8m
+ability,Dynamo,Rejuvenating Aurora,3,48,,,3,heal,2.5,%,,Max Health Restored +2.5%/s
+ability,Graves,Jar of Dead,1,,4,,1,heal,5.0,,0.16,Heal On Pickup +5 and +0.16 x spirit power scaling
+ability,Grey Talon,Rain of Arrows,2,25,,,3,heal,30.0,%,,Bullet Lifesteal +30%
+ability,Grey Talon,Rain of Arrows,2,25,,,3,heal,30.0,%,,Spirit Lifesteal +30%
+ability,Grey Talon,Rain of Arrows,2,25,,,3,evasion,30.0,%,,Bullet Evasion +30%
+ability,Grey Talon,Spirit Snare,3,34,,6.5,2,resist reduction,-15.0,%,,Bullet Resist Reduction -15%
+ability,Haze,Sleep Dagger,1,30,,,1,resist reduction,-10.0,%,,Bullet Resist Reduction -10%
+ability,Haze,Smoke Bomb,2,33,,,3,heal,50.0,,,Bullet Lifesteal +50
+ability,Haze,Bullet Dance,4,165,,16,0,evasion,30.0,%,,Bullet Evasion: 30%
+ability,Haze,Bullet Dance,4,165,,16,3,evasion,40.0,%,,Bullet Evasion +40%
+ability,Holliday,Crackshot,3,20,,,2,resist reduction,-6.0,%,,Bullet Resist Reduction -6%
+ability,Infernus,Napalm,1,25,1,,0,damage amp on target,16.0,%,,Damage Taken: 16%
+ability,Infernus,Napalm,1,25,1,,2,heal,20.0,%,,Lifesteal +20%
+ability,Infernus,Napalm,1,25,1,,3,damage amp on target,17.0,%,,Damage Taken +17%
+ability,Infernus,Napalm,1,25,1,,3,anti-heal,-33.0,%,,Incoming Healing -33%
+ability,Infernus,Napalm,1,25,1,,3,anti-heal,-33.0,%,,Healing From Regen -33%
+ability,Infernus,Flame Dash,2,38,,,0,debuff resist,50.0,%,,Slow Resistance: 50%
+ability,Infernus,Concussive Combustion,4,190,,12,2,heal,100.0,,,Life Steal Percent On Hit +100
+ability,Ivy,Kudzu Connection,2,37,,,0,heal,15.0,%,0.15,Bullet Lifesteal: 15% (+0.15 x spirit power)
+ability,Ivy,Kudzu Connection,2,37,,,0,heal,35.0,%,,Replicated Healing: 35% (+0.85 x boon)
+ability,Ivy,Kudzu Connection,2,37,,,2,heal,8.0,%,,Bullet Lifesteal +8%
+ability,Ivy,Stone Form,3,40,,5.75,0,heal,6.0,%,,Max Health Heal: 6%
+ability,Ivy,Stone Form,3,40,,5.75,1,heal,6.0,%,,Max Health Heal +6%
+ability,Ivy,Air Drop,4,100,,,1,barrier,300.0,,0.7,Barrier +300 and +0.7 x spirit power scaling
+ability,Ivy,Air Drop,4,100,,,3,barrier,0.0,,1.0,Barrier +1 x spirit power scaling
+ability,Kelvin,Frost Grenade,1,30,2,6.5,1,heal,30.0,,,Heal Amount +30
+ability,Kelvin,Frost Grenade,1,30,2,6.5,2,heal,1.0,,,Pause Stamina Regen +1
+ability,Kelvin,Frost Grenade,1,30,2,6.5,3,heal,0.0,,0.9,Heal Amount +0.9 x spirit power scaling
+ability,Kelvin,Ice Path,2,50,,,1,own resist,35.0,%,,Bullet Resist +35%
+ability,Kelvin,Frozen Shelter,4,190,,10,0,heal,90.0,,0.2,Health Regen: 90 (+0.2 x spirit power)
+ability,Kelvin,Frozen Shelter,4,190,,10,3,heal,75.0,,1.0,Health Regen +75 and +1 x spirit power scaling
+ability,Lady Geist,Life Drain,2,34,,,0,heal,100.0,%,,Damage to Heal: 100%
+ability,Lady Geist,Malice,3,6,,,0,damage amp on target,7.0,%,,Damage Amplification: 7%
+ability,Lady Geist,Malice,3,6,,,3,damage amp on target,8.0,%,,Damage Amplification +8%
+ability,Lady Geist,Soul Exchange,4,220,,,3,own resist,50.0,%,,Spirit Resist +50%
+ability,Lash,Flog,3,26,,,0,heal,40.0,%,,Heal vs heroes: 40%
+ability,Lash,Flog,3,26,,,0,heal,16.0,%,,Heal vs non-heroes: 16%
+ability,Lash,Flog,3,26,,,3,heal,15.0,%,,Heal vs heroes +15%
+ability,Lash,Flog,3,26,,,3,heal,6.0,%,,Heal vs non-heroes +6%
+ability,McGinnis,Medicinal Specter,2,50,,,0,heal,25.0,,0.3,Health Regen: 25/s (+0.3 x spirit power)
+ability,McGinnis,Medicinal Specter,2,50,,,0,heal,6.0,m,,Heal Radius: 6m
+ability,McGinnis,Medicinal Specter,2,50,,,3,heal,2.0,%,,Max Health Regen +2%
+ability,McGinnis,Medicinal Specter,2,50,,,3,heal,3.0,m,,Heal Radius +3m
+ability,McGinnis,Medicinal Specter,2,50,,,3,own resist,40.0,,,Spirit Resist +40
+ability,Mina,Rake,1,16,,,0,heal,25.0,,0.3,Heal Per Kill: 25 (+0.3 x spirit power)
+ability,Mina,Rake,1,16,,,2,heal,30.0,,,Heal Per Kill +30
+ability,Mina,Rake,1,16,,,3,heal,0.0,,1.2,Heal Per Kill +1.2 x spirit power scaling
+ability,Mirage,Dust Devil,2,36,,4,0,evasion,30.0,%,,Bullet Evasion Chance: 30%
+ability,Mirage,Dust Devil,2,36,,4,0,evasion,4.0,s,,Bullet Evasion Duration: 4s
+ability,Mirage,Dust Devil,2,36,,4,2,evasion,30.0,%,,Bullet Evasion Chance +30%
+ability,Mirage,Traveler,4,140,,,3,barrier,0.0,,0.8,Barrier +0.8 x spirit power scaling
+ability,Mo & Krill,Scorn,1,13,,9,0,heal,1.3,x,,Hero Damage to Heal: 1.3x
+ability,Mo & Krill,Scorn,1,13,,9,0,heal,0.35,x,,Damage to Heal: 0.35x
+ability,Mo & Krill,Burrow,2,40,,5.5,0,own resist,60.0,%,,Bullet Resist: 60%
+ability,Mo & Krill,Burrow,2,40,,5.5,0,own resist,30.0,%,,Spirit Resist: 30%
+ability,Mo & Krill,Combo,4,150,,,1,heal,100.0,,,Life Steal Percent On Hit +100
+ability,Mo & Krill,Combo,4,150,,,2,own resist,50.0,%,,Bullet Resist +50%
+ability,Nurse Harrow,Leech Therapy,1,30,,6.5,0,heal,0.6,,,Health Regen Per Leech: 0.6 (+0.13 x boon)
+ability,Nurse Harrow,Wretched Vapors,2,40,,,0,damage amp on target,30.0,%,,Extra Damage Taken: 30%
+ability,Nurse Harrow,Wretched Vapors,2,40,,,2,heal,20.0,%,,Health Regen Boost +20%
+ability,Nurse Harrow,Healing Needles,3,,1,,0,heal,22.0,,0.24,Heal Per Shot: 22 (+0.24 x spirit power)
+ability,Nurse Harrow,Healing Needles,3,,1,,0,heal,15.0,%,,Headshot Heal Bonus: 15%
+ability,Nurse Harrow,Healing Needles,3,,1,,2,heal,16.0,,,Heal Per Shot +16
+ability,Nurse Harrow,Healing Needles,3,,1,,3,heal,0.0,,0.4,Heal Per Shot +0.4 x spirit power scaling
+ability,Paige,Plot Armor,2,28,,,2,barrier,100.0,,,Barrier +100
+ability,Paige,Plot Armor,2,28,,,3,barrier,0.0,,0.5,Barrier +0.5 x spirit power scaling
+ability,Paige,Plot Armor,2,28,,,3,barrier,100.0,,,Bonus Targets Barrier Percentage +100
+ability,Paige,Captivating Read,3,30,,7.5,3,resist reduction,-18.0,%,,Spirit Resist Reduction -18%
+ability,Paige,Rallying Charge,4,210,,,1,heal,150.0,,,Heal Amount +150
+ability,Paradox,Pulse Grenade,1,32,,5.5,0,damage amp on target,4.0,%,,Damage Amp per stack: 4%
+ability,Paradox,Paradoxical Swap,4,95,,,1,barrier,200.0,,1.5,Barrier +200 and +1.5 x spirit power scaling
+ability,Paradox,Paradoxical Swap,4,95,,,1,barrier,8.0,s,,Barrier Duration +8s
+ability,Pocket,Barrage,1,32,,4.5,0,damage amp on target,6.0,%,,Amp Per Stack: 6%
+ability,Pocket,Barrage,1,32,,4.5,3,damage amp on target,4.0,%,,Amp Per Stack +4%
+ability,Pocket,Affliction,4,170,,9,3,heal,1.0,,,Disable Healing +1
+ability,Rat King,Royal Pestments,3,22,,,0,barrier,15.0,%,,Max Health as Barrier: 15%
+ability,Rat King,Royal Pestments,3,22,,,3,barrier,10.0,%,,Max Health as Barrier +10%
+ability,Rat King,"Rule, Ratannia!",4,180,,20,0,own resist,15.0,%,,Damage Reduction: 15%
+ability,Rat King,"Rule, Ratannia!",4,180,,20,3,own resist,10.0,%,,Damage Reduction +10%
+ability,Rem,Tag Along,2,40,,,0,heal,42.0,,0.4,Health Restored: 42/s (+0.4 x spirit power)
+ability,Rem,Tag Along,2,40,,,0,heal,2.0,s,,Regen Duration: 2s
+ability,Rem,Tag Along,2,40,,,2,barrier,35.0,%,,Barrier Effectiveness +35%
+ability,Rem,Tag Along,2,40,,,3,heal,0.0,,0.34,Health Restored +0.34 x spirit power scaling
+ability,Rem,Lil Helpers,3,,,,0,own resist,12.0,%,,Spirit Resist: 12%
+ability,Rem,Lil Helpers,3,,,,0,heal,8.0,,0.14,Trooper Heal: 8/s (+0.14 x spirit power)
+ability,Rem,Naptime,4,200,,19,0,own resist,30.0,%,,Channel Damage Resist: 30%
+ability,Rem,Naptime,4,200,,19,1,heal,1.0,,,No Stamina Regen During Sleep +1
+ability,Seven,Storm Cloud,4,205,,30,1,own resist,55.0,%,,Bullet Resist +55%
+ability,Shiv,Slice and Dice,2,16,,,0,own resist,-6.0,%,,Spirit Resist: -6%
+ability,Shiv,Slice and Dice,2,16,,,2,resist reduction,-4.0,%,,Spirit Resist Reduction -4%
+ability,Shiv,Bloodletting,3,25,,,0,damage deferred,25.0,%,,Incoming Damage Deferred: 25%
+ability,Shiv,Bloodletting,3,25,,,0,damage deferred,6.0,s,,Deferred Damage Duration: 6s
+ability,Shiv,Bloodletting,3,25,,,0,damage deferred,30.0,%,,Deferred Damage Cleared: 30%
+ability,Shiv,Bloodletting,3,25,,,0,damage deferred,15.0,%,,Incoming Damage Deferred: 15%
+ability,Shiv,Bloodletting,3,25,,,2,damage deferred,40.0,%,,Deferred Damage Cleared +40%
+ability,Shiv,Bloodletting,3,25,,,3,damage deferred,15.0,%,,Incoming Damage Deferred +15%
+ability,Silver,Lycan Curse,4,60,,,0,heal,30.0,%,,Missing Health as Healing: 30%
+ability,Silver,Lycan Curse,4,60,,,1,own resist,15.0,%,,Bullet Resist +15%
+ability,Silver,Lycan Curse,4,60,,,1,own resist,15.0,%,,Spirit Resist +15%
+ability,Silver (Transformed),Go For The Throat,1,6.5,,,0,heal,40.0,,,Life Steal Percent On Hit: 40
+ability,Silver (Transformed),Go For The Throat,1,6.5,,,2,heal,25.0,,,Life Steal Percent On Hit +25
+ability,Silver (Transformed),Mauling Leap,2,16,,,0,own resist,-8.0,%,,Bullet Resist: -8%
+ability,Silver (Transformed),Mauling Leap,2,16,,,3,resist reduction,-12.0,%,,Bullet Resist Reduction -12%
+ability,Sinclair,Rabbit Hex,3,26,,6,0,damage amp on target,15.0,%,0.0558,Damage Amp: 15% (+0.0558 x spirit power)
+ability,Sinclair,Rabbit Hex,3,26,,6,3,damage amp on target,7.0,%,,Damage Amp +7%
+ability,Solomon,Kingside Knight,2,25,,,2,barrier,80.0,,,Barrier +80
+ability,The Doorman,Doorway,2,45,,,2,barrier,250.0,,1.5,Barrier +250 and +1.5 x spirit power scaling
+ability,The Doorman,Doorway,2,45,,,2,barrier,12.0,s,,Barrier Duration +12s
+ability,Venator,Consecrating Grenade,1,25,,4.5,0,anti-heal,-30.0,%,,Incoming Healing: -30%
+ability,Venator,Consecrating Grenade,1,25,,4.5,3,anti-heal,-20.0,%,,Incoming Healing -20%
+ability,Venator,Consecrating Grenade,1,25,,4.5,3,anti-heal,-20.0,%,,Healing From Regen -20%
+ability,Venator,Hex-Lined Snap Trap,3,28,2,2,3,damage amp on target,30.0,%,,Damage Taken +30%
+ability,Victor,Pain Battery,1,2,,,3,heal,15.0,%,,Missing Health as Healing +15%
+ability,Victor,Jumpstart,2,30,1,,0,heal,100.0,,1.2,Total HP Regen: 100 (+1.2 x spirit power)
+ability,Victor,Jumpstart,2,30,1,,2,heal,70.0,,,Total HP Regen +70
+ability,Victor,Jumpstart,2,30,1,,3,heal,0.0,,0.9,Total HP Regen +0.9 x spirit power scaling
+ability,Victor,Jumpstart,2,30,1,,3,debuff resist,50.0,%,,Debuff Resist +50%
+ability,Victor,Aura of Suffering,3,2,,8,3,damage amp on target,16.0,%,,Damage Taken +16%
+ability,Vindicta,Crow Familiar,3,32,,,0,own resist,-6.0,%,,Bullet Resist: -6%
+ability,Vindicta,Crow Familiar,3,32,,,0,own resist,-6.0,%,,Spirit Resist: -6%
+ability,Vindicta,Crow Familiar,3,32,,,1,anti-heal,-35.0,%,,Incoming Healing -35%
+ability,Vindicta,Crow Familiar,3,32,,,1,anti-heal,-35.0,%,,Healing From Regen -35%
+ability,Vindicta,Crow Familiar,3,32,,,3,resist reduction,-8.0,%,,Bullet Resist Reduction -8%
+ability,Vindicta,Crow Familiar,3,32,,,3,resist reduction,-8.0,%,,Spirit Resist Reduction -8%
+ability,Violet,Still Life,3,35,,,1,heal,15.0,,0.15,Health Regen +15 and +0.15 x spirit power scaling
+ability,Violet,Abstract Landscape,4,180,,,2,heal,25.0,%,,Spirit Lifesteal +25%
+ability,Viscous,The Cube,2,42,,,0,heal,40.0,,0.3,Health Regen: 40 (+0.3 x spirit power)
+ability,Viscous,The Cube,2,42,,,2,heal,25.0,,,Health Regen +25
+ability,Viscous,Puddle Punch,3,24,1,4,2,heal,60.0,,,Life Steal Percent On Hit +60
+ability,Viscous,Goo Ball,4,150,,,0,own resist,35.0,%,,Spirit Resist: 35%
+ability,Viscous,Goo Ball,4,150,,,0,own resist,35.0,%,,Bullet Resist: 35%
+ability,Viscous,Goo Ball,4,150,,,2,own resist,20.0,%,,Bullet Resist +20%
+ability,Viscous,Goo Ball,4,150,,,2,own resist,20.0,%,,Spirit Resist +20%
+ability,Vyper,Screwjab Dagger,1,10,2,,2,resist reduction,-8.0,%,,Bullet Resist Reduction -8%
+ability,Vyper,Lethal Venom,2,28,,,2,anti-heal,-40.0,%,,Healing From Regen -40%
+ability,Vyper,Lethal Venom,2,28,,,2,anti-heal,-40.0,%,,Incoming Healing -40%
+ability,Vyper,Slither,3,,,,3,barrier,180.0,,0.8,Barrier +180 and +0.8 x spirit power scaling
+ability,Warden,Willpower,2,40,,,3,debuff resist,30.0,%,,Debuff Resist +30%
+ability,Warden,Willpower,2,40,,,3,barrier,0.0,,2.1,Barrier +2.1 x spirit power scaling
+ability,Warden,Binding Word,3,34,,,1,resist reduction,20.0,%,,Bullet Resist Reduction +20%
+ability,Warden,Last Stand,4,180,,12,0,heal,75.0,%,,Hero Lifesteal: 75%
+ability,Warden,Last Stand,4,180,,12,0,heal,10.0,%,,Non-Hero Lifesteal: 10%
+ability,Warden,Last Stand,4,180,,12,0,own resist,50.0,%,,Bullet Resist: 50%
+ability,Warden,Last Stand,4,180,,12,0,own resist,50.0,%,,Spirit Resist: 50%
+ability,Warden,Last Stand,4,180,,12,3,own resist,30.0,%,,Bullet Resist +30%
+ability,Warden,Last Stand,4,180,,12,3,own resist,30.0,%,,Spirit Resist +30%
+ability,Wraith,Card Trick,1,0.6,2,4,0,resist reduction,-7.0,%,,Bullet and Spirit Resist Reduction: -7%
+ability,Wraith,Card Trick,1,0.6,2,4,0,heal,45.0,,0.5,Heal: 45 (+0.5 x spirit power)
+ability,Wraith,Card Trick,1,0.6,2,4,3,resist reduction,-4.0,%,,Bullet and Spirit Resist Reduction -4%
+ability,Wraith,Card Trick,1,0.6,2,4,3,heal,75.0,,0.5,Heal +75 and +0.5 x spirit power scaling
+ability,Wraith,Project Mind,2,50,,,2,barrier,300.0,,1.7,Barrier +300 and +1.7 x spirit power scaling
+ability,Wraith,Project Mind,2,50,,,2,barrier,5.0,s,,Barrier Duration +5s
+ability,Yamato,Power Slash,1,12,,,0,own resist,60.0,%,,Bullet Resist: 60%
+ability,Yamato,Crimson Slash,3,16,,13,0,heal,55.0,,1.0359,Heal on hero hit: 55 (+1.0359 x spirit power)
+ability,Yamato,Crimson Slash,3,16,,13,2,heal,6.0,%,,Heal on hero hit +6% of Max Health
+ability,Yamato,Crimson Slash,3,16,,13,3,heal,0.0,,0.4,Heal on hero hit +0.4 x spirit power scaling
+ability,Yamato,Shadow Transformation,4,160,,,0,heal,15.0,%,,Max HP Heal On Kill: 15%
+ability,Yamato,Shadow Transformation,4,160,,,0,own resist,30.0,%,,Bullet Resist: 30%
+ability,Yamato,Shadow Transformation,4,160,,,0,own resist,30.0,%,,Spirit Resist: 30%
+ability,Yamato,Shadow Transformation,4,160,,,3,own resist,30.0,%,,Bullet Resist +30%
+ability,Yamato,Shadow Transformation,4,160,,,3,own resist,30.0,%,,Spirit Resist +30%
+item,Weapon T1,Close Quarters,,,,,1,own resist,20.0,%,,always-on Melee Resist: 20%
+item,Weapon T1,Headshot Booster,,9,,,1,health,30.0,,,always-on bonus_health 30
+item,Weapon T1,Restorative Shot,,6,,,1,heal,50.0,,,"[Effect, 6s cooldown] Healing From Heroes: 50"
+item,Weapon T1,Restorative Shot,,6,,,1,heal,20.0,,,"[Effect, 6s cooldown] Healing From NPCs / Orbs: 20"
+item,Weapon T2,Active Reload,,12,,,2,heal,16.0,%,,"[Passive, 12s cooldown] Bullet Lifesteal: 16%"
+item,Weapon T2,Fleetfoot,,16,,,2,debuff resist,40.0,%,,"[Active, 16s cooldown] Slow Resist: 40%"
+item,Weapon T2,Fleetfoot,,16,,,2,own resist,6.0,,,always-on bullet_resist_pct 6
+item,Weapon T2,Melee Charge,,5,,,2,own resist,6.0,,,always-on bullet_resist_pct 6
+item,Weapon T2,Spirit Shredder,,,,,2,resist reduction,-8.0,%,,[Passive] Spirit Resist Reduction: -8%
+item,Weapon T2,Spirit Shredder,,,,,2,heal,10.0,%,,[Passive] Spirit Lifesteal: 10%
+item,Weapon T2,Stalker,,6,,,2,resist reduction,-6.0,%,,"[Effect, 6s cooldown] Bullet Resist Reduction: -6%"
+item,Weapon T2,Stalker,,6,,,2,health,50.0,,,always-on bonus_health 50
+item,Weapon T2,Weakening Headshot,,,,,2,resist reduction,-12.0,%,,[Passive] Bullet Resist Reduction: -12%
+item,Weapon T2,Weakening Headshot,,,,,2,health,60.0,,,always-on bonus_health 60
+item,Weapon T3,Alchemical Fire,,30,,,3,resist reduction,-7.0,%,-0.055,"[Active, 30s cooldown] Bullet Resist Reduction: -7% (+-0.055 x spirit power)"
+item,Weapon T3,Berserker,,,,,3,own resist,8.0,,,always-on bullet_resist_pct 8
+item,Weapon T3,Blood Tribute,,,,,3,debuff resist,35.0,%,,[Active] Debuff Resist: 35%
+item,Weapon T3,Blood Tribute,,,,,3,own resist,8.0,,,always-on spirit_resist_pct 8
+item,Weapon T3,Blood Tribute,,,,,3,debuff resist,8.0,%,,always-on Debuff Resist: 8%
+item,Weapon T3,Escalating Resilience,,,,,3,health,75.0,,,always-on bonus_health 75
+item,Weapon T3,Headhunter,,8,,,3,heal,4.0,%,,"[Passive, 8s cooldown] Heal Per Headshot: 4% (+0.06 x boon)"
+item,Weapon T3,Headhunter,,8,,,3,health,50.0,,,always-on bonus_health 50
+item,Weapon T3,Heroic Aura,,22,,,3,own resist,17.0,%,,[Passive] Bullet Resist: 17%
+item,Weapon T3,Hollow Point,,,,,3,resist reduction,-10.0,%,,[Passive] Bullet Resist Reduction: -10%
+item,Weapon T3,Hollow Point,,,,,3,health,125.0,,,always-on bonus_health 125
+item,Weapon T3,Hunter's Aura,,,,,3,resist reduction,-10.0,%,,[Passive] Bullet Resist Reduction: -10%
+item,Weapon T3,Hunter's Aura,,,,,3,health,100.0,,,always-on bonus_health 100
+item,Weapon T3,Point Blank,,,,,3,health,75.0,,,always-on bonus_health 75
+item,Weapon T3,Point Blank,,,,,3,own resist,30.0,%,,always-on Melee Resist: 30%
+item,Weapon T3,Spirit Rend,,2,,,3,resist reduction,-8.0,%,,[Effect] Spirit Resist Reduction: -8%
+item,Weapon T3,Spirit Rend,,2,,,3,resist reduction,-7.0,%,,"[Passive, 2s cooldown] Spirit Resist Reduction: -7%"
+item,Weapon T3,Spirit Rend,,2,,,3,heal,10.0,%,,[Effect] Spirit Lifesteal: 10%
+item,Weapon T3,Spirit Rend,,2,,,3,health,75.0,,,always-on bonus_health 75
+item,Weapon T3,Toxic Bullets,,,,,3,anti-heal,-40.0,%,,[Effect] Incoming Healing: -40%
+item,Weapon T3,Weighted Shots,,,,,3,debuff resist,22.0,%,,always-on Debuff Resist: 22%
+item,Weapon T4,Crippling Headshot,,,,,4,resist reduction,-16.0,%,,[Passive] Bullet Resist Reduction: -16%
+item,Weapon T4,Crippling Headshot,,,,,4,resist reduction,-16.0,%,,[Passive] Spirit Resist Reduction: -16%
+item,Weapon T4,Crippling Headshot,,,,,4,anti-heal,-40.0,%,,[Passive] Healing From Regen: -40%
+item,Weapon T4,Crippling Headshot,,,,,4,health,125.0,,,always-on bonus_health 125
+item,Weapon T4,Crushing Fists,,5,,,4,resist reduction,-5.0,%,,[Passive] Bullet Resist Reduction: -5%
+item,Weapon T4,Crushing Fists,,5,,,4,own resist,12.0,,,always-on bullet_resist_pct 12
+item,Weapon T4,Frenzy,,16,,,4,debuff resist,40.0,%,,"[Passive, 16s cooldown] Debuff Resist: 40%"
+item,Weapon T4,Frenzy,,16,,,4,heal,10.0,,,always-on bullet_lifesteal_pct 10
+item,Weapon T4,Frenzy,,16,,,4,health,160.0,,,always-on bonus_health 160
+item,Weapon T4,Silencer,,,,,4,own resist,12.0,,,always-on spirit_resist_pct 12
+item,Weapon T4,Spiritual Overflow,,,,,4,heal,10.0,%,,[Passive] Spirit Lifesteal: 10%
+item,Weapon T4,Spiritual Overflow,,,,,4,heal,15.0,,,always-on spirit_lifesteal_pct 15
+item,Weapon T4,Spiritual Overflow,,,,,4,health,90.0,,,always-on bonus_health 90
+item,Vitality T1,Extra Health,,,,,1,health,210.0,,,always-on bonus_health 210
+item,Vitality T1,Extra Regen,,,,,1,heal,2.5,,,always-on health_regen 2.5
+item,Vitality T1,Grit,,60,,,1,barrier,200.0,,,"[Active, 60s cooldown] Barrier: 200"
+item,Vitality T1,Grit,,60,,,1,barrier,4.0,s,,"[Active, 60s cooldown] Barrier Duration: 4s"
+item,Vitality T1,Healing Rite,,70,,,1,heal,300.0,,1.1,"[Active, 70s cooldown] Total HP Regen: 300 (+1.1 x spirit power)"
+item,Vitality T1,Healing Rite,,70,,,1,heal,20.0,s,,"[Active, 70s cooldown] Regen Duration: 20s"
+item,Vitality T1,Melee Lifesteal,,8,,,1,heal,100.0,,,"[Passive, 8s cooldown] Heal on Melee Hit: 100"
+item,Vitality T1,Rebuttal,,,,,1,heal,100.0,%,,[Passive] Damage Parried as Heal: 100%
+item,Vitality T1,Rebuttal,,,,,1,health,75.0,,,always-on bonus_health 75
+item,Vitality T1,Rebuttal,,,,,1,own resist,18.0,%,,always-on Melee Resist: 18%
+item,Vitality T2,Battle Vest,,,,,2,own resist,18.0,,,always-on bullet_resist_pct 18
+item,Vitality T2,Bullet Lifesteal,,,,,2,heal,15.0,,,always-on bullet_lifesteal_pct 15
+item,Vitality T2,Bullet Lifesteal,,,,,2,health,90.0,,,always-on bonus_health 90
+item,Vitality T2,Debuff Reducer,,,,,2,health,90.0,,,always-on bonus_health 90
+item,Vitality T2,Debuff Reducer,,,,,2,debuff resist,25.0,%,,always-on Debuff Resist: 25%
+item,Vitality T2,Enchanter's Emblem,,,,,2,own resist,18.0,,,always-on spirit_resist_pct 18
+item,Vitality T2,Enduring Speed,,,,,2,debuff resist,25.0,%,,always-on Slow Resist: 25%
+item,Vitality T2,Guardian Ward,,60,,,2,barrier,250.0,,,"[Active, 60s cooldown] Barrier: 250"
+item,Vitality T2,Healbane,,,,,2,anti-heal,-35.0,%,,[Passive] Incoming Healing: -35%
+item,Vitality T2,Healbane,,,,,2,heal,170.0,,,[Passive] Heal On Hero Kill: 170 (+3 x boon)
+item,Vitality T2,Healing Booster,,,,,2,heal,20.0,%,,always-on Outgoing Healing: 20%
+item,Vitality T2,Reactive Barrier,,55,,,2,barrier,325.0,,1.8,"[Passive, 55s cooldown] Barrier: 325 (+1.8 x spirit power)"
+item,Vitality T2,Reactive Barrier,,55,,,2,barrier when controlled,,,,"effect text: [Passive, 55s cooldown] Gain a Barrier when you are Stunned, Chained, Immobilized, Slept or Silenced."
+item,Vitality T2,Restorative Locket,,20,,,2,heal,16.0,,,"[Active, 20s cooldown] Heal Per Stack: 16 (+0.45 x boon)"
+item,Vitality T2,Restorative Locket,,20,,,2,own resist,8.0,,,always-on spirit_resist_pct 8
+item,Vitality T2,Return Fire,,23,,,2,own resist,10.0,,,always-on bullet_resist_pct 10
+item,Vitality T2,Spirit Lifesteal,,,,,2,heal,15.0,,,always-on spirit_lifesteal_pct 15
+item,Vitality T2,Spirit Lifesteal,,,,,2,health,90.0,,,always-on bonus_health 90
+item,Vitality T2,Spirit Shielding,,45,,,2,barrier,300.0,,,"[Passive, 45s cooldown] Barrier: 300 (+5 x boon)"
+item,Vitality T2,Spirit Shielding,,45,,,2,own resist,15.0,%,,"[Passive, 45s cooldown] Spirit Resist: 15%"
+item,Vitality T2,Spirit Shielding,,45,,,2,barrier,8.0,s,,"[Passive, 45s cooldown] Barrier Duration: 8s"
+item,Vitality T2,Weapon Shielding,,35,,,2,barrier,300.0,,,"[Passive, 35s cooldown] Barrier: 300 (+5 x boon)"
+item,Vitality T2,Weapon Shielding,,35,,,2,own resist,18.0,%,,"[Passive, 35s cooldown] Bullet Resist: 18%"
+item,Vitality T2,Weapon Shielding,,35,,,2,barrier,8.0,s,,"[Passive, 35s cooldown] Barrier Duration: 8s"
+item,Vitality T3,Bullet Resilience,,,,,3,own resist,15.0,,,[Passive] Bullet Resist: 15
+item,Vitality T3,Bullet Resilience,,,,,3,own resist,35.0,,,always-on bullet_resist_pct 35
+item,Vitality T3,Counterspell,,23,,,3,heal,150.0,,,"[Passive, 23s cooldown] Healing: 150"
+item,Vitality T3,Counterspell,,23,,,3,health,50.0,,,always-on bonus_health 50
+item,Vitality T3,Dispel Magic,,45,,,3,heal,250.0,,,"[Active, 45s cooldown] Heal Amount: 250"
+item,Vitality T3,Dispel Magic,,45,,,3,own resist,10.0,,,always-on spirit_resist_pct 10
+item,Vitality T3,Dispel Magic,,45,,,3,cleanse (active),,,,"effect text: [Active, 45s cooldown] Purge all non-ultimate negative effects currently applied to you. If any effects were removed, heal yourself and gain a move speed bonus. Cannot be used whil"
+item,Vitality T3,Fortitude,,,,,3,heal,2.25,%,,[Passive] Max Health Regen: 2.25%
+item,Vitality T3,Fortitude,,,,,3,health,375.0,,,always-on bonus_health 375
+item,Vitality T3,Fury Trance,,18,,,3,own resist,40.0,%,,"[Active, 18s cooldown] Spirit Resist: 40%"
+item,Vitality T3,Fury Trance,,18,,,3,heal,15.0,,,always-on bullet_lifesteal_pct 15
+item,Vitality T3,Fury Trance,,18,,,3,health,100.0,,,always-on bonus_health 100
+item,Vitality T3,Healing Nova,,60,,,3,heal,325.0,,1.1,"[Active, 60s cooldown] Total HP Regen: 325 (+1.1 x spirit power)"
+item,Vitality T3,Healing Nova,,60,,,3,heal,2.0,s,,"[Active, 60s cooldown] Regen Duration: 2s"
+item,Vitality T3,Lifestrike,,4,,,3,heal,120.0,,,"[Passive, 4s cooldown] Heal on Melee Hit: 120 (+1.75 x boon)"
+item,Vitality T3,Lifestrike,,4,,,3,heal,35.0,%,,"[Passive, 4s cooldown] Melee Hit Heal: 35% (+0.5 x boon)"
+item,Vitality T3,Lifestrike,,4,,,3,health,125.0,,,always-on bonus_health 125
+item,Vitality T3,Majestic Leap,,45,,,3,barrier,200.0,,,"[Active, 45s cooldown] Barrier: 200 (+12 x boon)"
+item,Vitality T3,Majestic Leap,,45,,,3,barrier,8.0,s,,"[Active, 45s cooldown] Barrier Duration: 8s"
+item,Vitality T3,Metal Skin,,24,,,3,own resist,12.0,,,always-on bullet_resist_pct 12
+item,Vitality T3,Metal Skin,,24,,,3,bullet immunity (active),,,,"effect text: [Active, 24s cooldown] Become immune to bullets."
+item,Vitality T3,Rescue Beam,,60,,,3,heal,20.0,%,,"[Active, 60s cooldown] Heal Amount: 20%"
+item,Vitality T3,Spirit Resilience,,,,,3,own resist,15.0,,,[Passive] Spirit Resist: 15
+item,Vitality T3,Spirit Resilience,,,,,3,own resist,30.0,,,always-on spirit_resist_pct 30
+item,Vitality T3,Veil Walker,,15,,,3,heal,85.0,,,"[Passive, 15s cooldown] Heal: 85 (+8 x boon)"
+item,Vitality T3,Veil Walker,,15,,,3,health,125.0,,,always-on bonus_health 125
+item,Vitality T3,Warp Stone,,16,,,3,own resist,30.0,%,,"[Active, 16s cooldown] Bullet Resist: 30%"
+item,Vitality T4,Cheat Death,,90,,,4,own resist,-60.0,%,,"[Passive, 90s cooldown] Damage Reduction: -60%"
+item,Vitality T4,Cheat Death,,90,,,4,own resist,15.0,,,always-on bullet_resist_pct 15
+item,Vitality T4,Cheat Death,,90,,,4,health,200.0,,,always-on bonus_health 200
+item,Vitality T4,Cheat Death,,90,,,4,death immunity,,,,"effect text: [Passive, 90s cooldown] When you would take lethal damage, instead become temporarily death immune and remove all non-stun debuffs. While death immune, you deal reduced damage and "
+item,Vitality T4,Colossus,,37,,,4,own resist,35.0,%,,"[Active, 37s cooldown] Bullet Resist: 35%"
+item,Vitality T4,Colossus,,37,,,4,own resist,35.0,%,,"[Active, 37s cooldown] Spirit Resist: 35%"
+item,Vitality T4,Divine Barrier,,55,,,4,barrier,600.0,,,"[Active, 55s cooldown] Barrier: 600"
+item,Vitality T4,Divine Barrier,,55,,,4,"cleanse non-stun (active, ally)",,,,"effect text: [Active, 55s cooldown] Remove all non-stun debuffs from the target and provide them with a Barrier and Move Speed. Can be self-cast. Cooldown is reduced by half when cast on someon"
+item,Vitality T4,Diviner's Kevlar,,40,,,4,barrier,1000.0,,,"[Passive, 40s cooldown] Barrier: 1000"
+item,Vitality T4,Healing Tempo,,1,,,4,own resist,10.0,,,always-on spirit_resist_pct 10
+item,Vitality T4,Healing Tempo,,1,,,4,heal,6.0,,,always-on health_regen 6
+item,Vitality T4,Healing Tempo,,1,,,4,heal,25.0,%,,always-on Outgoing Healing: 25%
+item,Vitality T4,Indomitable,,55,,,4,barrier,325.0,,2.0,"[Effect, 55s cooldown] Barrier: 325 (+2 x spirit power)"
+item,Vitality T4,Indomitable,,55,,,4,own resist,10.0,,,always-on bullet_resist_pct 10
+item,Vitality T4,Indomitable,,55,,,4,own resist,10.0,,,always-on spirit_resist_pct 10
+item,Vitality T4,Indomitable,,55,,,4,control cleanse (automatic),,,,"effect text: [Effect, 55s cooldown] The next Stun, Chain, Immobilize, Sleep, Silence or Fear is automatically cleansed. When this happens, you gain a barrier and all your ability cooldowns get "
+item,Vitality T4,Infuser,,30,,,4,heal,75.0,%,,"[Active, 30s cooldown] Spirit Lifesteal: 75%"
+item,Vitality T4,Infuser,,30,,,4,own resist,10.0,,,always-on spirit_resist_pct 10
+item,Vitality T4,Infuser,,30,,,4,health,100.0,,,always-on bonus_health 100
+item,Vitality T4,Infuser,,30,,,4,heal,15.0,%,,always-on Spirit Lifesteal: 15%
+item,Vitality T4,Inhibitor,,,,,4,anti-heal,-40.0,%,,[Passive] Incoming Healing: -40%
+item,Vitality T4,Inhibitor,,,,,4,health,150.0,,,always-on bonus_health 150
+item,Vitality T4,Juggernaut,,,,,4,heal,15.0,,,always-on health_regen 15
+item,Vitality T4,Juggernaut,,,,,4,debuff resist,50.0,%,,always-on Slow Resist: 50%
+item,Vitality T4,Juggernaut,,,,,4,own resist,25.0,%,,always-on Melee Resist: 25%
+item,Vitality T4,Leech,,,,,4,heal,30.0,,,always-on bullet_lifesteal_pct 30
+item,Vitality T4,Leech,,,,,4,heal,30.0,,,always-on spirit_lifesteal_pct 30
+item,Vitality T4,Leech,,,,,4,health,180.0,,,always-on bonus_health 180
+item,Vitality T4,Plated Armor,,1,,,4,health,130.0,,,always-on bonus_health 130
+item,Vitality T4,Siphon Bullets,,1.2,,,4,own resist,10.0,,,always-on bullet_resist_pct 10
+item,Vitality T4,Spellbreaker,,9,,,4,own resist,18.0,,,always-on spirit_resist_pct 18
+item,Vitality T4,Spellbreaker,,9,,,4,health,90.0,,,always-on bonus_health 90
+item,Vitality T4,Spellbreaker,,9,,,4,debuff resist,25.0,%,,always-on Debuff Resist: 25%
+item,Vitality T4,Unstoppable,,60,,,4,health,125.0,,,always-on bonus_health 125
+item,Vitality T4,Unstoppable,,60,,,4,debuff resist,25.0,%,,always-on Debuff Resist: 25%
+item,Vitality T4,Unstoppable,,60,,,4,control immunity (active),,,,"effect text: [Active, 60s cooldown] Temporarily suppress negative status effects and become immune to Stun, Silence, Sleep, Root, and Disarm. Cannot be used while Stunned or Slept."
+item,Vitality T4,Vampiric Burst,,30,,,4,heal,75.0,%,,"[Active, 30s cooldown] Bullet Lifesteal: 75%"
+item,Vitality T4,Vampiric Burst,,30,,,4,own resist,10.0,,,always-on bullet_resist_pct 10
+item,Vitality T4,Vampiric Burst,,30,,,4,heal,15.0,,,always-on bullet_lifesteal_pct 15
+item,Vitality T4,Vampiric Burst,,30,,,4,health,100.0,,,always-on bonus_health 100
+item,Vitality T4,Witchmail,,1,,,4,own resist,22.0,,,always-on spirit_resist_pct 22
+item,Spirit T1,Mystic Regeneration,,,,,1,heal,4.0,,,[Passive] Regeneration: 4HP/s
+item,Spirit T1,Mystic Regeneration,,,,,1,heal,7.0,s,,[Passive] Regeneration Duration: 7s
+item,Spirit T1,Mystic Regeneration,,,,,1,health,50.0,,,always-on bonus_health 50
+item,Spirit T1,Rusted Barrel,,16,,,1,resist reduction,-8.0,%,,"[Active, 16s cooldown] Bullet Resist Reduction: -8%"
+item,Spirit T1,Rusted Barrel,,16,,,1,health,60.0,,,always-on bonus_health 60
+item,Spirit T1,Spirit Strike,,8,,,1,resist reduction,-6.0,%,,"[Passive, 8s cooldown] Spirit Resist Reduction: -6%"
+item,Spirit T2,Bullet Resist Shredder,,,,,2,resist reduction,-10.0,%,,[Passive] Bullet Resist Reduction: -10%
+item,Spirit T2,Bullet Resist Shredder,,,,,2,own resist,9.0,,,always-on bullet_resist_pct 9
+item,Spirit T2,Cold Front,,25,,,2,own resist,6.0,,,always-on spirit_resist_pct 6
+item,Spirit T2,Mystic Slow,,,,,2,health,50.0,,,always-on bonus_health 50
+item,Spirit T2,Mystic Vulnerability,,,,,2,resist reduction,-8.0,%,,[Passive] Spirit Resist Reduction: -8%
+item,Spirit T2,Mystic Vulnerability,,,,,2,own resist,8.0,,,always-on spirit_resist_pct 8
+item,Spirit T2,Spirit Sap,,22,,,2,resist reduction,-9.0,%,,"[Active, 22s cooldown] Spirit Resist Reduction: -9%"
+item,Spirit T2,Spirit Sap,,22,,,2,health,50.0,,,always-on bonus_health 50
+item,Spirit T2,Suppressor,,,,,2,own resist,8.0,,,always-on bullet_resist_pct 8
+item,Spirit T3,Decay,,30,,,3,anti-heal,-55.0,%,,"[Active, 30s cooldown] Incoming Healing: -55%"
+item,Spirit T3,Decay,,30,,,3,health,65.0,,,always-on bonus_health 65
+item,Spirit T3,Disarming Hex,,16,,,3,resist reduction,-13.0,%,,"[Active, 16s cooldown] Bullet Resist Reduction: -13%"
+item,Spirit T3,Disarming Hex,,16,,,3,health,75.0,,,always-on bonus_health 75
+item,Spirit T3,Greater Expansion,,,,,3,own resist,10.0,,,always-on spirit_resist_pct 10
+item,Spirit T3,Knockdown,,35,,,3,health,75.0,,,always-on bonus_health 75
+item,Spirit T3,Radiant Regeneration,,6,,,3,heal,4.0,,0.025,[Passive] Regeneration: 4HP/s (+0.025 x spirit power)
+item,Spirit T3,Radiant Regeneration,,6,,,3,heal,7.0,s,,[Passive] Regeneration Duration: 7s
+item,Spirit T3,Radiant Regeneration,,6,,,3,heal,40.0,,,"[Effect, 6s cooldown] Healing Per Cast: 40 (+1.4 x boon)"
+item,Spirit T3,Radiant Regeneration,,6,,,3,health,90.0,,,always-on bonus_health 90
+item,Spirit T3,Silence Wave,,42,,,3,health,90.0,,,always-on bonus_health 90
+item,Spirit T3,Spirit Snatch,,6,,,3,health,75.0,,,always-on bonus_health 75
+item,Spirit T3,Superior Duration,,,,,3,own resist,8.0,,,always-on bullet_resist_pct 8
+item,Spirit T3,Tankbuster,,14,,,3,health,50.0,,,always-on bonus_health 50
+item,Spirit T3,Torment Pulse,,1.4,,,3,health,100.0,,,always-on bonus_health 100
+item,Spirit T3,Torment Pulse,,1.4,,,3,own resist,22.0,%,,always-on Melee Resist: 22%
+item,Spirit T4,Arctic Blast,,24,,,4,own resist,10.0,,,always-on spirit_resist_pct 10
+item,Spirit T4,Boundless Spirit,,,,,4,health,75.0,,,always-on bonus_health 75
+item,Spirit T4,Echo Shard,,30,,,4,own resist,5.0,,,always-on bullet_resist_pct 5
+item,Spirit T4,Echo Shard,,30,,,4,own resist,5.0,,,always-on spirit_resist_pct 5
+item,Spirit T4,Escalating Exposure,,0.7,,,4,resist reduction,-8.0,%,,[Innate] Spirit Resist Reduction: -8%
+item,Spirit T4,Escalating Exposure,,0.7,,,4,damage amp on target,4.5,%,,"[Passive, 0.7s cooldown] Spirit Amp per Stack: 4.5%"
+item,Spirit T4,Escalating Exposure,,0.7,,,4,own resist,17.0,,,always-on spirit_resist_pct 17
+item,Spirit T4,Ethereal Shift,,37,,,4,own resist,30.0,%,,"[Active, 37s cooldown] Spirit Resist: 30%"
+item,Spirit T4,Ethereal Shift,,37,,,4,invulnerability (active),,,,"effect text: [Active] Instantly enter a void state and become Invulnerable for a short duration. | [Active, 37s cooldown] Afterwards, gain a variety of temporary buffs:"
+item,Spirit T4,Focus Lens,,40,,,4,resist reduction,-9.0,%,,"[Active, 40s cooldown] Spirit Resist Reduction: -9%"
+item,Spirit T4,Lightning Scroll,,,,,4,health,50.0,,,always-on bonus_health 50
+item,Spirit T4,Magic Carpet,,32,,,4,health,125.0,,,always-on bonus_health 125
+item,Spirit T4,Mystic Reverb,,6.25,,,4,heal,22.0,%,,"[Passive, 6.25s cooldown] Imbued Lifesteal: 22%"
+item,Spirit T4,Mystic Reverb,,6.25,,,4,heal,8.0,,,always-on spirit_lifesteal_pct 8
+item,Spirit T4,Scourge,,35,,,4,own resist,40.0,%,,"[Active, 35s cooldown] Spirit Resist: 40%"
+item,Spirit T4,Scourge,,35,,,4,debuff resist,20.0,%,,"[Active, 35s cooldown] Debuff Resist: 20%"
+item,Spirit T4,Scourge,,35,,,4,health,100.0,,,always-on bonus_health 100
+item,Spirit T4,Spirit Burn,,,,,4,anti-heal,-70.0,%,,[Passive] Incoming Healing: -70%

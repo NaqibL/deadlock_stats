@@ -1,0 +1,353 @@
+source,owner,name,slot,cooldown,charges,radius,tier,property,kind,damage_type,base,spirit_coef,weapon_pct_coef,melee_coef,boon_coef,gain_per_100_sp,other_scaling,raw
+ability,Abrams,Siphon Life,1,42,,8,0,Damage Per Second,per second,spirit,22.0,0.6,,,,272.7273,,dps 22
+ability,Abrams,Siphon Life,1,42,,8,3,Damage Per Second,per second,spirit,22.0,0.12,,,,,,Damage Per Second +22 and +0.12 x spirit power scaling
+ability,Abrams,Shoulder Charge,2,33,,,0,Damage,flat,spirit,30.0,1.4,,,,466.6667,,damage 30
+ability,Abrams,Shoulder Charge,2,33,,,3,Weapon Damage,gun buff per bullet,bullet,1.5,,,,,,,Weapon Damage +1.5
+ability,Abrams,Seismic Impact,4,215,,,0,Damage,flat,spirit,100.0,2.325,,,,232.5,,damage 100
+ability,Apollo,Disengaging Sigil,1,12,,,0,Damage,flat,spirit,85.0,1.3,,,,152.9412,,damage 85
+ability,Apollo,Flawless Advance,3,26,,,0,Base Hold Damage,flat,spirit,25.0,0.55,,,,220.0,,Base Hold Damage: 25 (+0.55 x spirit power)
+ability,Apollo,Flawless Advance,3,26,,,0,Max Hold Damage,flat,spirit,40.0,0.9,,,,225.0,,Max Hold Damage: 40 (+0.9 x spirit power)
+ability,Apollo,Flawless Advance,3,26,,,0,Perfect Damage,flat,spirit,65.0,1.55,,,,238.4615,,Perfect Damage: 65 (+1.55 x spirit power)
+ability,Apollo,Flawless Advance,3,26,,,3,Base Damage,flat,spirit,30.0,1.15,,,,,,Base Damage +30 and +1.15 x spirit power scaling
+ability,Apollo,Flawless Advance,3,26,,,3,Max Hold Damage,flat,spirit,45.0,1.15,,,,,,Max Hold Damage +45 and +1.15 x spirit power scaling
+ability,Apollo,Flawless Advance,3,26,,,3,Perfect Damage,flat,spirit,65.0,1.15,,,,,,Perfect Damage +65 and +1.15 x spirit power scaling
+ability,Baba,Threadsap,1,28,1,,0,Damage,flat,spirit,50.0,,,,,,Max Stacks: 2 per boon; Tech Power Gain: 0.9 per boon,damage 50
+ability,Baba,Threadsap,1,28,1,,0,Spirit Damage Per Bullet,per bullet,spirit,8.0,0.26,,,,325.0,Max Stacks: 2 per boon; Tech Power Gain: 0.9 per boon,Spirit Damage Per Bullet: 8 (+0.26 x spirit power)
+ability,Baba,Threadsap,1,28,1,,1,Spirit Damage Per Bullet,per bullet,spirit,8.0,,,,,,Max Stacks: 2 per boon; Tech Power Gain: 0.9 per boon,Spirit Damage Per Bullet +8
+ability,Baba,Granny Long Legs,2,32,,8,0,Heavy Melee Damage,flat,spirit,75.0,0.6,,,,80.0,,Heavy Melee Damage: 75 (+0.6 x spirit power)
+ability,Baba,Baba's Brew,3,28,,6,0,Burn DPS,per second,spirit,12.0,0.13,,,,108.3333,,Burn DPS: 12 (+0.13 x spirit power)
+ability,Baba,Baba's Brew,3,28,,6,3,Damage Per Second,per second,spirit,1.3333,1.3333,,,,,,Damage Per Second +1.3333 and +1.3333 x spirit power scaling
+ability,Baba,Feed The Birds,4,150,,,0,Max Damage,flat,spirit,450.0,1.6,,,,35.5556,,Max Damage: 450 (+1.6 x spirit power)
+ability,Baba,Feed The Birds,4,150,,,3,Barrage Max Damage,flat,spirit,125.0,1.5,,,,,,Barrage Max Damage +125 and +1.5 x spirit power scaling
+ability,Bebop,Exploding Uppercut,1,22,,,0,Uppercut Damage,flat,melee,0.01,,,1.0,,,Uppercut Damage: 1 per light melee damage,Uppercut Damage: 0.01 (+1 x light melee damage)
+ability,Bebop,Exploding Uppercut,1,22,,,0,Area Damage,flat,melee,75.0,0.6,,,,80.0,Uppercut Damage: 1 per light melee damage,Area Damage: 75 (+0.6 x spirit power)
+ability,Bebop,Sticky Bomb,2,18,,8,0,Damage,flat,spirit,85.0,1.5,,,,176.4706,,damage 85
+ability,Bebop,Sticky Bomb,2,18,,8,2,Damage,flat,spirit,85.0,,,,,,,Damage +85
+ability,Bebop,Grapple Arm,3,23,,,0,Damage,flat,melee,0.0,,,0.7,,,Damage: 0.7 per light melee damage,other_scaling Damage: 0.7 per light melee damage
+ability,Bebop,Hyper Beam,4,120,,,0,Damage Per Second,per second,spirit,160.0,2.511,,,,156.9375,,dps 160
+ability,Bebop,Hyper Beam,4,120,,,2,Damage Per Second,per second,spirit,108.0,,,,,,,Damage Per Second +108
+ability,Billy,Bashdown,1,35,1,,0,Damage,flat,melee,35.0,1.1,,,,314.2857,Melee Damage: 0.9 per light melee damage,damage 35
+ability,Billy,Bashdown,1,35,1,,0,Melee Damage,flat,melee,0.0,,,0.9,,,Melee Damage: 0.9 per light melee damage,Melee Damage: 0 (+0.9 x light melee damage)
+ability,Billy,Bashdown,1,35,1,,3,Heavy Melee Damage,flat,melee,0.0,,,,,,Melee Damage: 0.9 per light melee damage,Heavy Melee Damage +0.5 x heavy melee damage scaling
+ability,Billy,Rising Ram,2,32,,,0,Damage,flat,spirit,40.0,1.9,,,,475.0,,damage 40
+ability,Billy,Chain Gang,4,175,,,0,Damage,flat,spirit,120.0,0.7,,,,58.3333,,damage 120
+ability,Calico,Gloom Bombs,1,14,,3,0,Damage,flat,spirit,45.0,0.644,,,,143.1111,,damage 45
+ability,Calico,Leaping Slash,2,13,,,0,Impact Damage,flat,melee,10.0,,,0.8,,,Impact Damage: 0.8 per light melee damage,Impact Damage: 10 (+0.8 x light melee damage)
+ability,Calico,Leaping Slash,2,13,,,3,Impact Damage,flat,melee,90.0,,,,,,Impact Damage: 0.8 per light melee damage,Impact Damage +90
+ability,Calico,Return to Shadows,4,115,,7.5,0,Damage,flat,spirit,150.0,0.6093,,,,40.62,,damage 150
+ability,Calico,Return to Shadows,4,115,,7.5,2,Damage,flat,spirit,75.0,,,,,,,Damage +75
+ability,Celeste,Light Eater,1,20,,,0,Damage,flat,spirit,15.0,0.34,,,,226.6667,,damage 15
+ability,Celeste,Light Eater,1,20,,,0,Flare Damage,flat,spirit,40.0,0.47,,,,117.5,,Flare Damage: 40 (+0.47 x spirit power)
+ability,Celeste,Light Eater,1,20,,,3,Damage,flat,spirit,22.0,0.2,,,,,,Damage +22 and +0.2 x spirit power scaling
+ability,Celeste,Radiant Daggers,3,33,1,,0,Impact Damage,flat,spirit,55.0,0.63,,,,114.5455,,Impact Damage: 55 (+0.63 x spirit power)
+ability,Celeste,Radiant Daggers,3,33,1,,2,Impact Damage,flat,spirit,70.0,,,,,,,Impact Damage +70
+ability,Celeste,Shining Wonder,4,170,,,0,Damage,flat,spirit,125.0,0.6,,,,48.0,,damage 125
+ability,Celeste,Shining Wonder,4,170,,,2,Damage,flat,spirit,90.0,0.45,,,,,,Damage +90 and +0.45 x spirit power scaling
+ability,Deadman Danny,Strix Salvo,1,25,,,0,Damage,flat,spirit,27.0,0.681,,,,252.2222,,damage 27
+ability,Deadman Danny,Strix Salvo,1,25,,,0,Marked Damage,flat,spirit,45.0,1.012,,,,224.8889,,Marked Damage: 45 (+1.012 x spirit power)
+ability,Deadman Danny,Strix Salvo,1,25,,,2,Damage,flat,spirit,30.0,,,,,,,Damage +30
+ability,Deadman Danny,Strix Salvo,1,25,,,2,Marked Damage,flat,spirit,45.0,,,,,,,Marked Damage +45
+ability,Deadman Danny,Strix Salvo,1,25,,,3,Marked Damage,flat,spirit,0.0,0.322,,,,,,Marked Damage +0.322 x spirit power scaling
+ability,Deadman Danny,Strix Salvo,1,25,,,3,Damage,flat,spirit,0.0,0.322,,,,,,Damage +0.322 x spirit power scaling
+ability,Deadman Danny,Chimera Mk1,2,21,,8,0,Explosion Damage,flat,weapon,70.0,1.5,1.4,,,214.2857,Cooldown: -0.45 per boon; Explosion Damage: 1.4 per weapon damage %,Explosion Damage: 70 (+1.5 x spirit power) || Explosion Damage: 70 (+1.4 x weapon damage %)
+ability,Deadman Danny,Chimera Mk1,2,21,,8,3,Explosion Damage,flat,weapon,120.0,,,,,,Cooldown: -0.45 per boon; Explosion Damage: 1.4 per weapon damage %,Explosion Damage +120
+ability,Deadman Danny,Jettison Fuel,3,22,,,0,Damage Per Second,per second,weapon,30.0,,0.8,,,,Damage Per Second: 0.8 per weapon damage %,dps 30
+ability,Deadman Danny,Jettison Fuel,3,22,,,0,Burst Damage,flat,weapon,35.0,0.95,,,,271.4286,Damage Per Second: 0.8 per weapon damage %,Burst Damage: 35 (+0.95 x spirit power)
+ability,Deadman Danny,Jettison Fuel,3,22,,,2,Burst Damage,flat,weapon,60.0,,,,,,Damage Per Second: 0.8 per weapon damage %,Burst Damage +60
+ability,Deadman Danny,Close The Deal,4,135,,,0,Damage,flat,spirit,70.0,1.0,,,,142.8571,,damage 70
+ability,Deadman Danny,Close The Deal,4,135,,,0,Falling Damage,flat,spirit,3.0,0.09,,,,300.0,,Falling Damage: 3/ meter (+0.09 x spirit power)
+ability,Deadman Danny,Close The Deal,4,135,,,1,Damage,flat,spirit,90.0,,,,,,,Damage +90
+ability,Deadman Danny,Close The Deal,4,135,,,3,Falling Damage,flat,spirit,8.0,,,,,,,Falling Damage +8/ meter
+ability,Drifter,Rend,1,16,,,0,Damage,flat,melee,40.0,1.4,,1.2,,350.0,Damage: 1.2 per light melee damage,Damage: 40 (+1.4 x spirit power)
+ability,Drifter,Rend,1,16,,,1,Bonus Damage,flat,melee,40.0,,,,,,Damage: 1.2 per light melee damage,Bonus Damage +40
+ability,Drifter,Rend,1,16,,,3,Damage,flat,melee,0.0,,,,,,Damage: 1.2 per light melee damage,Damage +0.55 x heavy melee damage scaling
+ability,Drifter,Stalker's Mark,2,26,,,0,Bleed Damage,target health %,target health %,2.0,0.015,,,,75.0,,Bleed Damage: 2% DPS (+0.015 x spirit power)
+ability,Drifter,Stalker's Mark,2,26,,,3,Bleed Damage,target health %,target health %,1.5,,,,,,,Bleed Damage +1.5% DPS
+ability,Dynamo,Kinetic Pulse,1,26,1,,0,Damage,flat,spirit,115.0,1.55,,,,134.7826,,damage 115
+ability,Dynamo,Kinetic Pulse,1,26,1,,3,Damage,flat,spirit,135.0,,,,,,,Damage +135
+ability,Dynamo,Singularity,4,250,,,0,Damage Per Second,per second,spirit,75.0,0.28,,,,37.3333,,dps 75
+ability,Dynamo,Singularity,4,250,,,3,Max Health as Damage,target health %,target health %,6.0,,,,,,,Max Health as Damage +6%
+ability,Graves,Jar of Dead,1,,4,,0,Damage,flat,spirit,16.0,0.25,,,,156.25,,damage 16
+ability,Graves,Grasping Hands,2,34,,,0,Damage,flat,spirit,90.0,1.6,,,,177.7778,,damage 90
+ability,Graves,Grasping Hands,2,34,,,2,Damage,flat,spirit,90.0,,,,,,,Damage +90
+ability,Graves,Borrowed Decree,4,140,,,0,Damage,flat,spirit,115.0,1.27,,,,110.4348,Summon Health: 8 per boon,damage 115
+ability,Graves,Borrowed Decree,4,140,,,0,Melee Damage,flat,spirit,40.0,0.5,,,,125.0,Summon Health: 8 per boon,Melee Damage: 40 (+0.5 x spirit power)
+ability,Graves,Borrowed Decree,4,140,,,3,Current Health as Damage,target health %,target health %,5.0,,,,,,Summon Health: 8 per boon,Current Health as Damage +5%
+ability,Grey Talon,Charged Shot,1,17,1,,0,Damage,flat,spirit,80.0,1.0,,,,125.0,,damage 80
+ability,Grey Talon,Charged Shot,1,17,1,,2,Damage,flat,spirit,54.0,,,,,,,Damage +54
+ability,Grey Talon,Charged Shot,1,17,1,,3,Damage,flat,spirit,0.0,1.0,,,,,,Damage +1 x spirit power scaling
+ability,Grey Talon,Rain of Arrows,2,25,,,0,Weapon Damage,gun buff per bullet,bullet,3.0,,,,,,,Weapon Damage: 3
+ability,Grey Talon,Rain of Arrows,2,25,,,1,Weapon Damage,gun buff per bullet,bullet,3.0,,,,,,,Weapon Damage +3
+ability,Grey Talon,Spirit Snare,3,34,,6.5,0,Damage,flat,spirit,25.0,,,,,,,damage 25
+ability,Grey Talon,Guided Owl,4,125,,,0,Damage,flat,spirit,230.0,0.9374,,,,40.7565,,damage 230
+ability,Grey Talon,Guided Owl,4,125,,,1,Damage,flat,spirit,85.0,,,,,,,Damage +85
+ability,Haze,Sleep Dagger,1,30,,,0,Damage,flat,spirit,65.0,2.2,,,,338.4615,,damage 65
+ability,Haze,Fixation,3,,,,0,Weapon Damage,gun buff per bullet,bullet,0.2,,,,,,,Weapon Damage: 0.2/stack
+ability,Haze,Fixation,3,,,,1,Spirit Damage,flat,weapon,40.0,0.8,,,,,,Spirit Damage +40 and +0.8 x spirit power scaling
+ability,Haze,Fixation,3,,,,3,Weapon Damage,gun buff per bullet,bullet,0.11,,,,,,,Weapon Damage +0.11/stack and +0.00035 x weapon damage % scaling
+ability,Haze,Bullet Dance,4,165,,16,0,Bullet Damage,gun buff per bullet,bullet,7.0,,,,,,,Bullet Damage: 7
+ability,Haze,Bullet Dance,4,165,,16,1,Weapon Damage,gun buff per bullet,bullet,7.0,,,,,,,Weapon Damage +7
+ability,Holliday,Powder Keg,1,28,2,6,0,Damage Per Second,per second,spirit,13.3333,0.175,,,,131.2503,,dps 13.3333
+ability,Holliday,Powder Keg,1,28,2,6,0,Impact Damage,flat,spirit,40.0,0.525,,,,131.25,,Impact Damage: 40 (+0.525 x spirit power)
+ability,Holliday,Powder Keg,1,28,2,6,3,Impact Damage,flat,spirit,40.0,0.25,,,,,,Impact Damage +40 and +0.25 x spirit power scaling
+ability,Holliday,Powder Keg,1,28,2,6,3,Damage Per Second,per second,spirit,13.3333,0.0833,,,,,,Damage Per Second +13.3333 and +0.0833 x spirit power scaling
+ability,Holliday,Bounce Pad,2,41,1,9,0,Stomp Damage,flat,spirit,60.0,0.372,,,,62.0,,Stomp Damage: 60 (+0.372 x spirit power)
+ability,Holliday,Crackshot,3,20,,,0,Damage,flat,weapon,55.0,1.116,,,,202.9091,,damage 55
+ability,Holliday,Crackshot,3,20,,,2,Damage,flat,weapon,49.5,,,,,,,Damage +49.5
+ability,Holliday,Spirit Lasso,4,130,,,0,Damage,flat,spirit,80.0,0.93,,,,116.25,,damage 80
+ability,Holliday,Spirit Lasso,4,130,,,1,Damage,flat,spirit,80.0,,,,,,,Damage +80
+ability,Infernus,Napalm,1,25,1,,0,Damage,flat,spirit,40.0,0.6,,,,150.0,,damage 40
+ability,Infernus,Flame Dash,2,38,,,0,Damage Per Second,per second,spirit,30.0,0.7,,,,233.3333,,dps 30
+ability,Infernus,Flame Dash,2,38,,,2,Damage Per Second,per second,spirit,20.0,,,,,,,Damage Per Second +20
+ability,Infernus,Afterburn,3,,,,0,Damage Per Second,per second,spirit,14.0,0.66,,,,471.4286,,dps 14
+ability,Infernus,Afterburn,3,,,,1,Damage Per Second,per second,spirit,16.0,,,,,,,Damage Per Second +16
+ability,Infernus,Concussive Combustion,4,190,,12,0,Damage,flat,spirit,125.0,0.9749,,,,77.992,,damage 125
+ability,Infernus,Concussive Combustion,4,190,,12,1,Damage,flat,spirit,100.0,,,,,,,Damage +100
+ability,Infernus,Concussive Combustion,4,190,,12,3,Damage,flat,spirit,0.0,0.4,,,,,,Damage +0.4 x spirit power scaling
+ability,Ivy,Entangling Thorns,1,32,1,6,0,Damage Per Second,per second,spirit,40.0,0.55,,,,137.5,,dps 40
+ability,Ivy,Entangling Thorns,1,32,1,6,2,Damage Per Second,per second,spirit,0.0,0.5,,,,,,Damage Per Second +0.5 x spirit power scaling
+ability,Ivy,Stone Form,3,40,,5.75,0,Damage,flat,spirit,75.0,0.6,,,,80.0,,damage 75
+ability,Ivy,Stone Form,3,40,,5.75,3,Damage,flat,spirit,0.0,1.5,,,,,,Damage +1.5 x spirit power scaling
+ability,Ivy,Air Drop,4,100,,,0,Explode Damage,flat,spirit,115.0,0.7,,,,60.8696,,Explode Damage: 115 (+0.7 x spirit power)
+ability,Ivy,Air Drop,4,100,,,3,Explode Damage,flat,spirit,0.0,1.5,,,,,,Explode Damage +1.5 x spirit power scaling
+ability,Kelvin,Frost Grenade,1,30,2,6.5,0,Damage,flat,spirit,60.0,0.6,,,,100.0,,damage 60
+ability,Kelvin,Frost Grenade,1,30,2,6.5,1,Damage,flat,spirit,30.0,,,,,,,Damage +30
+ability,Kelvin,Frost Grenade,1,30,2,6.5,3,Damage,flat,spirit,0.0,0.8,,,,,,Damage +0.8 x spirit power scaling
+ability,Kelvin,Arctic Beam,3,28,,,0,Damage Per Second,per second,spirit,45.0,0.38,,,,84.4444,,dps 45
+ability,Kelvin,Arctic Beam,3,28,,,2,Damage Per Second,per second,spirit,20.0,0.6,,,,,,Damage Per Second +20 and +0.6 x spirit power scaling
+ability,Lady Geist,Essence Bomb,1,14,,7,0,Damage,flat,spirit,90.0,1.35,,,,150.0,,damage 90
+ability,Lady Geist,Essence Bomb,1,14,,7,2,Damage,flat,spirit,50.0,,,,,,,Damage +50
+ability,Lady Geist,Essence Bomb,1,14,,7,3,Blood Spill DPSPercent,per second,spirit,30.0,,,,,,,Blood Spill DPSPercent +30
+ability,Lady Geist,Life Drain,2,34,,,0,Damage Per Second,per second,spirit,24.0,0.3225,,,,134.375,,Damage Per Second: 24 (+0.3225 x spirit power)
+ability,Lady Geist,Life Drain,2,34,,,1,Damage Per Second,per second,spirit,13.0,,,,,,,Damage Per Second +13
+ability,Lady Geist,Life Drain,2,34,,,3,Damage Per Second,per second,spirit,0.0,0.45,,,,,,Damage Per Second +0.45 x spirit power scaling
+ability,Lady Geist,Malice,3,6,,,0,Damage,flat,spirit,23.0,0.558,,,,242.6087,,Damage: 23 (+0.558 x spirit power)
+ability,Lady Geist,Malice,3,6,,,2,Damage,flat,spirit,25.2,,,,,,,Damage +25.2
+ability,Lash,Ground Strike,1,18,,10,0,Stomp Damage,flat,spirit,60.0,0.7905,,,,131.75,,Stomp Damage: 60 (+0.7905 x spirit power)
+ability,Lash,Ground Strike,1,18,,10,0,Damage Per Meter,flat,spirit,5.5,0.04,,,,72.7273,,Damage Per Meter: 5.5 (+0.04 x spirit power)
+ability,Lash,Ground Strike,1,18,,10,3,Damage Per Meter,flat,spirit,2.2,0.04,,,,,,Damage Per Meter +2.2 and +0.04 x spirit power scaling
+ability,Lash,Ground Strike,1,18,,10,3,Damage Per Meter (25m+),flat,spirit,2.2,0.0081,,,,,,Damage Per Meter (25m+) +2.2 and +0.00814 x spirit power scaling
+ability,Lash,Grapple,2,35,1,,2,Weapon Damage,gun buff per bullet,bullet,7.0,,,,,,,Weapon Damage +7
+ability,Lash,Flog,3,26,,,0,Damage,flat,spirit,65.0,0.85,,,,130.7692,,damage 65
+ability,Lash,Flog,3,26,,,3,Damage,flat,spirit,80.0,,,,,,,Damage +80
+ability,Lash,Death Slam,4,170,,,0,Impact Damage,flat,spirit,105.0,0.9749,,,,92.8476,,Impact Damage: 105 (+0.9749 x spirit power)
+ability,McGinnis,Mini Turret,1,18,1,,0,Turret DPS,per second,spirit,24.0,0.42,,,,175.0,Turret Health: 10 per boon,Turret DPS: 24 (+0.42 x spirit power)
+ability,McGinnis,Mini Turret,1,18,1,,1,Turret DPS,per second,spirit,10.0,,,,,,Turret Health: 10 per boon,Turret DPS +10
+ability,McGinnis,Spectral Wall,3,50,,,0,Damage,flat,spirit,60.0,0.7312,,,,121.8667,,damage 60
+ability,McGinnis,Heavy Barrage,4,200,,,0,Damage Per Rocket,flat,spirit,21.0,0.2,,,,95.2381,,Damage Per Rocket: 21 (+0.2 x spirit power)
+ability,McGinnis,Heavy Barrage,4,200,,,3,Damage Per Rocket,flat,spirit,15.0,0.16,,,,,,Damage Per Rocket +15 and +0.16 x spirit power scaling
+ability,Mina,Rake,1,16,,,0,Damage,flat,spirit,60.0,1.0,,,,166.6667,,damage 60
+ability,Mina,Rake,1,16,,,0,Missing Health Damage,target health %,target health %,6.0,,,,,,,Missing Health Damage: 6%
+ability,Mina,Rake,1,16,,,1,Damage,flat,spirit,60.0,,,,,,,Damage +60
+ability,Mina,Rake,1,16,,,3,Missing Health Damage Percentage,target health %,target health %,7.0,,,,,,,Missing Health Damage Percentage +7%
+ability,Mina,Love Bites,3,,,,0,Spirit Damage Per Bullet,per bullet,spirit,4.0,0.09,,,,225.0,,Spirit Damage Per Bullet: 4 (+0.09 x spirit power)
+ability,Mina,Love Bites,3,,,,0,Bonus Damage,flat,spirit,45.0,1.85,,,,411.1111,,Bonus Damage: 45 (+1.85 x spirit power)
+ability,Mina,Love Bites,3,,,,2,Spirit Damage Per Bullet,per bullet,spirit,3.0,,,,,,,Spirit Damage Per Bullet +3
+ability,Mina,Love Bites,3,,,,2,Bonus Damage,flat,spirit,45.0,,,,,,,Bonus Damage +45
+ability,Mina,Nox Nostra,4,150,,,0,Damage,flat,spirit,4.6,0.094,,,,204.3478,,damage 4.6
+ability,Mina,Nox Nostra,4,150,,,1,Damage,flat,spirit,1.9,,,,,,,Damage +1.9
+ability,Mirage,Fire Scarabs,1,35,2,,0,Damage Per Second,per second,spirit,8.0,0.1,,,,125.0,,dps 8
+ability,Mirage,Fire Scarabs,1,35,2,,1,Damage Per Second,per second,spirit,7.0,,,,,,,Damage Per Second +7
+ability,Mirage,Fire Scarabs,1,35,2,,3,Damage Per Second,per second,spirit,0.0,0.13,,,,,,Damage Per Second +0.13 x spirit power scaling
+ability,Mirage,Dust Devil,2,36,,4,0,Damage,flat,spirit,65.0,0.3,,,,46.1538,,damage 65
+ability,Mirage,Dust Devil,2,36,,4,1,Damage,flat,spirit,60.0,,,,,,,Damage +60
+ability,Mirage,Dust Devil,2,36,,4,3,Damage,flat,spirit,0.0,0.6,,,,,,Damage +0.6 x spirit power scaling
+ability,Mirage,Djinn's Mark,3,2.75,,,0,Base Damage,flat,spirit,11.0,0.35,,,,318.1818,,Base Damage: 11 (+0.35 x spirit power)
+ability,Mirage,Djinn's Mark,3,2.75,,,0,Damage Per Mark,flat,spirit,2.0,,,,,,,Damage Per Mark: 2x
+ability,Mirage,Djinn's Mark,3,2.75,,,2,Base Damage,flat,spirit,20.0,,,,,,,Base Damage +20
+ability,Mo & Krill,Scorn,1,13,,9,0,Damage,flat,spirit,45.0,0.675,,,,150.0,,damage 45
+ability,Mo & Krill,Scorn,1,13,,9,1,Damage,flat,spirit,30.0,,,,,,,Damage +30
+ability,Mo & Krill,Burrow,2,40,,5.5,0,Damage Per Second,per second,spirit,65.0,1.339,,,,206.0,,dps 65
+ability,Mo & Krill,Burrow,2,40,,5.5,1,Damage Per Second,per second,spirit,45.0,,,,,,,Damage Per Second +45
+ability,Mo & Krill,Sand Blast,3,40,,,0,Damage,flat,spirit,35.0,,,,,,,damage 35
+ability,Mo & Krill,Sand Blast,3,40,,,1,Damage,flat,spirit,45.0,,,,,,,Damage +45
+ability,Mo & Krill,Combo,4,150,,,0,Damage Per Second,per second,spirit,35.0,0.54,,,,154.2857,Bonus Max Health Per Kill: 2 per boon,dps 35
+ability,Mo & Krill,Combo,4,150,,,3,Damage Per Second,per second,spirit,35.0,0.36,,,,,Bonus Max Health Per Kill: 2 per boon,Damage Per Second +35 and +0.36 x spirit power scaling
+ability,Nurse Harrow,Leech Therapy,1,30,,6.5,0,Damage Per Second,per second,spirit,23.0,0.19,,,,82.6087,Leech Crawl Range: 1.3 per boon; Health Regen Per Leech: 0.13 per boon,dps 23
+ability,Nurse Harrow,Leech Therapy,1,30,,6.5,3,Damage Per Second,per second,spirit,0.0,0.3,,,,,Leech Crawl Range: 1.3 per boon; Health Regen Per Leech: 0.13 per boon,Damage Per Second +0.3 x spirit power scaling
+ability,Nurse Harrow,Lurking Terrors,4,200,,,0,Damage Per Second,per second,spirit,60.0,0.3,,,,50.0,,dps 60
+ability,Nurse Harrow,Lurking Terrors,4,200,,,2,Damage Per Second,per second,spirit,30.0,,,,,,,Damage Per Second +30
+ability,Nurse Harrow,Lurking Terrors,4,200,,,3,Damage Per Second,per second,spirit,0.0,0.5,,,,,,Damage Per Second +0.5 x spirit power scaling
+ability,Paige,Bookwyrm,1,33,1,4,0,Damage,flat,spirit,60.0,1.3,,,,216.6667,,damage 60
+ability,Paige,Bookwyrm,1,33,1,4,0,Damage Per Second,per second,spirit,30.0,0.3,,,,100.0,,dps 30
+ability,Paige,Bookwyrm,1,33,1,4,3,Damage,flat,spirit,100.0,,,,,,,Damage +100
+ability,Paige,Bookwyrm,1,33,1,4,3,Damage Per Second,per second,spirit,30.0,,,,,,,Damage Per Second +30
+ability,Paige,Captivating Read,3,30,,7.5,0,Damage,flat,spirit,90.0,1.3,,,,144.4444,,damage 90
+ability,Paige,Rallying Charge,4,210,,,0,Damage,flat,spirit,125.0,1.0,,,,80.0,,damage 125
+ability,Paige,Rallying Charge,4,210,,,3,Damage,flat,spirit,160.0,,,,,,,Damage +160
+ability,Paradox,Pulse Grenade,1,32,,5.5,0,Pulse Damage,flat,spirit,35.0,0.3,,,,85.7143,,Pulse Damage: 35 (+0.3 x spirit power)
+ability,Paradox,Pulse Grenade,1,32,,5.5,2,Pulse Damage,flat,spirit,20.0,0.5,,,,,,Pulse Damage +20 and +0.5 x spirit power scaling
+ability,Paradox,Kinetic Carbine,3,28,,,0,Max Damage,flat,weapon,5.0,,125.0,,,,Max Damage: 125 per weapon power; Min Damage: 10 per weapon power,Max Damage: 5 (+125 x weapon power)
+ability,Paradox,Kinetic Carbine,3,28,,,0,Min Damage,flat,weapon,5.0,,10.0,,,,Max Damage: 125 per weapon power; Min Damage: 10 per weapon power,Min Damage: 5 (+10 x weapon power)
+ability,Paradox,Kinetic Carbine,3,28,,,3,Max Damage,flat,weapon,0.0,,,,,,Max Damage: 125 per weapon power; Min Damage: 10 per weapon power,Max Damage +55 x weapon power scaling
+ability,Paradox,Paradoxical Swap,4,95,,,0,Swap Damage,flat,spirit,150.0,1.1,,,,73.3333,,Swap Damage: 150 (+1.1 x spirit power)
+ability,Paradox,Paradoxical Swap,4,95,,,3,Max Health Damage,target health %,target health %,10.0,,,,,,,Max Health Damage +10%
+ability,Pocket,Barrage,1,32,,4.5,0,Damage Per Projectile,flat,spirit,32.0,0.465,,,,145.3125,,Damage Per Projectile: 32 (+0.465 x spirit power)
+ability,Pocket,Barrage,1,32,,4.5,1,Damage Per Projectile,flat,spirit,16.0,,,,,,,Damage Per Projectile +16
+ability,Pocket,Flying Cloak,2,26,,5,0,Damage,flat,spirit,60.0,1.3,,,,216.6667,,damage 60
+ability,Pocket,Flying Cloak,2,26,,5,1,Damage,flat,spirit,70.0,,,,,,,Damage +70
+ability,Pocket,Flying Cloak,2,26,,5,2,Weapon Damage,gun buff per bullet,bullet,5.0,,,,,,,Weapon Damage +5
+ability,Pocket,Enchanter's Satchel,3,17,,12,0,Damage,flat,spirit,65.0,1.1,,,,169.2308,,damage 65
+ability,Pocket,Enchanter's Satchel,3,17,,12,2,Damage,flat,spirit,90.0,,,,,,,Damage +90
+ability,Pocket,Affliction,4,170,,9,0,Damage Per Second,per second,spirit,32.0,0.21,,,,65.625,,dps 32
+ability,Pocket,Affliction,4,170,,9,3,Damage Per Second,per second,spirit,13.0,0.1,,,,,,Damage Per Second +13 and +0.1 x spirit power scaling
+ability,Rat King,Scrap Grenade,1,26,,,0,Detonation Damage,flat,weapon,60.0,,0.6,,,,Detonation Damage: 0.6 per weapon damage %,Detonation Damage: 60 (+0.6 x weapon damage %)
+ability,Rat King,Scrap Grenade,1,26,,,2,Detonation Damage,flat,weapon,60.0,,,,,,Detonation Damage: 0.6 per weapon damage %,Detonation Damage +60
+ability,Rat King,Scrap Grenade,1,26,,,3,Big Detonation Damage,flat,weapon,275.0,,,,,,Detonation Damage: 0.6 per weapon damage %,Big Detonation Damage +275 and +1 x weapon damage % scaling
+ability,Rat King,Rat Swarm,2,24,1,10,0,Damage per Bite,flat,spirit,8.0,0.08,,,,100.0,,Damage per Bite: 8 (+0.08 x spirit power)
+ability,Rat King,Rat Swarm,2,24,1,10,3,Damage per Bite,flat,spirit,8.0,,,,,,,Damage per Bite +8
+ability,Rat King,"Rule, Ratannia!",4,180,,20,0,Damage,flat,weapon,200.0,,1.2,,,,Damage: 1.2 per weapon damage %,damage 200
+ability,Rat King,"Rule, Ratannia!",4,180,,20,3,Damage,flat,weapon,150.0,,,,,,Damage: 1.2 per weapon damage %,Damage +150
+ability,Rem,Pillow Toss,1,25,1,5,0,Damage,flat,spirit,75.0,1.6,,,,213.3333,,damage 75
+ability,Rem,Pillow Toss,1,25,1,5,3,Damage,flat,spirit,100.0,,,,,,,Damage +100
+ability,Rem,Naptime,4,200,,19,0,Wake Damage,flat,spirit,120.0,1.6,,,,133.3333,Sleep Damage Threshold: 3.1 per boon,Wake Damage: 120 (+1.6 x spirit power)
+ability,Seven,Lightning Ball,1,26,1,,0,Damage Per Second,per second,spirit,75.0,0.5,,,,66.6667,,dps 75
+ability,Seven,Lightning Ball,1,26,1,,3,Damage Per Second,per second,spirit,58.5,,,,,,,Damage Per Second +58.5
+ability,Seven,Static Charge,2,42,,,0,Damage,flat,spirit,35.0,0.7921,,,,226.3143,,damage 35
+ability,Seven,Static Charge,2,42,,,3,Damage,flat,spirit,160.0,,,,,,,Damage +160
+ability,Seven,Power Surge,3,50,,,0,Shock Damage,flat,spirit,10.0,0.14,,,,140.0,,Shock Damage: 10 (+0.14 x spirit power)
+ability,Seven,Power Surge,3,50,,,2,Damage on Jump,flat,spirit,8.0,0.23,,,,,,Damage on Jump +8 and +0.23 x spirit power scaling
+ability,Seven,Power Surge,3,50,,,2,Shock Damage,flat,spirit,8.0,0.23,,,,,,Shock Damage +8 and +0.23 x spirit power scaling
+ability,Seven,Storm Cloud,4,205,,30,0,Damage Per Second,per second,spirit,95.0,0.6,,,,63.1579,,dps 95
+ability,Seven,Storm Cloud,4,205,,30,0,Strike Damage,flat,spirit,75.0,0.5,,,,66.6667,,Strike Damage: 75 (+0.5 x spirit power)
+ability,Seven,Storm Cloud,4,205,,30,3,Damage Per Second,per second,spirit,65.0,,,,,,,Damage Per Second +65
+ability,Shiv,Serrated Knives,1,16,2,,0,Bleed DPS Per Knife,per second,spirit,10.0,0.13,,,,130.0,,Bleed DPS Per Knife: 10 (+0.13 x spirit power)
+ability,Shiv,Serrated Knives,1,16,2,,0,Current Health Damage,target health %,target health %,4.0,0.015,,,,37.5,,Current Health Damage: 4% (+0.015 x spirit power)
+ability,Shiv,Serrated Knives,1,16,2,,3,Bleed DPS Per Knife,per second,spirit,12.0,0.07,,,,,,Bleed DPS Per Knife +12 and +0.07 x spirit power scaling
+ability,Shiv,Serrated Knives,1,16,2,,3,Current Health Damage,flat,spirit,0.0,0.01,,,,,,Current Health Damage +0.01 x spirit power scaling
+ability,Shiv,Slice and Dice,2,16,,,0,Impact Damage,flat,spirit,75.0,1.2,,,,160.0,,Impact Damage: 75 (+1.2 x spirit power)
+ability,Shiv,Slice and Dice,2,16,,,3,Impact Damage,flat,spirit,50.0,,,,,,,Impact Damage +50
+ability,Shiv,Killing Blow,4,145,,,0,Damage,flat,spirit,200.0,,,,,,,damage 200
+ability,Silver,Slam Fire,1,25,,,0,Current Health as Damage,target health %,target health %,2.5,,,,,,,Current Health as Damage: 2.5%
+ability,Silver,Slam Fire,1,25,,,3,Bonus Current Health as Damage,target health %,target health %,7.0,,,,,,,Bonus Current Health as Damage +7%
+ability,Silver,Boot Kick,2,21,,,0,Bonus Damage,flat,melee,25.0,2.0,,,,800.0,Damage: 0.9 per light melee damage,Bonus Damage: 25 (+2 x spirit power)
+ability,Silver,Boot Kick,2,21,,,0,Damage,flat,melee,0.0,,,0.9,,,Damage: 0.9 per light melee damage,other_scaling Damage: 0.9 per light melee damage
+ability,Silver,Boot Kick,2,21,,,3,Bonus Damage,flat,melee,80.0,,,,,,Damage: 0.9 per light melee damage,Bonus Damage +80
+ability,Silver,Entangling Bola,3,23,,,0,Damage,flat,spirit,40.0,1.6,,,,400.0,,damage 40
+ability,Silver (Transformed),Go For The Throat,1,6.5,,,0,Missing Health Damage,target health %,target health %,6.0,,,,,,Damage: 1.5 per light melee damage,Missing Health Damage: 6%
+ability,Silver (Transformed),Go For The Throat,1,6.5,,,0,Damage,flat,melee,0.0,,,1.5,,,Damage: 1.5 per light melee damage,other_scaling Damage: 1.5 per light melee damage
+ability,Silver (Transformed),Go For The Throat,1,6.5,,,1,Damage,flat,melee,30.0,,,,,,Damage: 1.5 per light melee damage,Damage +30
+ability,Silver (Transformed),Go For The Throat,1,6.5,,,3,Missing Health Damage Percentage,target health %,target health %,4.0,,,,,,Damage: 1.5 per light melee damage,Missing Health Damage Percentage +4%
+ability,Silver (Transformed),Mauling Leap,2,16,,,0,Damage Per Second,per second,melee,15.0,0.15,,,,100.0,Damage: 1.5 per light melee damage,dps 15
+ability,Silver (Transformed),Mauling Leap,2,16,,,0,Damage,flat,melee,0.0,,,1.5,,,Damage: 1.5 per light melee damage,other_scaling Damage: 1.5 per light melee damage
+ability,Silver (Transformed),Mauling Leap,2,16,,,1,Damage Per Second,per second,melee,10.0,,,,,,Damage: 1.5 per light melee damage,Damage Per Second +10
+ability,Silver (Transformed),Tail Whack,3,18,,,0,Damage,flat,spirit,45.0,1.5,,,,333.3333,,damage 45
+ability,Silver (Transformed),Tail Whack,3,18,,,1,Damage,flat,spirit,25.0,,,,,,,Damage +25
+ability,Sinclair,Vexing Bolt,1,24,1,3.25,0,Minimum Damage,flat,spirit,60.0,0.93,,,,155.0,,Minimum Damage: 60 (+0.93 x spirit power)
+ability,Sinclair,Vexing Bolt,1,24,1,3.25,0,Max Damage,flat,spirit,120.0,1.86,,,,155.0,,Max Damage: 120 (+1.86 x spirit power)
+ability,Sinclair,Vexing Bolt,1,24,1,3.25,3,Max Damage,flat,spirit,126.0,,,,,,,Max Damage +126
+ability,Sinclair,Spectral Assistant,2,40,,,0,Damage,flat,spirit,15.0,0.36,,,,240.0,,damage 15
+ability,Sinclair,Spectral Assistant,2,40,,,3,Damage,flat,spirit,12.6,,,,,,,Damage +12.6
+ability,Solomon,Setup Bishop,1,12,,3.5,0,Damage,flat,spirit,25.0,0.85,,,,340.0,Move Distance: 0.23 per boon,damage 25
+ability,Solomon,Setup Bishop,1,12,,3.5,0,Impact Damage,flat,spirit,70.0,2.0,,,,285.7143,Move Distance: 0.23 per boon,Impact Damage: 70 (+2 x spirit power)
+ability,Solomon,Rook Battery,3,33,,,0,Damage,flat,spirit,50.0,0.9,,,,180.0,,damage 50
+ability,Solomon,Develop Queen,4,240,,,0,Damage,flat,spirit,120.0,1.6,,,,133.3333,Checkmate Threshold: 5 per boon; Move Distance: 0.23 per boon,damage 120
+ability,The Doorman,Call Bell,1,18,1,5.5,0,Impact Damage,flat,spirit,40.0,0.7,,,,175.0,,Impact Damage: 40 (+0.7 x spirit power)
+ability,The Doorman,Call Bell,1,18,1,5.5,0,Explosion Damage,flat,spirit,55.0,1.2,,,,218.1818,,Explosion Damage: 55 (+1.2 x spirit power)
+ability,The Doorman,Call Bell,1,18,1,5.5,2,Impact Damage,flat,spirit,30.0,,,,,,,Impact Damage +30
+ability,The Doorman,Call Bell,1,18,1,5.5,2,Explosion Damage,flat,spirit,40.0,,,,,,,Explosion Damage +40
+ability,The Doorman,Call Bell,1,18,1,5.5,3,Impact Damage,flat,spirit,0.0,0.35,,,,,,Impact Damage +0.35 x spirit power scaling
+ability,The Doorman,Call Bell,1,18,1,5.5,3,Explosion Damage,flat,spirit,0.0,0.35,,,,,,Explosion Damage +0.35 x spirit power scaling
+ability,The Doorman,Luggage Cart,3,30,,,0,Cart Damage,flat,spirit,60.0,0.75,,,,125.0,,Cart Damage: 60 (+0.75 x spirit power)
+ability,The Doorman,Luggage Cart,3,30,,,1,Cart Damage,flat,spirit,80.0,,,,,,,Cart Damage +80
+ability,The Doorman,Luggage Cart,3,30,,,2,Wall Impact Damage,flat,spirit,90.0,0.6,,,,,,Wall Impact Damage +90 and +0.6 x spirit power scaling
+ability,The Doorman,Hotel Guest,4,140,,,0,Damage,flat,spirit,75.0,1.0,,,,133.3333,,damage 75
+ability,The Doorman,Hotel Guest,4,140,,,0,Damage,flat,spirit,125.0,1.5,,,,120.0,,Damage: 125 (+1.5 x spirit power)
+ability,The Doorman,Hotel Guest,4,140,,,2,Damage,flat,spirit,150.0,,,,,,,Damage +150
+ability,The Doorman,Hotel Guest,4,140,,,2,Late Checkout Damage,flat,spirit,150.0,,,,,,,Late Checkout Damage +150
+ability,Venator,Consecrating Grenade,1,25,,4.5,0,Damage,flat,weapon,35.0,,1.0,,,,Damage Per Second: 1.6 per boon; Damage Per Second: 1 per weapon damage; Damage: 1 per weapon damage %,damage 35
+ability,Venator,Consecrating Grenade,1,25,,4.5,0,Damage Per Second,per second,weapon,10.0,,1.0,,1.6,,Damage Per Second: 1.6 per boon; Damage Per Second: 1 per weapon damage; Damage: 1 per weapon damage %,dps 10
+ability,Venator,Gutshot,2,23,,,0,Damage,flat,weapon,60.0,,0.7,,,,Bonus Damage: 0.8 per weapon damage %; Damage: 0.7 per weapon damage %,damage 60
+ability,Venator,Gutshot,2,23,,,0,Bonus Damage,flat,weapon,30.0,,0.8,,,,Bonus Damage: 0.8 per weapon damage %; Damage: 0.7 per weapon damage %,Bonus Damage: 30 (+0.8 x weapon damage %)
+ability,Venator,Gutshot,2,23,,,1,Damage,flat,weapon,25.0,,,,,,Bonus Damage: 0.8 per weapon damage %; Damage: 0.7 per weapon damage %,Damage +25
+ability,Venator,Hex-Lined Snap Trap,3,28,2,2,0,Damage,flat,spirit,80.0,2.2,,,,275.0,,damage 80
+ability,Venator,Ira Domini,4,160,,,0,Damage,flat,weapon,120.0,,1.5,,,,Bonus Damage: 3.6 per boon; Bonus Damage: 1 per weapon damage; Damage: 1.5 per weapon damage %,damage 120
+ability,Venator,Ira Domini,4,160,,,0,Bonus Damage,flat,weapon,95.0,,1.0,,3.6,,Bonus Damage: 3.6 per boon; Bonus Damage: 1 per weapon damage; Damage: 1.5 per weapon damage %,"Bonus Damage: 95 (+3.6 x boon, +1 x weapon damage)"
+ability,Venator,Ira Domini,4,160,,,2,Bonus Damage,flat,weapon,65.0,,,,,,Bonus Damage: 3.6 per boon; Bonus Damage: 1 per weapon damage; Damage: 1.5 per weapon damage %,Bonus Damage +65
+ability,Victor,Pain Battery,1,2,,,0,Damage,flat,spirit,100.0,1.6,,,,160.0,,damage 100
+ability,Victor,Pain Battery,1,2,,,2,Damage,flat,spirit,50.0,,,,,,,Damage +50
+ability,Victor,Pain Battery,1,2,,,3,Damage,flat,spirit,0.0,0.6,,,,,,Damage +0.6 x spirit power scaling
+ability,Victor,Aura of Suffering,3,2,,8,0,Minimum DPS,per second,spirit,13.0,0.15,,,,115.3846,,Minimum DPS: 13 (+0.15 x spirit power)
+ability,Victor,Aura of Suffering,3,2,,8,0,Max DPS,per second,spirit,58.0,0.72,,,,124.1379,,Max DPS: 58 (+0.72 x spirit power)
+ability,Victor,Aura of Suffering,3,2,,8,2,Min Dps,per second,spirit,6.0,,,,,,,Min Dps +6
+ability,Victor,Aura of Suffering,3,2,,8,2,Max DPS,per second,spirit,34.0,,,,,,,Max DPS +34
+ability,Victor,Shocking Reanimation,4,240,,18,0,Damage,flat,spirit,200.0,2.0,,,,100.0,,damage 200
+ability,Victor,Shocking Reanimation,4,240,,18,1,Damage per Bullet,per bullet,spirit,6.0,0.06,,,,,,Damage per Bullet +6 and +0.06 x spirit power scaling
+ability,Victor,Shocking Reanimation,4,240,,18,3,Damage,flat,spirit,175.0,,,,,,,Damage +175
+ability,Vindicta,Stake,1,40,,,0,Damage,flat,spirit,40.0,0.5,,,,125.0,,damage 40
+ability,Vindicta,Stake,1,40,,,1,Damage,flat,spirit,45.0,,,,,,,Damage +45
+ability,Vindicta,Flight,2,42,,,0,Spirit Damage Per Bullet,per bullet,spirit,10.0,0.18,,,,180.0,,Spirit Damage Per Bullet: 10 (+0.18 x spirit power)
+ability,Vindicta,Flight,2,42,,,3,Spirit Damage Per Bullet,per bullet,spirit,10.0,0.1,,,,,,Spirit Damage Per Bullet +10 and +0.1 x spirit power scaling
+ability,Vindicta,Crow Familiar,3,32,,,0,Impact Damage,flat,spirit,40.0,0.744,,,,186.0,,Impact Damage: 40 (+0.744 x spirit power)
+ability,Vindicta,Crow Familiar,3,32,,,0,Bleed Damage,target health %,target health %,2.2,,,,,,,Bleed Damage: 2.2% DPS
+ability,Vindicta,Crow Familiar,3,32,,,2,Bleed Damage,target health %,target health %,0.5,,,,,,,Bleed Damage +0.5% DPS
+ability,Vindicta,Assassinate,4,55,2,,0,Damage,flat,spirit,90.0,0.93,,,,103.3333,,damage 90
+ability,Vindicta,Assassinate,4,55,2,,0,Max Bonus Damage,flat,spirit,90.0,2.3,,,,255.5556,,Max Bonus Damage: 90 (+2.3 x spirit power)
+ability,Vindicta,Assassinate,4,55,2,,2,Max Bonus Damage,flat,spirit,80.0,,,,,,,Max Bonus Damage +80
+ability,Violet,Living Ink,1,22,2,2.5,0,Damage,flat,spirit,35.0,0.7,,,,200.0,,damage 35
+ability,Violet,Living Ink,1,22,2,2.5,3,Damage,flat,spirit,0.0,0.4,,,,,,Damage +0.4 x spirit power scaling
+ability,Violet,Flow State,2,23,,,0,Minimum Damage,flat,spirit,50.0,0.9,,,,180.0,,Minimum Damage: 50 (+0.9 x spirit power)
+ability,Violet,Flow State,2,23,,,0,Max Damage,flat,spirit,100.0,1.8,,,,180.0,,Max Damage: 100 (+1.8 x spirit power)
+ability,Violet,Still Life,3,35,,,0,Damage,flat,spirit,60.0,1.4,,,,233.3333,,damage 60
+ability,Violet,Still Life,3,35,,,0,Damage Per Second,per second,spirit,30.0,0.7,,,,233.3333,,dps 30
+ability,Violet,Abstract Landscape,4,180,,,0,Damage,flat,spirit,100.0,1.4,,,,140.0,,damage 100
+ability,Viscous,Splatter,1,26,,5,0,Damage,flat,spirit,55.0,0.7,,,,127.2727,,damage 55
+ability,Viscous,Splatter,1,26,,5,1,Damage,flat,spirit,45.0,,,,,,,Damage +45
+ability,Viscous,Splatter,1,26,,5,3,Damage,flat,spirit,0.0,0.9,,,,,,Damage +0.9 x spirit power scaling
+ability,Viscous,Puddle Punch,3,24,1,4,0,Damage,flat,melee,20.0,,,0.6,,,Damage: 0.6 per light melee damage,damage 20
+ability,Viscous,Puddle Punch,3,24,1,4,1,Damage,flat,melee,20.0,,,,,,Damage: 0.6 per light melee damage,Damage +20
+ability,Viscous,Puddle Punch,3,24,1,4,3,Damage,flat,melee,40.0,,,,,,Damage: 0.6 per light melee damage,Damage +40 and +0.6 x heavy melee damage scaling
+ability,Viscous,Puddle Punch,3,24,1,4,3,Damage,flat,melee,-40.0,,,,,,Damage: 0.6 per light melee damage,Damage -40
+ability,Viscous,Goo Ball,4,150,,,0,Damage,flat,spirit,110.0,1.0,,,,90.9091,,damage 110
+ability,Viscous,Goo Ball,4,150,,,2,Damage,flat,spirit,70.0,,,,,,,Damage +70
+ability,Viscous,Goo Ball,4,150,,,3,Damage,flat,spirit,0.0,0.2,,,,,,Damage +0.2 x spirit power scaling
+ability,Vyper,Screwjab Dagger,1,10,2,,0,Damage,flat,spirit,50.0,0.8,,,,160.0,,damage 50
+ability,Vyper,Lethal Venom,2,28,,,0,Minimum Venom Damage,flat,spirit,20.0,0.651,,,,325.5,Cast Range: 0.2 per boon,Minimum Venom Damage: 20 (+0.651 x spirit power)
+ability,Vyper,Lethal Venom,2,28,,,0,Max Venom Damage,flat,spirit,140.0,2.79,,,,199.2857,Cast Range: 0.2 per boon,Max Venom Damage: 140 (+2.79 x spirit power)
+ability,Vyper,Lethal Venom,2,28,,,0,Health for Max Damage,target health %,target health %,30.0,,,,,,Cast Range: 0.2 per boon,Health for Max Damage: 30%
+ability,Vyper,Lethal Venom,2,28,,,1,Max Venom Damage,flat,spirit,31.5,,,,,,Cast Range: 0.2 per boon,Max Venom Damage +31.5
+ability,Vyper,Petrifying Bola,4,115,,12,0,Damage,flat,spirit,50.0,0.744,,,,148.8,,damage 50
+ability,Vyper,Petrifying Bola,4,115,,12,0,Petrify Damage,flat,spirit,180.0,2.046,,,,113.6667,,Petrify Damage: 180 (+2.046 x spirit power)
+ability,Vyper,Petrifying Bola,4,115,,12,1,Petrify Damage,flat,spirit,49.5,,,,,,,Petrify Damage +49.5
+ability,Warden,Alchemical Flask,1,12,,5.5,0,Damage,flat,spirit,60.0,0.63,,,,105.0,,damage 60
+ability,Warden,Alchemical Flask,1,12,,5.5,2,Damage,flat,spirit,35.0,,,,,,,Damage +35
+ability,Warden,Binding Word,3,34,,,0,Damage,flat,spirit,110.0,2.4373,,,,221.5727,,damage 110
+ability,Warden,Last Stand,4,180,,12,0,DPS,per second,spirit,70.0,1.3,,,,185.7143,,DPS: 70 (+1.3 x spirit power)
+ability,Warden,Last Stand,4,180,,12,2,DPS,per second,spirit,50.0,,,,,,,DPS +50
+ability,Wraith,Card Trick,1,0.6,2,4,0,Damage,flat,spirit,45.0,0.55,,,,122.2222,,damage 45
+ability,Wraith,Card Trick,1,0.6,2,4,2,Damage,flat,spirit,40.0,0.4,,,,,,Damage +40 and +0.4 x spirit power scaling
+ability,Wraith,Full Auto,3,45,,,0,Spirit Damage Per Bullet,per bullet,spirit,2.0,0.045,,,,225.0,,Spirit Damage Per Bullet: 2 (+0.045 x spirit power)
+ability,Wraith,Full Auto,3,45,,,3,Spirit Damage Per Bullet,per bullet,spirit,0.0,0.045,,,,,,Spirit Damage Per Bullet +0.045 x spirit power scaling
+ability,Wraith,Telekinesis,4,150,,,0,Damage,flat,spirit,100.0,1.0,,,,100.0,,damage 100
+ability,Wraith,Telekinesis,4,150,,,1,Damage,flat,spirit,100.0,,,,,,,Damage +100
+ability,Yamato,Power Slash,1,12,,,0,Full Charge Damage,flat,spirit,145.0,1.96,,,,135.1724,,Full Charge Damage: 145 (+1.96 x spirit power)
+ability,Yamato,Power Slash,1,12,,,3,Full Charge Damage,flat,spirit,150.0,0.53,,,,,,Full Charge Damage +150 and +0.53 x spirit power scaling
+ability,Yamato,Flying Slash,2,36,,,0,Damage,flat,melee,0.0,,,1.2,,,Damage: 1.2 per light melee damage,other_scaling Damage: 1.2 per light melee damage
+ability,Yamato,Crimson Slash,3,16,,13,0,Damage,flat,spirit,55.0,0.37,,,,67.2727,,damage 55
+ability,Yamato,Crimson Slash,3,16,,13,1,Buff Melee Damage,flat,spirit,30.0,,,,,,,Buff Melee Damage +30
+ability,Yamato,Crimson Slash,3,16,,13,3,Damage,flat,spirit,0.0,0.6,,,,,,Damage +0.6 x spirit power scaling
+ability,Yamato,Shadow Transformation,4,160,,,1,Weapon Damage,gun buff per bullet,bullet,7.0,,,,,,,Weapon Damage +7
+item,Weapon T2,Mystic Shot,,8,,,2,Spirit Damage,flat,spirit (assumed),40.0,0.9,,,,225.0,"passive, on cooldown","[Effect, 8s cooldown] Spirit Damage: 40 (+0.9 x spirit power)"
+item,Weapon T2,Stalker,,6,,,2,Damage Per Second,per second,spirit (assumed),17.0,,,,,,"passive, on cooldown","[Effect, 6s cooldown] Damage Per Second: 17"
+item,Weapon T3,Alchemical Fire,,30,,,3,Damage Per Second,per second,spirit (assumed),45.0,0.2,,,,44.4444,active,"[Active, 30s cooldown] Damage Per Second: 45 (+0.2 x spirit power)"
+item,Weapon T3,Alchemical Fire,,30,,,3,Max DPS,per second,spirit (assumed),95.0,0.4,,,,42.1053,active,"[Active, 30s cooldown] Max DPS: 95 (+0.4 x spirit power)"
+item,Weapon T3,Tesla Bullets,,0.2,,,3,Shock Damage,flat,spirit (assumed),33.0,0.19,,,,57.5758,on-hit chance,"[Passive, 0.2s cooldown] Shock Damage: 33 (+0.19 x spirit power)"
+item,Weapon T3,Toxic Bullets,,,,,3,Bleed Damage,target health %,target health %,1.9,0.006,,,,31.5789,build-up,[Effect] Bleed Damage: 1.9% DPS (+0.006 x spirit power)
+item,Weapon T4,Capacitor,,40,,,4,Shock Damage,flat,spirit (assumed),43.0,0.19,,,,44.186,on-hit chance,"[Passive, 0.2s cooldown] Shock Damage: 43 (+0.19 x spirit power)"
+item,Weapon T4,Capacitor,,40,,,4,Damage,flat,spirit (assumed),100.0,,,,,,active,"[Active, 40s cooldown] Damage: 100"
+item,Vitality T4,Phantom Strike,,35,,,4,Impact Damage,flat,spirit (assumed),75.0,0.93,,,,124.0,active,"[Active, 35s cooldown] Impact Damage: 75 (+0.93 x spirit power)"
+item,Spirit T1,Mystic Burst,,14,,,1,Bonus Damage,flat,spirit (assumed),40.0,,,,,,passive,[Passive] Bonus Damage: 40
+item,Spirit T1,Spirit Strike,,8,,,1,Spirit Damage,flat,spirit (assumed),40.0,0.372,,,,93.0,"passive, on cooldown","[Passive, 8s cooldown] Spirit Damage: 40 (+0.372 x spirit power)"
+item,Spirit T2,Cold Front,,25,,,2,Damage,flat,spirit (assumed),95.0,0.465,,,,48.9474,active,"[Active, 25s cooldown] Damage: 95 (+0.465 x spirit power)"
+item,Spirit T2,Quicksilver Reload,,18,,,2,Damage,flat,spirit (assumed),44.0,0.16,,,,36.3636,passive,[Passive] Damage: 44 (+0.16 x spirit power)
+item,Spirit T3,Decay,,30,,,3,Bleed Damage,target health %,target health %,1.95,0.003,,,,15.3846,active,"[Active, 30s cooldown] Bleed Damage: 1.95% DPS (+0.003 x spirit power)"
+item,Spirit T3,Silence Wave,,42,,,3,Damage,flat,spirit (assumed),75.0,0.7,,,,93.3333,active,"[Active, 42s cooldown] Damage: 75 (+0.7 x spirit power)"
+item,Spirit T3,Spirit Snatch,,6,,,3,Spirit Damage,flat,spirit (assumed),50.0,0.84,,,,168.0,"passive, on cooldown","[Passive, 6s cooldown] Spirit Damage: 50 (+0.84 x spirit power)"
+item,Spirit T3,Tankbuster,,14,,,3,Damage,flat,spirit (assumed),40.0,,,,,,passive,[Passive] Damage: 40
+item,Spirit T3,Tankbuster,,14,,,3,Current Health Bonus Damage,target health %,target health %,7.5,,,,,,passive,[Passive] Current Health Bonus Damage: 7.5%
+item,Spirit T3,Torment Pulse,,1.4,,,3,Pulse Damage,flat,spirit (assumed),25.0,0.23,,,,92.0,"passive, on cooldown","[Passive, 1.4s cooldown] Pulse Damage: 25 (+0.23 x spirit power)"
+item,Spirit T4,Arctic Blast,,24,,,4,Damage,flat,spirit (assumed),175.0,0.6975,,,,39.8571,active,"[Active, 24s cooldown] Damage: 175 (+0.6975 x spirit power)"
+item,Spirit T4,Lightning Scroll,,,,,4,Damage,flat,spirit (assumed),150.0,0.35,,,,23.3333,passive,[Passive] Damage: 150 (+0.35 x spirit power)
+item,Spirit T4,Mercurial Magnum,,15,,,4,Damage,flat,spirit (assumed),60.0,0.16,,,,26.6667,passive,[Passive] Damage: 60 (+0.16 x spirit power)
+item,Spirit T4,Spirit Burn,,,,,4,Explosion Damage,flat,spirit (assumed),50.0,,,,,,passive,[Passive] Explosion Damage: 50
+item,Spirit T4,Spirit Burn,,,,,4,Damage Per Second,per second,spirit (assumed),24.0,0.06,,,,25.0,passive,[Passive] Damage Per Second: 24 (+0.06 x spirit power)

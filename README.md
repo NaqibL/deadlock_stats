@@ -205,6 +205,10 @@ deadlock.wiki, pasted in by hand rather than fetched.
 `analysis/framework.md` is the method for theorising builds and matchups from
 those formulas (measures of power, event checkpoints, damage mix, theory
 types), and `analysis/case-studies/` checks real builds against the sheet.
+`analysis/mechanics.md` covers every source of damage, control and sustain and
+the ways to eliminate an opponent. `python analysis/catalogue.py` writes
+`analysis/catalogues/` (every damage, control and defence entry, counted) and
+`python analysis/hero_cards.py` then writes `analysis/heroes/` (a card per hero).
 `analysis/deadlock-systems-explainer.md` is a longer read-through of every
 system; where it and `formulas.md` differ, `formulas.md` is newer.
 

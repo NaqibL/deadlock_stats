@@ -206,6 +206,75 @@ def periodic_dps(damage: float, interval: float) -> float:
     return damage / interval
 
 
+# ---------------------------------------------------------------- ways to kill (analysis/mechanics.md)
+
+
+def damage_taken_vs_mix(mix: dict, bullet: float = 0.0, spirit: float = 0.0, melee: float = 0.0) -> float:
+    """Share of incoming damage taken against a damage mix (fractions summing to 1).
+
+    ``mix`` keys: ``bullet`` (guns and weapon-damage abilities), ``melee``, ``spirit``, ``pure``,
+    ``health`` (shares of health; resists assumed to apply as spirit). Resists are final fractions.
+    Community: bullet resist also reduces melee; how it combines with melee resist is an Assumption
+    (multiplied here).
+    """
+    taken = {"bullet": 1 - bullet, "spirit": 1 - spirit, "melee": (1 - bullet) * (1 - melee), "pure": 1.0,
+             "health": 1 - spirit}
+    return sum(share * taken[k] for k, share in mix.items())
+
+
+def effective_health_vs_mix(health: float, mix: dict, **resists) -> float:
+    """Damage of this mix needed to kill: health / share taken."""
+    return health / damage_taken_vs_mix(mix, **resists)
+
+
+def time_to_kill(effective_hp: float, burst: float, dps: float) -> float:
+    """(effective health - burst) / sustained damage per second; 0 when the burst alone kills."""
+    left = max(0.0, effective_hp - burst)
+    return 0.0 if left == 0 else (left / dps if dps > 0 else float("inf"))
+
+
+def control_duration(base: float, debuff_resist: float = 0.0, recent_controls: int = 0) -> float:
+    """Control duration after the target's debuff resist and recent control.
+
+    Settled (patch note 2025-10-02): each control applied in the last 7 s shortens a new one by 7%,
+    up to 21%. Inferred: debuff resist shortens the duration by its percentage. Assumption: the two
+    multiply. Parry stuns ignore debuff resist (Settled 2025-07-29).
+    """
+    return base * (1 - debuff_resist) * (1 - min(0.07 * recent_controls, 0.21))
+
+
+def chain_control(durations, debuff_resist: float = 0.0) -> float:
+    """Total control time from several controls applied back to back within 7 s (see control_duration)."""
+    return sum(control_duration(d, debuff_resist, i) for i, d in enumerate(durations))
+
+
+def net_dps(dps: float, target_heal_per_second: float, anti_heal: float = 0.0) -> float:
+    """Damage per second left after the target's healing, with anti-heal as a fraction (0.4 = -40%).
+
+    Assumption: anti-heal from several sources does not add; use the strongest. Whether anti-heal
+    reduces lifesteal is open (settled.md).
+    """
+    return dps - target_heal_per_second * (1 - anti_heal)
+
+
+def execute_effective_health(effective_hp: float, threshold: float) -> float:
+    """Effective health to remove before an execute at ``threshold`` (fraction of max health) can finish
+    the target. Assumption: the threshold is on the target's health bar and resists don't change it."""
+    return effective_hp * (1 - threshold)
+
+
+def duel(a: dict, b: dict) -> dict:
+    """A one-on-one damage race. Each side: ``ehp`` (against the other's mix), ``burst``, ``dps``,
+    ``control`` (seconds of hard control it lands on the other, already reduced). Control delays the
+    other side's damage by that long. A deliberately simple model: no movement, cooldowns or healing.
+    """
+    ta = time_to_kill(b["ehp"], a["burst"], a["dps"])  # time for a to kill b
+    tb = time_to_kill(a["ehp"], b["burst"], b["dps"])
+    ta_eff = ta + b.get("control", 0.0) if ta > 0 else 0.0
+    tb_eff = tb + a.get("control", 0.0) if tb > 0 else 0.0
+    return {"a_kills_in": ta_eff, "b_kills_in": tb_eff, "winner": "a" if ta_eff < tb_eff else "b" if tb_eff < ta_eff else "draw"}
+
+
 # ---------------------------------------------------------------- sharing souls
 
 

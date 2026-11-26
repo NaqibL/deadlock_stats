@@ -60,3 +60,26 @@ def test_sharing_totals():
     assert split["killer"] == pytest.approx(2.2 * split["assister"])
     guardian = f.objective_split(1375, 1)
     assert guardian["each_nearby"] + 5 * guardian["each_other"] == pytest.approx(1375)
+
+
+def test_damage_mix_and_effective_health():
+    assert f.damage_taken_vs_mix({"bullet": 1.0}, bullet=0.3) == pytest.approx(0.7)
+    assert f.damage_taken_vs_mix({"spirit": 1.0}, bullet=0.9) == pytest.approx(1.0)
+    assert f.damage_taken_vs_mix({"melee": 1.0}, bullet=0.2, melee=0.5) == pytest.approx(0.4)
+    assert f.effective_health_vs_mix(1000, {"bullet": 0.5, "spirit": 0.5}, bullet=0.5) == pytest.approx(1000 / 0.75)
+
+
+def test_control_diminishing_and_chain():
+    assert f.control_duration(1.0, recent_controls=5) == pytest.approx(0.79)
+    assert f.control_duration(2.0, debuff_resist=0.25, recent_controls=1) == pytest.approx(2 * 0.75 * 0.93)
+    assert f.chain_control([1.1, 2.4]) == pytest.approx(1.1 + 2.4 * 0.93)
+
+
+def test_kill_paths():
+    assert f.time_to_kill(1000, 1200, 100) == 0
+    assert f.time_to_kill(1000, 200, 100) == pytest.approx(8)
+    assert f.net_dps(100, 50, anti_heal=0.4) == pytest.approx(70)
+    assert f.execute_effective_health(1000, 0.18) == pytest.approx(820)
+    r = f.duel({"ehp": 2000, "burst": 600, "dps": 150, "control": 1.5}, {"ehp": 2400, "burst": 300, "dps": 180})
+    assert r["a_kills_in"] == pytest.approx(12) and r["b_kills_in"] == pytest.approx(1700 / 180 + 1.5)
+    assert r["winner"] == "b"

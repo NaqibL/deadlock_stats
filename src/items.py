@@ -1,25 +1,28 @@
 """Items table: one row per purchasable shop item.
 
 Effects are split into three buckets, using the tooltip sections in
-``item-cards.json``:
+``item-cards.json`` and, where the raw game files are available, whether the
+game provides a property as a stat outright:
 
-* innate      - stats the buyer always has. Properties in a section of type
-                ``Innate`` (unless flagged conditional), plus any property
-                flagged ``IntrinsicallyProvidedInAbility``.
-* enemy       - effects applied to enemies. The files only flag a handful of
-                these (``ConditionallyEnemyApplied``), so the rest are
-                recognised by property type (resist reduction, slow), by a
-                status effect, or by property name (damage dealt, debuff
-                durations, healing reduction). This part is an approximation.
-* conditional - everything else in a ``Passive`` / ``Active`` section:
-                conditional, proc and on-use effects on the buyer.
+* innate      - what the buyer always has: properties in an ``Innate`` section
+                (unless flagged conditional), and properties in a ``Passive``
+                section that the game provides as a plain stat with no usage
+                flag (Transcendent Cooldown's cooldown reduction, for example).
+* enemy       - effects applied to enemies. The files flag only a handful
+                (``ConditionallyEnemyApplied``); the rest are recognised by
+                property type (resist reduction, slow), status effect, or name
+                (damage dealt, debuff durations). An approximation, corrected
+                item by item in ``SIDE_OVERRIDES`` where the tooltip text shows
+                the heuristic is wrong.
+* conditional - everything else in a ``Passive`` / ``Active`` section: procs,
+                stacks, thresholds and on-use effects on the buyer. A property
+                flagged ``IntrinsicallyProvidedInAbility`` outside the Innate
+                section is one the passive grants while its condition holds
+                (Spellslinger's fire rate per stack), so it is conditional.
 
-Some real stats are on no tooltip section in the primary source (Refresher's
-resists, for example). The raw game files settle those: a property the game
-"provides" as a stat (``m_eProvidedPropertyType``) with a non-zero base value
-is innate when it carries no usage flag, and conditional or enemy-applied when
-flagged so. Values with no such raw property (enhanced-variant numbers, tuning
-constants) stay in ``unlisted_properties``.
+Values that are in the files but on no tooltip section are never counted as
+stats. Those the raw files mark as a provided stat are listed in
+``stats_not_on_tooltip`` as unconfirmed; the rest stay in ``unlisted_properties``.
 """
 from __future__ import annotations
 
@@ -43,7 +46,7 @@ STAT_COLUMNS = {
     "spirit_power": ("TechPower", "SpiritPower", "SpiritPowerInnate"),
     "bullet_lifesteal_pct": ("BulletLifestealPercent",),
     "spirit_lifesteal_pct": ("AbilityLifestealPercentHero",),
-    "cooldown_reduction_pct": ("CooldownReduction",),
+    "ability_cooldown_reduction_pct": ("CooldownReduction",),
     "move_speed": ("BonusMoveSpeed",),
     "sprint_speed": ("BonusSprintSpeed",),
 }
@@ -67,6 +70,29 @@ ENEMY_KEY = re.compile(
     r"|FireRateSlow|FireRateSlowDuration|ResistReductionDuration|DazeDuration|EMPDuration)$"
 )
 _BORING = {"AbilityUnitTargetLimit", "AbilityCooldownBetweenCharge", "ChannelMoveSpeed"}
+# "Ability Range" covers range and radius; the files store the radius half as a
+# second property with the same number. Listing it invites adding the two.
+_DUPLICATE_OF_RANGE = {"TechRadiusMultiplier", "TechRadiusMultiplierBuff", "StackingTechRadiusMultiplier"}
+
+# Tooltip wording that makes a passive conditional, per-ability or an aura, not a plain always-on stat.
+_CONDITION = re.compile(r"\b(when|while|imbue\w*|charg\w+|grants?|upon|after|if|each|every|until|within|beyond|"
+                        r"during|nearby|close range|stack\w*)\b", re.I)
+
+# (item name, property key) -> bucket, where the tooltip text shows the heuristic
+# picks the wrong side. Each entry quotes the tooltip that decides it.
+SIDE_OVERRIDES = {
+    # "While death immune, you deal reduced damage and have reduced healing."
+    ("Cheat Death", "HealAmpReceivePenaltyPercent"): "conditional",
+    ("Cheat Death", "HealAmpRegenPenaltyPercent"): "conditional",
+    # Metal Skin's dash and gravity changes are penalties on the user while active.
+    ("Metal Skin", "GroundDashReductionPercent"): "conditional",
+    ("Metal Skin", "GravityScale"): "conditional",
+    # "...reduce the target's outgoing damage"
+    ("Inhibitor", "OutgoingDamagePenaltyPercent"): "enemy",
+    # "Your bullets reduce the target's outgoing spirit damage."
+    ("Silencer", "TechDamageReduction"): "enemy",
+    ("Silencer", "TechDamagePercent"): "enemy",
+}
 _SECTIONS = ("Info1", "Info2", "Info3", "Info4")
 
 
@@ -96,11 +122,19 @@ def split_items(items: dict):
     return shop, excluded
 
 
-def bucket(section_type: str | None, prop: dict) -> str:
-    """Which bucket a tooltip property belongs to: ``innate``, ``conditional`` or ``enemy``."""
+def provided_always(prop_key: str, raw_item: dict | None) -> bool:
+    """True when the raw game files provide this property as a plain stat with no usage flag."""
+    entry = ((raw_item or {}).get("m_mapAbilityProperties") or {}).get(prop_key)
+    return isinstance(entry, dict) and bool(entry.get("m_eProvidedPropertyType")) and not entry.get("m_eStatsUsageFlags")
+
+
+def bucket(section_type: str | None, prop: dict, always: bool = False) -> str:
+    """Which bucket a tooltip property belongs to: ``innate``, ``conditional`` or ``enemy``.
+
+    ``always`` is :func:`provided_always` for the property; without the raw
+    files it is False and unflagged Passive-section properties stay conditional.
+    """
     flag = prop.get("UsageFlags") or ""
-    if flag == "IntrinsicallyProvidedInAbility":
-        return "innate"
     is_enemy = (
         flag == "ConditionallyEnemyApplied"
         or prop.get("Type") in ENEMY_TYPES
@@ -109,14 +143,18 @@ def bucket(section_type: str | None, prop: dict) -> str:
     )
     if section_type == "Innate" and not flag.startswith("Conditionally"):
         return "innate"
+    if section_type == "Passive" and not flag and always and not is_enemy:
+        return "innate"
     return "enemy" if is_enemy else "conditional"
 
 
 def prop_text(prop: dict, loc: dict) -> str:
+    """Readable ``label: value unit`` for a property; empty when it has no numeric value."""
     key = prop.get("Key") or ""
     value, unit = number(prop.get("Value"))
-    shown = fmt(value) if value is not None else str(prop.get("Value"))
-    text = f"{label(loc, key, prop.get('LocTokenOverride'))}: {shown}{unit or postfix(loc, key)}"
+    if value is None:
+        return ""
+    text = f"{label(loc, key, prop.get('LocTokenOverride'))}: {fmt(value)}{unit or postfix(loc, key)}"
     scale = prop.get("Scale")
     scales = scale if isinstance(scale, list) else [scale] if scale else []
     extras = []
@@ -140,25 +178,6 @@ def _section_tag(section: dict) -> str:
     kind = section.get("Type") or "Effect"
     cooldown, _ = number(section.get("Cooldown"))
     return f"[{kind}, {fmt(cooldown)}s cooldown]" if cooldown else f"[{kind}]"
-
-
-def unlisted_bucket(prop_key: str, raw_item: dict | None) -> str | None:
-    """Bucket for a property that is on no tooltip section, decided by the raw game files.
-
-    Returns ``None`` when the raw files do not show it to be a stat the item provides.
-    """
-    entry = ((raw_item or {}).get("m_mapAbilityProperties") or {}).get(prop_key)
-    if not isinstance(entry, dict) or not entry.get("m_eProvidedPropertyType"):
-        return None
-    value, _ = number(entry.get("m_strValue"))
-    if not value:
-        return None
-    flag = entry.get("m_eStatsUsageFlags") or ""
-    kind = {"Type": entry.get("m_strCSSClass"), "Key": prop_key, "UsageFlags": flag}
-    as_effect = bucket("Passive", kind)
-    if as_effect == "enemy" or flag:
-        return as_effect  # a slow or resist reduction is an enemy effect even when unflagged
-    return "innate"
 
 
 def item_row(key: str, item: dict, card: dict, loc: dict, names: dict, upgrades_into: dict,
@@ -198,18 +217,24 @@ def item_row(key: str, item: dict, card: dict, loc: dict, names: dict, upgrades_
         for prop in _section_props(section):
             prop_key = prop.get("Key") or ""
             shown.add(prop_key)
-            where = bucket(section.get("Type"), prop)
+            text = prop_text(prop, loc)
+            if not text:
+                continue  # a status marker or an empty value, not a number
+            # A passive counts as always-on only if the game provides it as a plain
+            # stat and its tooltip states no condition.
+            always = provided_always(prop_key, raw_item) and not _CONDITION.search(description)
+            where = SIDE_OVERRIDES.get((item.get("Name"), prop_key)) or bucket(section.get("Type"), prop, always)
             if where == "innate":
                 column = _STAT_BY_KEY.get(prop_key)
                 value, _ = number(prop.get("Value"))
-                if column and row[column] is None and value is not None:
+                if column and row[column] is None:
                     row[column] = value
                 else:
-                    other_innate.append(prop_text(prop, loc))
+                    other_innate.append(text)
             elif where == "enemy":
-                section_enemy.append(prop_text(prop, loc))
+                section_enemy.append(text)
             else:
-                section_conditional.append(prop_text(prop, loc))
+                section_conditional.append(text)
         if section_conditional:
             conditional.append(f"{_section_tag(section)} " + "; ".join(section_conditional))
         if section_enemy:
@@ -219,38 +244,28 @@ def item_row(key: str, item: dict, card: dict, loc: dict, names: dict, upgrades_
     if top_description and not any(top_description in text for text in texts):
         texts.insert(0, top_description)
 
-    unlisted, hidden_innate, hidden_conditional, hidden_enemy = [], [], [], []
+    unlisted, off_tooltip = [], []
+    raw_props = (raw_item or {}).get("m_mapAbilityProperties") or {}
     for prop_key, prop in (card.get("Other") or {}).items():
-        if prop_key in _BORING or prop_key in shown:
+        if prop_key in _BORING or prop_key in shown or prop_key in _DUPLICATE_OF_RANGE:
             continue
         value, unit = number(prop.get("Value"))
-        if value is None:
+        if not value:
             continue
-        where = unlisted_bucket(prop_key, raw_item)
-        if where == "innate":
-            column = _STAT_BY_KEY.get(prop_key)
-            if column and row[column] is None:
-                row[column] = value
-            else:
-                other_innate.append(prop_text(prop, loc))
-            hidden_innate.append(prop_text(prop, loc))
-        elif where == "enemy":
-            hidden_enemy.append(prop_text(prop, loc))
-        elif where == "conditional":
-            hidden_conditional.append(prop_text(prop, loc))
+        entry = raw_props.get(prop_key)
+        raw_value = number(entry.get("m_strValue"))[0] if isinstance(entry, dict) else None
+        if isinstance(entry, dict) and entry.get("m_eProvidedPropertyType") and raw_value:
+            tag = " (flagged conditional)" if entry.get("m_eStatsUsageFlags") else ""
+            off_tooltip.append(prop_text(prop, loc) + tag)
         else:
             unlisted.append(f"{prop_key}={fmt(value)}{unit or ''}")
-    if hidden_conditional:
-        conditional.append("[Not on tooltip] " + "; ".join(hidden_conditional))
-    if hidden_enemy:
-        enemy.append("[Not on tooltip] " + "; ".join(hidden_enemy))
 
     row["cooldown"] = active_cooldown if active_cooldown is not None else passive_cooldown
     if row["cooldown"] is None:
         fallback = values.get("AbilityCooldown")
         row["cooldown"] = fallback if fallback and fallback > 0 else None
     row["other_innate_stats"] = "; ".join(other_innate) or None
-    row["stats_not_on_tooltip"] = "; ".join(hidden_innate) or None
+    row["stats_not_on_tooltip"] = "; ".join(off_tooltip) or None
     row["conditional_effects"] = " | ".join(conditional) or None
     row["enemy_effects"] = " | ".join(enemy) or None
     row["unlisted_properties"] = "; ".join(unlisted) or None

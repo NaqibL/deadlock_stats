@@ -141,7 +141,8 @@ def main(argv=None) -> int:
     investment_rows, progression_rows = world.build_investment(primary), world.build_progression(primary)
     unit_rows, missing_units = world.build_units(primary)
     rule_rows = world.build_rules(primary)
-    extra = {"investment": investment_rows, "progression": progression_rows, "units": unit_rows, "rules": rule_rows}
+    extra = {"investment": investment_rows, "progression": progression_rows, "units": unit_rows, "rules": rule_rows,
+             "powerups": world.build_powerups(primary), "permanent_buffs": world.build_permanent_buffs(primary)}
 
     old = changelog.load_snapshot(out_dir)
     with_cooldown = {
@@ -175,6 +176,8 @@ def main(argv=None) -> int:
         "progression": (world.PROGRESSION_COLUMNS, progression_rows),
         "units": (world.UNIT_COLUMNS, unit_rows),
         "rules": (world.RULE_COLUMNS, rule_rows),
+        "powerups": (world.POWERUP_COLUMNS, extra["powerups"]),
+        "permanent_buffs": (world.BUFF_COLUMNS, extra["permanent_buffs"]),
         "meta": (["field", "value"], meta),
     }
     with tempfile.TemporaryDirectory() as tmp:

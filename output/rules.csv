@@ -3,27 +3,68 @@ rule,value,source_field
 "Item price, tier 2",1600,ItemPricePerTier[2]
 "Item price, tier 3",3200,ItemPricePerTier[3]
 "Item price, tier 4",6400,ItemPricePerTier[4]
-Guardian kill bounty (souls),1375,ObjectiveParams.Tier1GoldKill
-Walker kill bounty (souls),3675,ObjectiveParams.Tier2GoldKill
-Base Guardian kill bounty (souls),1000,ObjectiveParams.BaseGuardiansGoldKill
-Shrine kill bounty (souls),2000,ObjectiveParams.ShrinesGoldKill
-Objective bounty share for nearby players (%),25,ObjectiveParams.NearPlayerSplitPct
-"Hero kill soul share, 1 player(s) sharing",1.25,HeroKillGoldShareFrac[0]
-"Hero kill soul share, 2 player(s) sharing",0.575,HeroKillGoldShareFrac[1]
-"Hero kill soul share, 3 player(s) sharing",0.283,HeroKillGoldShareFrac[2]
-"Hero kill soul share, 4 player(s) sharing",0.175,HeroKillGoldShareFrac[3]
-"Hero kill soul share, 5 player(s) sharing",0.11,HeroKillGoldShareFrac[4]
-"Hero kill soul share, 6 player(s) sharing",0.083,HeroKillGoldShareFrac[5]
-"Trooper kill soul share, 1 player(s) sharing",1,TrooperKillGoldShareFrac[0]
-"Trooper kill soul share, 2 player(s) sharing",0.54,TrooperKillGoldShareFrac[1]
-"Trooper kill soul share, 3 player(s) sharing",0.36,TrooperKillGoldShareFrac[2]
-"Trooper kill soul share, 4 player(s) sharing",0.25,TrooperKillGoldShareFrac[3]
-"Trooper kill soul share, 5 player(s) sharing",0.2,TrooperKillGoldShareFrac[4]
-"Trooper kill soul share, 6 player(s) sharing",0.16,TrooperKillGoldShareFrac[5]
-Rejuvenator buff duration (s),180,RejuvParams.RejuvinatorBuffDuration
-"Rejuvenator trooper health multiplier, level 1",1.7,RejuvParams.TrooperHealthMult[0]
-"Rejuvenator trooper health multiplier, level 2",2,RejuvParams.TrooperHealthMult[1]
-"Rejuvenator trooper health multiplier, level 3",2.3,RejuvParams.TrooperHealthMult[2]
-"Rejuvenator respawn time multiplier, level 1",0.5,RejuvParams.PlayerRespawnMult[0]
-"Rejuvenator respawn time multiplier, level 2",0.4,RejuvParams.PlayerRespawnMult[1]
-"Rejuvenator respawn time multiplier, level 3",0.3,RejuvParams.PlayerRespawnMult[2]
+"Guardian kill bounty, team total (souls)",1375,ObjectiveParams.Tier1GoldKill
+"Walker kill bounty, team total (souls)",3675,ObjectiveParams.Tier2GoldKill
+"Base Guardian kill bounty, team total (souls)",1000,ObjectiveParams.BaseGuardiansGoldKill
+"Shrine kill bounty, team total (souls)",2000,ObjectiveParams.ShrinesGoldKill
+"Objective bounty: share to nearby players (%), rest split among all six",25,ObjectiveParams.NearPlayerSplitPct
+"Hero kill: average share of the bounty per participant, 1 in the kill",1.25,HeroKillGoldShareFrac[0]
+"Hero kill: average share of the bounty per participant, 2 in the kill",0.575,HeroKillGoldShareFrac[1]
+"Hero kill: average share of the bounty per participant, 3 in the kill",0.283,HeroKillGoldShareFrac[2]
+"Hero kill: average share of the bounty per participant, 4 in the kill",0.175,HeroKillGoldShareFrac[3]
+"Hero kill: average share of the bounty per participant, 5 in the kill",0.11,HeroKillGoldShareFrac[4]
+"Hero kill: average share of the bounty per participant, 6 in the kill",0.083,HeroKillGoldShareFrac[5]
+"Trooper kill: share of the bounty each player gets, 1 nearby",1,TrooperKillGoldShareFrac[0]
+"Trooper kill: share of the bounty each player gets, 2 nearby",0.54,TrooperKillGoldShareFrac[1]
+"Trooper kill: share of the bounty each player gets, 3 nearby",0.36,TrooperKillGoldShareFrac[2]
+"Trooper kill: share of the bounty each player gets, 4 nearby",0.25,TrooperKillGoldShareFrac[3]
+"Trooper kill: share of the bounty each player gets, 5 nearby",0.2,TrooperKillGoldShareFrac[4]
+"Trooper kill: share of the bounty each player gets, 6 nearby",0.16,TrooperKillGoldShareFrac[5]
+Rejuvenator duration (s),180,RejuvParams.RejuvinatorBuffDuration
+Rejuvenator drop count,3,RejuvParams.RejuvinatorDropCount
+Rejuvenator time to drop (s),7.5,RejuvParams.RejuvinatorDropDuration
+Rejuvenator revive delay (s),3,citadel_item_pickup_rejuv.RebirthModifier.RespawnDelay
+Rejuvenator revive health (%),100,citadel_item_pickup_rejuv.RebirthModifier.RespawnLifePct
+Starting souls,600,convar citadel_player_starting_gold
+Item sell value (fraction of price),0.5,convar citadel_item_sell_price_ratio
+Hero kill bounty at 0:00 (souls),200,convar citadel_player_gold_reward_min
+Hero kill bounty at full ramp (souls),2200,convar citadel_player_gold_reward_max
+Hero kill bounty reaches full ramp at (s),2400,convar citadel_player_gold_reward_time
+Bonus for each player's first kill (souls),125,convar citadel_player_gold_reward_first_kill_bonus
+Assist window (s),10,convar citadel_bounty_player_assist_window
+Killer's share relative to an assister's,2.2,convar citadel_player_gold_killer_to_assist_ratio
+Trooper bounty at 0:00 (souls),100,convar citadel_trooper_gold_reward
+Trooper bounty growth per minute (souls),2,convar citadel_trooper_gold_reward_bonus_per_minute
+Super trooper bounty multiplier,0.85,convar citadel_super_trooper_gold_mult
+First trooper wave at (s),16,convar citadel_trooper_spawn_initial
+"Trooper wave interval, early (s)",30,convar citadel_trooper_spawn_interval_early
+"Trooper wave interval, late (s)",25,convar citadel_trooper_spawn_interval_late
+Late wave interval starts at (min),20,convar citadel_trooper_spawn_interval_late_time
+"Trooper wave interval, very late (s)",20,convar citadel_trooper_spawn_interval_very_late
+Very late wave interval starts at (min),35,convar citadel_trooper_spawn_interval_very_late_time
+"Trooper health multiplier, late game",1.5,convar citadel_trooper_health_mult
+Trooper late-game health starts at (min),35,convar citadel_trooper_health_mult_gametime
+Neutral creep health growth per minute (%),2.1,convar citadel_neutral_health_growth_pct_per_min
+Respawn time until 5 min (s),8,convar citadel_player_spawn_time_min_ramp_1
+Respawn time at 20 min (s),38,convar citadel_player_spawn_time_min_ramp_2
+Respawn time at 30 min (s),70,convar citadel_player_spawn_time_min_ramp_3
+Respawn time at 40 min (s),85,convar citadel_player_spawn_time_max_ramp_3
+Respawn time cap (s),90,convar citadel_player_spawn_time_max_respawn_time
+Extra respawn time when not killed by a hero (s),10,convar citadel_player_death_no_heroes_respawn_penalty
+"Extra respawn time when richer than enemy average, minimum (s)",6,convar citadel_player_spawn_time_rich_nw_penalty_min_ramp_extratime
+"Extra respawn time when richer than enemy average, maximum (s)",22,convar citadel_player_spawn_time_rich_nw_penalty_max_ramp_extratime
+Respawn time cut for the losing team when a Patron first falls (s),20,convar citadel_tier3_phase1_kill_respawn_reduction
+Soul Urn first spawn (s),600,convar citadel_crate_spawn_initial_delay
+Soul Urn spawn interval (s),300,convar citadel_crate_respawn_interval
+Soul Urn reward at 0:00 (souls),250,convar citadel_crate_reward_base
+Soul Urn reward growth per minute (souls),70,convar citadel_crate_reward_time_multiplier
+Soul Urn permanent buffs for the runner,4,convar citadel_idol_cashin_buff_count
+Soul Urn reward starts decaying after (s),45,convar citadel_idol_duration_until_decay
+Soul Urn reward decays over (s),45,convar citadel_idol_decay_duration
+"Unstable Rift first spawn (s, plus or minus the window)",720,convar citadel_koth_spawn_initial_delay
+Unstable Rift spawn window (s),60,convar citadel_koth_spawn_window
+Unstable Rift spawn interval (s),420,convar citadel_koth_respawn_interval
+Unstable Rift warning before spawn (s),20,convar citadel_koth_warning_time
+Unstable Rift reward at 0:00 (souls),1260,convar citadel_koth_reward_base
+Unstable Rift reward growth per minute (souls),222,convar citadel_koth_reward_time_multiplier
+Souls per level after the last boon,2000,convar citadel_player_gold_per_level_postmax

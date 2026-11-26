@@ -33,7 +33,9 @@ def tidy(value):
     """Round away float noise and turn whole floats into ints (800.0 -> 800)."""
     if isinstance(value, bool) or not isinstance(value, (int, float)):
         return value
-    rounded = round(float(value), 4)
+    number_ = float(value)
+    # Four decimals removes float noise; tiny coefficients (0.00035) keep their digits.
+    rounded = round(number_, 4) if abs(number_) >= 0.01 or number_ == 0 else float(f"{number_:.3g}")
     return int(rounded) if rounded == int(rounded) else rounded
 
 
@@ -48,8 +50,26 @@ def humanise(key: str) -> str:
     return _CAMEL.sub(" ", key.lstrip("#")).replace("_", " ").strip()
 
 
+# The game reuses one label for different things. These keys get a label that
+# says which, so two values in one cell cannot be mistaken for each other.
+LABEL_OVERRIDES = {
+    "TechArmorDamageReduction": "Spirit Resist Reduction",
+    "MagicResistReduction": "Spirit Resist Reduction",
+    "BulletArmorReduction": "Bullet Resist Reduction",
+    "BulletResistReduction": "Bullet Resist Reduction",
+    "HealAmpRegenPenaltyPercent": "Healing From Regen",
+    "HealAmpReceivePenaltyPercent": "Incoming Healing",
+    "FireRateSlow": "Fire Rate Slow",
+    "ParryCooldownReduction": "Parry Cooldown Reduction",
+    "MoveWhileShootingSpeedPenaltyReductionPercent": "Move Speed Penalty While Shooting Removed",
+    "MoveWhileZoomedSpeedPenaltyReductionPercent": "Move Speed Penalty While Zoomed Removed",
+}
+
+
 def label(loc: dict, key: str, override: str | None = None) -> str:
     """English label for a property key, from the localisation data."""
+    if key in LABEL_OVERRIDES:
+        return LABEL_OVERRIDES[key]
     for candidate in (override, key):
         if not candidate:
             continue

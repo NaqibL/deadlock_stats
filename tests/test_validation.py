@@ -197,6 +197,7 @@ def snapshot(tmp_path, name, tables, build="6865", with_rules=False):
                                "items": (items.COLUMNS, item_rows), "investment": (["category", "souls_spent"], []),
                                "progression": (["level"], []), "units": (["key"], []),
                                "rules": (["rule", "value", "source_field"], rules),
+                               "powerups": (["key", "stat"], []), "permanent_buffs": (["key", "stat"], []),
                                "meta": (["field", "value"], meta)})
     return changelog.load_snapshot(out)
 
@@ -206,9 +207,10 @@ def test_outputs_are_written_with_numbers_as_numbers(tmp_path, tables):
     snapshot(tmp_path, "a", tables)
     assert {p.name for p in (tmp_path / "a").iterdir()} == {
         "heroes.csv", "abilities.csv", "items.csv", "investment.csv", "progression.csv", "units.csv", "rules.csv",
-        "meta.csv", "deadlock.xlsx"}
+        "powerups.csv", "permanent_buffs.csv", "meta.csv", "deadlock.xlsx"}
     workbook = load_workbook(tmp_path / "a" / "deadlock.xlsx")
-    assert workbook.sheetnames == ["Heroes", "Abilities", "Items", "Investment", "Progression", "Units", "Rules", "Meta"]
+    assert workbook.sheetnames == [
+        "Heroes", "Abilities", "Items", "Investment", "Progression", "Units", "Rules", "Powerups", "Permanent buffs", "Meta"]
     header = [c.value for c in workbook["Heroes"][1]]
     row = dict(zip(header, [c.value for c in workbook["Heroes"][2]]))
     assert row["base_health"] == 800 and isinstance(row["base_health"], int)

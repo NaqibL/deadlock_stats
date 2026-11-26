@@ -19,7 +19,10 @@ LOC = {
     "BonusHealth_label": "Bonus Health", "BaseAttackDamagePercent_label": "Weapon Damage",
     "BaseAttackDamagePercent_postfix": "%", "BulletArmorReduction_label": "Bullet Resist",
     "BulletArmorReduction_postfix": "%", "GunTag_Shotgun": "Shotgun", "Tag_A": "Tank", "Tag_B": "Brawler",
-    "TechResist_label": "Spirit Resist", "guardian_unit": "Guardian",
+    "TechResist_label": "Spirit Resist", "guardian_unit": "Guardian", "gun_powerup_pickup": "Gun", "MODIFIER_VALUE_FIRE_RATE_label": "Fire Rate",
+    "hp_permanent_pickup_label": "+15 Bonus Health",
+    "guide_the_map_midboss_desc": "The team that kills it will have <b>immediate respawns</b> on their next deaths.",
+    "citadel_chatwheel_label_mid_boss_here": "Mid Boss is Here", "Item_Rejuvenator": "Rejuvenator",
     "Citadel_ModBonus_WeaponInvestmentDesc": "Weapon Damage Increases", "ClipSize_label": "Clip Size", "TechResist_postfix": "%",
     "item_cond_desc": "Above {s:LifeThreshold}% health, deal more damage.",
 }
@@ -131,11 +134,30 @@ def primary():
             "neutral_trooper_weak": {"MaxHealth": 142, "GoldReward": 45, "GoldRewardBonusPercentPerMinute": 1.08,
                                      "IntrinsicModifiers": [{"BULLET_DAMAGE_REDUCTION_PERCENT": 50.0}]},
             "npc_super_neutral": {"StartingHealth": 15600, "HealthGainPerMinute": 234},
+            "trooper_base": {"VSPlayer": {"BaseDPS": 28.0}, "VSTrooper": {"BaseDPS": 35.0}},
+            "trooper_normal": {"MaxHealth": 300, "Weapon": {"DPS": 34.951}},
+            "destroyable_building": {"MaxHealthGenerator": 5000, "MaxHealthGeneratorSecond": 10000},
         },
-        "misc": {"neutral_camp_weak": {"InitialSpawnDelayInSeconds": 120, "SpawnIntervalInSeconds": 85}},
+        "convars": {"citadel_player_starting_gold": {"value": 600, "description": "Initial gold for players."},
+                    "citadel_player_spawn_time_min_ramp_2": 38, "citadel_neutral_health_growth_pct_per_min": 2.1,
+                    "citadel_super_neutral_gold_reward": 1500, "citadel_some_flag": True},
+        "misc": {"neutral_camp_midboss": {"InitialSpawnDelayInSeconds": 0, "SpawnIntervalInSeconds": 420,
+                                          "SpawnIntervalChange": -60, "SpawnIntervalMin": 300},
+                 "citadel_item_powerup_spawner": {"InitialSpawnTime": 300, "SpawnInterval": 300,
+                                                  "PickupChances": {"gun_powerup_pickup": 1.0}},
+                 "gun_powerup_pickup": {"Modifer": {"Duration": 160.0, "TimeMin": 5, "TimeMax": 40, "ModifierValues": [
+                     {"ModifierValue": "MODIFIER_VALUE_FIRE_RATE", "valueMin": 12.0, "valueMax": 35.0}]}},
+                 **{f"hp_permanent_pickup{suffix}": {"NameLocString": "hp_permanent_pickup_label", "Modifer": {
+                     "ScriptValues": [{"ModifierValue": "MODIFIER_VALUE_HEALTH_MAX", "value": value}]}}
+                    for suffix, value in (("", 15), ("_lv2", 20), ("_lv3", 30))},
+                 "citadel_item_pickup_rejuv": {"RebirthModifier": {"RespawnDelay": 3.0, "RespawnLifePct": 100.0}},
+                 "neutral_camp_weak": {"InitialSpawnDelayInSeconds": 120, "SpawnIntervalInSeconds": 85}},
         "generic": {"ItemPricePerTier": [0, 800, 1600, 3200, 6400, 9999],
-                    "ObjectiveParams": {"Tier1GoldKill": 1375, "NearPlayerSplitPct": 25.0},
-                    "HeroKillGoldShareFrac": [1.25, 0.575], "RejuvParams": {"RejuvinatorBuffDuration": 180}},
+                    "ObjectiveParams": {"Tier1GoldKill": 1375, "NearPlayerSplitPct": 25.0, "ShrinesGoldKill": 2000},
+                    "BreakablePowerupLootParams": {"PickupsByMatchTimeMins": {
+                        "0": {"hp_permanent_pickup": 2.0}, "10": {}, "30": {}}},
+                    "HeroKillGoldShareFrac": [1.25, 0.575], "RejuvParams": {"RejuvinatorBuffDuration": 180, "RejuvinatorDropCount": 3,
+                                    "TrooperHealthMult": [1.7, 2.0, 2.3], "RejuvPickupSound": "x"}},
     }
     return {
         **world,

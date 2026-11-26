@@ -37,6 +37,7 @@ PRIMARY_OPTIONAL = {
     "npcs": "data/json/npc-data.json",
     "misc": "data/json/misc-data.json",
     "generic": "data/json/generic-data.json",
+    "convars": "data/json/convars.json",
 }
 
 

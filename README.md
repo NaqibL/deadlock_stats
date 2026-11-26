@@ -202,6 +202,9 @@ candidates apart. `analysis/formulas.py` implements the rules against
 `output/`; `tests/test_formulas.py` checks them. The resist rules come from
 deadlock.wiki, pasted in by hand rather than fetched.
 
+`analysis/framework.md` is the method for theorising builds and matchups from
+those formulas (measures of power, event checkpoints, damage mix, theory
+types), and `analysis/case-studies/` checks real builds against the sheet.
 `analysis/deadlock-systems-explainer.md` is a longer read-through of every
 system; where it and `formulas.md` differ, `formulas.md` is newer.
 

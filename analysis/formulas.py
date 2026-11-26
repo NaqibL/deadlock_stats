@@ -175,6 +175,37 @@ def shred_damage_gain(target_resist: float, shred: float) -> float:
     return damage_taken(target_resist - shred) / damage_taken(target_resist) - 1
 
 
+# ---------------------------------------------------------------- item procs
+
+
+def shots_per_second(name: str, spun_up: bool = True) -> float:
+    """Shots per second (Data): ``fire_rate``, or ``fire_rate_max_spin`` for guns that spin up."""
+    h = hero(name)
+    spin = _num(h["fire_rate_max_spin"])
+    return spin if spun_up and spin else float(h["fire_rate"])
+
+
+def procs_per_second(shots: float, chance: float, cooldown: float | None = None) -> float:
+    """Triggers per second of an on-hit item.
+
+    Inferred: each shot that hits rolls ``chance`` (a fraction), and the item's proc
+    cooldown caps triggers at 1 / cooldown. Whether each pellet of a multi-pellet shot
+    rolls separately is open (formulas.md, test 6).
+    """
+    rate = shots * chance
+    return min(rate, 1 / cooldown) if cooldown else rate
+
+
+def proc_dps(shots: float, chance: float, damage: float, cooldown: float | None = None) -> float:
+    """Damage per second from an on-hit item: triggers per second x damage per trigger (Inferred)."""
+    return procs_per_second(shots, chance, cooldown) * damage
+
+
+def periodic_dps(damage: float, interval: float) -> float:
+    """Damage per second of an effect that fires every ``interval`` seconds, such as Torment Pulse."""
+    return damage / interval
+
+
 # ---------------------------------------------------------------- sharing souls
 
 
@@ -265,6 +296,13 @@ if __name__ == "__main__":
     for m in (0, 10, 20, 30, 40):
         print(m, "min: kill", round(hero_kill_bounty(m)), "trooper", trooper_bounty(m),
               "camp souls/health", round(neutral_souls_per_health(m), 2), "respawn", round(respawn_time(m)))
+    shots = shots_per_second("Graves")
+    sp = 130
+    print(f"Graves {shots:.1f} shots/s, spirit power {sp}:",
+          "Tesla", round(proc_dps(shots, 0.15, 33 + 0.19 * sp, 0.2)),
+          "Capacitor", round(proc_dps(shots, 0.20, 43 + 0.19 * sp, 0.2)),
+          "Torment Pulse", round(periodic_dps(25 + 0.23 * sp, 1.4)),
+          "Mystic Shot", round(periodic_dps(40 + 0.9 * sp, 8)))
     for b, w, v, s in ((9, 4800, 0, 0), (9, 0, 4800, 0), (9, 0, 0, 4800), (29, 9600, 9600, 9600)):
         print("Abrams", b, "boons", (w, v, s), "gun", round(gun_dps("Abrams", b, investment_bonus("Weapon", w))),
               "hp", round(health_with_vitality("Abrams", b, v)), "sp",

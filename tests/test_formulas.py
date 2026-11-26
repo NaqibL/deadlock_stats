@@ -44,6 +44,15 @@ def test_investment_lookup():
     assert f.investment_bonus("Spirit", 0) == 0
 
 
+def test_procs_scale_with_shots_and_respect_cooldown():
+    assert f.shots_per_second("Graves") == pytest.approx(9.8039)
+    assert f.shots_per_second("McGinnis") == pytest.approx(11.9048)
+    assert f.shots_per_second("McGinnis", spun_up=False) < 11.9048
+    assert f.procs_per_second(10, 0.15) == pytest.approx(1.5)
+    assert f.procs_per_second(40, 0.5, cooldown=0.2) == pytest.approx(5)
+    assert f.periodic_dps(56, 1.4) == pytest.approx(40)
+
+
 def test_sharing_totals():
     assert f.trooper_share(2)["team_total"] == pytest.approx(1.08)
     split = f.hero_kill_split(200, 2)

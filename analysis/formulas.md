@@ -79,7 +79,9 @@ Spirit power does nothing by itself. Upgrades add to the base and to the coeffic
 
 **Gain from 100 spirit power, relative to base** (computed): coefficient × 100 ÷ base. The medians are +155% for slot 1, +221% for slot 2, +175% for slot 3 and +103% for ultimates. Ultimates gain least relative to their base.
 
-**Ability upgrade costs** (Inferred): 1, 2 and 5 ability points per tier. That totals 8 per ability and 32 for four, exactly the 32 the boon table grants.
+**Ability upgrade costs** (Inferred, now also Community): 1, 2 and 5 ability points per tier. That totals 8 per ability and 32 for four, exactly the 32 the boon table grants. The ability order panel on deadlocklabs.gg build pages shows the same 1 / 2 / 5 costs.
+
+Assuming those costs, ability-point checkpoints fall at fixed soul counts: the first ability maxed (8 points) at 6,000 souls, the second (16) at 12,800, the third (24) at 24,600.
 
 ## 4. Resists and resist reduction (Community)
 
@@ -170,7 +172,62 @@ where R is the target's resist and S the shred. Shred is worth more against targ
 
 Example: Battle Vest (18%) + Bullet Resilience (35%) = **46.7%**. Bullet Resist Shredder (10%) + Crippling Headshot (16%) = **24.4%** reduction. The final resist is 22.3%, so the attacker's bullets do 46% more damage.
 
-## 5. Souls
+## 5. Item damage sources
+
+### On-hit items trigger per shot
+
+**Shots per second** (Data): `fire_rate`, or `fire_rate_max_spin` once a gun has spun up (McGinnis, Victor).
+
+**Triggers per second** (Inferred: each shot rolls the chance, and the item's own cooldown caps the rate):
+
+> triggers per second = min(shots per second × chance, 1 ÷ item cooldown)
+
+**Damage per second from an item** = triggers per second × damage per trigger.
+
+**An effect on a timer** (for example Torment Pulse, every 1.4 s) does damage per trigger ÷ interval.
+
+Because triggers come per shot, a gun with weak bullets that fires fast is good at triggering items. The fastest guns:
+
+| Hero | Shots per second | Damage per shot |
+|---|---|---|
+| Vyper | 14.3 | 6.6 |
+| Ivy | 13.6 | 4.5 |
+| Bebop | 11.9 | 5.0 |
+| McGinnis (spun up) | 11.9 | 6.1 |
+| Billy | 11.8 | 6.3 |
+| Wraith | 10.6 | 5.6 |
+| Graves | 9.8 | 3.6 |
+| Infernus, Haze | 9.5 | 5.5, 5.3 |
+
+"Build Up Per Shot" items (Toxic Bullets, Inhibitor, Spiritual Overflow) also count shots, so they reward the same guns.
+
+Worked example, Graves at 130 spirit power, from `python analysis/formulas.py`:
+
+| Item | Damage per second |
+|---|---|
+| Tesla Bullets: 15%, 33 + 0.19 × spirit power, 0.2 s cooldown | ~85 |
+| Capacitor: 20%, 43 + 0.19 × spirit power, 0.2 s cooldown | ~133 |
+| Torment Pulse: 25 + 0.23 × spirit power every 1.4 s, 9 m radius | ~39 |
+| Mystic Shot: 40 + 0.9 × spirit power every 8 s | ~20 |
+
+Her gun, by comparison, is about 99 damage per second at 35 boons with +86% weapon damage. Tesla and Capacitor also jump to further targets, which this doesn't count.
+
+### Damage based on the enemy's health
+
+Some items deal a share of the target's health:
+
+- Toxic Bullets: a 1.9% bleed per second
+- Siphon Bullets: steals 2.5% of max health per trigger
+- Scourge: 2.3% of max health per second
+- Graves' Borrowed Decree at tier 3: ghouls deal 5% of current health when they die
+
+These grow with the target's health rather than with the attacker's stats. That makes them anti-tank, and lets a build that buys little damage still threaten everyone.
+
+### One amplifier across many sources
+
+Spirit damage amplification (Escalating Exposure: +4.5% per stack, up to 12) multiplies every spirit damage source at once. The more separate sources a build has, the more one amplifier is worth. Whether a given item's damage counts as spirit damage, and so is amplified, comes from its effect text. The sheet doesn't always label it.
+
+## 6. Souls
 
 ### Hero kills
 
@@ -270,5 +327,14 @@ Each test is designed so the possible formulas predict different readings. Recor
 **Test 5: falloff curve.**
 - Setup: shoot a dummy at `falloff_start`, halfway to `falloff_end`, and at `falloff_end`.
 - With a straight-line falloff and an end scale of 0.1, the halfway shot does **55%** of the close-range damage.
+
+**Test 6: do on-hit items roll per shot or per pellet?**
+- Setup: Abrams (9 pellets, 1.59 shots per second) with Tesla Bullets, firing at a dummy for 30 s at point blank. Count shocks in the combat log.
+- Per shot: about **7** shocks (1.59 × 0.15 × 30).
+- Per pellet: about **64** (14.3 × 0.15 × 30), below the 5-per-second cooldown cap.
+
+**Test 7: is the item cooldown the cap on triggers?**
+- Setup: Vyper (14.3 shots per second) with Capacitor (20%, 0.2 s cooldown) for 30 s. Count shocks.
+- If the formula holds: about **86** shocks (2.9 per second, under the 5-per-second cap).
 
 Other open questions (upgrade price with a component, selling and investment, starting souls and boons, and more) are listed in `knowledge/settled.md`.
